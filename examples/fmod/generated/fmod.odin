@@ -44,6 +44,17 @@ FMOD_DSP_SETPOSITIONCALLBACK :: #type proc(dsp_state : ^FMOD_DSP_STATE, pos : _c
 FMOD_DSP_SETPARAMCALLBACK :: #type proc(dsp_state : ^FMOD_DSP_STATE, index : _c.int, value : _c.float) -> FMOD_RESULT;
 FMOD_DSP_GETPARAMCALLBACK :: #type proc(dsp_state : ^FMOD_DSP_STATE, index : _c.int, value : ^_c.float, valuestr : cstring) -> FMOD_RESULT;
 FMOD_DSP_DIALOGCALLBACK :: #type proc(dsp_state : ^FMOD_DSP_STATE, hwnd : rawptr, show : _c.int) -> FMOD_RESULT;
+FMOD_OUTPUT_GETNUMDRIVERSCALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE, numdrivers : ^_c.int) -> FMOD_RESULT;
+FMOD_OUTPUT_GETDRIVERNAMECALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE, id : _c.int, name : cstring, namelen : _c.int) -> FMOD_RESULT;
+FMOD_OUTPUT_GETDRIVERCAPSCALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE, id : _c.int, caps : ^_c.uint) -> FMOD_RESULT;
+FMOD_OUTPUT_INITCALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE, selecteddriver : _c.int, flags : _c.uint, outputrate : ^_c.int, outputchannels : _c.int, outputformat : ^FMOD_SOUND_FORMAT, dspbufferlength : _c.int, dspnumbuffers : _c.int, extradriverdata : rawptr) -> FMOD_RESULT;
+FMOD_OUTPUT_CLOSECALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE) -> FMOD_RESULT;
+FMOD_OUTPUT_UPDATECALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE) -> FMOD_RESULT;
+FMOD_OUTPUT_GETHANDLECALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE, handle : ^rawptr) -> FMOD_RESULT;
+FMOD_OUTPUT_GETPOSITIONCALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE, pcm : ^_c.uint) -> FMOD_RESULT;
+FMOD_OUTPUT_LOCKCALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE, offset : _c.uint, length : _c.uint, ptr1 : ^rawptr, ptr2 : ^rawptr, len1 : ^_c.uint, len2 : ^_c.uint) -> FMOD_RESULT;
+FMOD_OUTPUT_UNLOCKCALLBACK :: #type proc(output_state : ^FMOD_OUTPUT_STATE, ptr1 : rawptr, ptr2 : rawptr, len1 : _c.uint, len2 : _c.uint) -> FMOD_RESULT;
+FMOD_OUTPUT_READFROMMIXER :: #type proc(output_state : ^FMOD_OUTPUT_STATE, buffer : rawptr, length : _c.uint) -> FMOD_RESULT;
 
 FMOD_RESULT :: enum i32 {
     FMOD_OK,
@@ -834,6 +845,27 @@ FMOD_MEMORY_USAGE_DETAILS :: struct {
     eventcategory : _c.uint,
     eventenvelopepoint : _c.uint,
     eventinstancepool : _c.uint,
+};
+
+FMOD_OUTPUT_STATE :: struct {
+    plugindata : rawptr,
+    readfrommixer : FMOD_OUTPUT_READFROMMIXER,
+};
+
+FMOD_OUTPUT_DESCRIPTION :: struct {
+    name : cstring,
+    version : _c.uint,
+    polling : _c.int,
+    getnumdrivers : FMOD_OUTPUT_GETNUMDRIVERSCALLBACK,
+    getdrivername : FMOD_OUTPUT_GETDRIVERNAMECALLBACK,
+    getdrivercaps : FMOD_OUTPUT_GETDRIVERCAPSCALLBACK,
+    init : FMOD_OUTPUT_INITCALLBACK,
+    close : FMOD_OUTPUT_CLOSECALLBACK,
+    update : FMOD_OUTPUT_UPDATECALLBACK,
+    gethandle : FMOD_OUTPUT_GETHANDLECALLBACK,
+    getposition : FMOD_OUTPUT_GETPOSITIONCALLBACK,
+    lock : FMOD_OUTPUT_LOCKCALLBACK,
+    unlock : FMOD_OUTPUT_UNLOCKCALLBACK,
 };
 
 @(default_calling_convention="c")

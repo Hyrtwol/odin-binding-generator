@@ -2016,3 +2016,73 @@ static const char *FMOD_ErrorString(FMOD_RESULT errcode)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef struct FMOD_OUTPUT_STATE FMOD_OUTPUT_STATE;
+
+ 
+typedef FMOD_RESULT ( *FMOD_OUTPUT_GETNUMDRIVERSCALLBACK)(FMOD_OUTPUT_STATE *output_state, int *numdrivers);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_GETDRIVERNAMECALLBACK)(FMOD_OUTPUT_STATE *output_state, int id, char *name, int namelen);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_GETDRIVERCAPSCALLBACK)(FMOD_OUTPUT_STATE *output_state, int id, FMOD_CAPS *caps);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_INITCALLBACK)         (FMOD_OUTPUT_STATE *output_state, int selecteddriver, FMOD_INITFLAGS flags, int *outputrate, int outputchannels, FMOD_SOUND_FORMAT *outputformat, int dspbufferlength, int dspnumbuffers, void *extradriverdata);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_CLOSECALLBACK)        (FMOD_OUTPUT_STATE *output_state);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_UPDATECALLBACK)       (FMOD_OUTPUT_STATE *output_state);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_GETHANDLECALLBACK)    (FMOD_OUTPUT_STATE *output_state, void **handle);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_GETPOSITIONCALLBACK)  (FMOD_OUTPUT_STATE *output_state, unsigned int *pcm);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_LOCKCALLBACK)         (FMOD_OUTPUT_STATE *output_state, unsigned int offset, unsigned int length, void **ptr1, void **ptr2, unsigned int *len1, unsigned int *len2);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_UNLOCKCALLBACK)       (FMOD_OUTPUT_STATE *output_state, void *ptr1, void *ptr2, unsigned int len1, unsigned int len2);
+typedef FMOD_RESULT ( *FMOD_OUTPUT_READFROMMIXER)        (FMOD_OUTPUT_STATE *output_state, void *buffer, unsigned int length);
+
+
+
+typedef struct FMOD_OUTPUT_DESCRIPTION
+{
+    const char                        *name;                  
+    unsigned int                       version;               
+    int                                polling;                
+    FMOD_OUTPUT_GETNUMDRIVERSCALLBACK  getnumdrivers;         
+    FMOD_OUTPUT_GETDRIVERNAMECALLBACK  getdrivername;         
+    FMOD_OUTPUT_GETDRIVERCAPSCALLBACK  getdrivercaps;         
+    FMOD_OUTPUT_INITCALLBACK           init;                  
+    FMOD_OUTPUT_CLOSECALLBACK          close;                 
+    FMOD_OUTPUT_UPDATECALLBACK         update;                
+    FMOD_OUTPUT_GETHANDLECALLBACK      gethandle;             
+    FMOD_OUTPUT_GETPOSITIONCALLBACK    getposition;           
+    FMOD_OUTPUT_LOCKCALLBACK           lock;                  
+    FMOD_OUTPUT_UNLOCKCALLBACK         unlock;                
+} FMOD_OUTPUT_DESCRIPTION;
+
+
+
+struct FMOD_OUTPUT_STATE
+{
+    void                      *plugindata;      
+    FMOD_OUTPUT_READFROMMIXER  readfrommixer;   
+};
+
+
+
+
