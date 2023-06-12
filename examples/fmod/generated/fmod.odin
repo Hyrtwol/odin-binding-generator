@@ -2784,6 +2784,18 @@ foreign fmodex_vc {
     @(link_name="FMOD_MusicPrompt_GetMemoryInfo")
     FMOD_MusicPrompt_GetMemoryInfo :: proc(musicprompt : ^FMOD_MUSICPROMPT, memorybits : _c.uint, event_memorybits : _c.uint, memoryused : ^_c.uint, memoryused_details : ^FMOD_MEMORY_USAGE_DETAILS) -> FMOD_RESULT ---;
 
+    @(link_name="FMOD_NetEventSystem_Init")
+    FMOD_NetEventSystem_Init :: proc(eventsystem : ^FMOD_EVENTSYSTEM, port : _c.ushort) -> FMOD_RESULT ---;
+
+    @(link_name="FMOD_NetEventSystem_Update")
+    FMOD_NetEventSystem_Update :: proc() -> FMOD_RESULT ---;
+
+    @(link_name="FMOD_NetEventSystem_Shutdown")
+    FMOD_NetEventSystem_Shutdown :: proc() -> FMOD_RESULT ---;
+
+    @(link_name="FMOD_NetEventSystem_GetVersion")
+    FMOD_NetEventSystem_GetVersion :: proc(version : ^_c.uint) -> FMOD_RESULT ---;
+
     @(link_name="FMOD_ErrorString")
     FMOD_ErrorString :: proc(errcode : FMOD_RESULT) -> cstring ---;
 

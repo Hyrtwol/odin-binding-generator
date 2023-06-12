@@ -2593,6 +2593,37 @@ FMOD_RESULT  FMOD_MusicPrompt_GetMemoryInfo     (FMOD_MUSICPROMPT *musicprompt, 
 
 
 
+FMOD_RESULT  FMOD_NetEventSystem_Init       (FMOD_EVENTSYSTEM *eventsystem, unsigned short port);
+FMOD_RESULT  FMOD_NetEventSystem_Update     ();
+FMOD_RESULT  FMOD_NetEventSystem_Shutdown   ();
+FMOD_RESULT  FMOD_NetEventSystem_GetVersion (unsigned int *version);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
