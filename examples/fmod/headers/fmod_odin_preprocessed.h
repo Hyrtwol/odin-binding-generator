@@ -32,18 +32,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 typedef int                       FMOD_BOOL;
 typedef struct FMOD_SYSTEM        FMOD_SYSTEM;
 typedef struct FMOD_SOUND         FMOD_SOUND;
@@ -1895,6 +1883,33 @@ FMOD_RESULT  FMOD_Reverb_GetMemoryInfo          (FMOD_REVERB *reverb, unsigned i
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 static const char *FMOD_ErrorString(FMOD_RESULT errcode)
 {
     switch (errcode)
@@ -1998,17 +2013,6 @@ static const char *FMOD_ErrorString(FMOD_RESULT errcode)
         default :                             return "Unknown error.";
     };
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
