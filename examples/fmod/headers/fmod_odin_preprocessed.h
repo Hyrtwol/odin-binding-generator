@@ -31,7 +31,6 @@
 
 
 
-
 typedef int                       FMOD_BOOL;
 typedef struct FMOD_SYSTEM        FMOD_SYSTEM;
 typedef struct FMOD_SOUND         FMOD_SOUND;
@@ -1902,9 +1901,6 @@ FMOD_RESULT  FMOD_Reverb_GetMemoryInfo          (FMOD_REVERB *reverb, unsigned i
 
 
 
-
-
-
 typedef struct FMOD_EVENTSYSTEM     FMOD_EVENTSYSTEM;
 typedef struct FMOD_EVENTPROJECT    FMOD_EVENTPROJECT;
 typedef struct FMOD_EVENTGROUP      FMOD_EVENTGROUP;
@@ -2801,6 +2797,7 @@ struct FMOD_OUTPUT_STATE
     void                      *plugindata;      
     FMOD_OUTPUT_READFROMMIXER  readfrommixer;   
 };
+
 
 
 
