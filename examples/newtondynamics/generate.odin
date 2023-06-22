@@ -14,7 +14,8 @@ main :: proc() {
     bindgen.generate(
         packageName = "newton",
         foreignLibrary = "newton",
-        outputFile = "./examples/newtondynamics/generated/newton.odin",
+        outputFile = "./shared/newton_dynamics/newton.odin",
+        //outputFile = "../Mimir/shared/newton_dynamics/newton.odin",
         headerFiles = []string{"./examples/newtondynamics/headers/newton_odin_preprocessed.h"},
         options = options,
     );

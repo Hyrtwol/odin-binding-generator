@@ -1,6 +1,4 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
@@ -25,6 +23,153 @@
             "group": {
                 "kind": "build",
                 "isDefault": false
+            }
+        },
+
+        {
+            "label": "odin run",
+            "type": "process",
+            "command": "odin",
+            "args": [
+                "run",
+                "..\\${relativeFileDirname}",
+                "-resource:..\\doc\\odin.rc"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": "**/*.odin"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/bin"
+            }
+        },
+        {
+            "label": "odin build",
+            "type": "shell",
+            "command": "odin",
+            "args": [
+                "build",
+                "..\\${relativeFileDirname}",
+                "-resource:..\\doc\\odin.rc"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/bin"
+            }
+        },
+        {
+            "label": "odin test",
+            "type": "shell",
+            "command": "odin",
+            "args": [
+                "test",
+                "..\\${relativeFileDirname}",
+                "-resource:..\\doc\\odin.rc"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/bin"
+            }
+        },
+        {
+            "label": "odin debug build",
+            "type": "shell",
+            "command": "odin",
+            "args": [
+                "build",
+                "..\\${relativeFileDirname}",
+                "-resource:..\\doc\\odin.rc",
+                "-debug"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/bin"
+            }
+        },
+        {
+            "label": "odin check",
+            "type": "shell",
+            "command": "odin",
+            "args": [
+                "check",
+                "${relativeFileDirname}",
+                "-no-entry-point"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "odin doc",
+            "type": "shell",
+            "command": "odin",
+            "args": [
+                "doc",
+                "..\\${relativeFileDirname}", //"-doc-format",
+                ">", "${fileDirnameBasename}.txt"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/bin"
+            }
+        },
+        {
+            "label": "echo vars",
+            "type": "shell",
+            "command": "echo",
+            "args": [
+                "vars:",
+                "${workspaceFolder}",
+                //"${workspaceFolder:src}",
+                "${cwd}",
+                "${relativeFile}",
+                "${relativeFileDirname}"
+            ],
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "options": {
+                "cwd": "bin"
+            }
+        },
+        {
+            "label": "pandoc md",
+            "type": "shell",
+            "command": "pandoc",
+            "args": [
+                //"--help"
+                "-o","${fileBasenameNoExtension}.html",
+                "-f", "markdown",
+                "-t", "html",
+                "../${relativeFile}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": "**/*.md"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/bin"
             }
         }
     ]

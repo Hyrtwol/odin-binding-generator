@@ -1,4 +1,4 @@
-package fmod
+package newton
 
 foreign import "newton"
 
@@ -59,7 +59,7 @@ NewtonCollisionDestructorCallback :: #type proc(newtonWorld : ^NewtonWorld, coll
 NewtonTreeCollisionCallback :: #type proc(bodyWithTreeCollision : ^NewtonBody, body : ^NewtonBody, faceID : _c.int, vertexCount : _c.int, vertex : ^_c.float, vertexStrideInBytes : _c.int);
 NewtonBodyDestructor :: #type proc(body : ^NewtonBody);
 NewtonApplyForceAndTorque :: #type proc(body : ^NewtonBody, timestep : _c.float, threadIndex : _c.int);
-NewtonSetTransform :: #type proc(body : ^NewtonBody, matrix : ^_c.float, threadIndex : _c.int);
+NewtonSetTransform :: #type proc(body : ^NewtonBody, matrix4x4 : ^_c.float, threadIndex : _c.int);
 NewtonIslandUpdate :: #type proc(newtonWorld : ^NewtonWorld, islandHandle : rawptr, bodyCount : _c.int) -> _c.int;
 NewtonFractureCompoundCollisionOnEmitCompoundFractured :: #type proc(fracturedBody : ^NewtonBody);
 NewtonFractureCompoundCollisionOnEmitChunk :: #type proc(chunkBody : ^NewtonBody, fracturexChunkMesh : ^NewtonFracturedCompoundMeshPart, fracturedCompountCollision : ^NewtonCollision);
@@ -527,10 +527,10 @@ foreign newton {
     NewtonWorldRayCast :: proc(newtonWorld : ^NewtonWorld, p0 : ^_c.float, p1 : ^_c.float, filter : NewtonWorldRayFilterCallback, userData : rawptr, prefilter : NewtonWorldRayPrefilterCallback, threadIndex : _c.int) ---;
 
     @(link_name="NewtonWorldConvexCast")
-    NewtonWorldConvexCast :: proc(newtonWorld : ^NewtonWorld, matrix : ^_c.float, target : ^_c.float, shape : ^NewtonCollision, param : ^_c.float, userData : rawptr, prefilter : NewtonWorldRayPrefilterCallback, info : ^NewtonWorldConvexCastReturnInfo, maxContactsCount : _c.int, threadIndex : _c.int) -> _c.int ---;
+    NewtonWorldConvexCast :: proc(newtonWorld : ^NewtonWorld, matrix4x4 : ^_c.float, target : ^_c.float, shape : ^NewtonCollision, param : ^_c.float, userData : rawptr, prefilter : NewtonWorldRayPrefilterCallback, info : ^NewtonWorldConvexCastReturnInfo, maxContactsCount : _c.int, threadIndex : _c.int) -> _c.int ---;
 
     @(link_name="NewtonWorldCollide")
-    NewtonWorldCollide :: proc(newtonWorld : ^NewtonWorld, matrix : ^_c.float, shape : ^NewtonCollision, userData : rawptr, prefilter : NewtonWorldRayPrefilterCallback, info : ^NewtonWorldConvexCastReturnInfo, maxContactsCount : _c.int, threadIndex : _c.int) -> _c.int ---;
+    NewtonWorldCollide :: proc(newtonWorld : ^NewtonWorld, matrix4x4 : ^_c.float, shape : ^NewtonCollision, userData : rawptr, prefilter : NewtonWorldRayPrefilterCallback, info : ^NewtonWorldConvexCastReturnInfo, maxContactsCount : _c.int, threadIndex : _c.int) -> _c.int ---;
 
     @(link_name="NewtonWorldGetBodyCount")
     NewtonWorldGetBodyCount :: proc(newtonWorld : ^NewtonWorld) -> _c.int ---;
@@ -725,7 +725,7 @@ foreign newton {
     NewtonConvexCollisionCalculateInertialMatrix :: proc(convexCollision : ^NewtonCollision, inertia : ^_c.float, origin : ^_c.float) ---;
 
     @(link_name="NewtonConvexCollisionCalculateBuoyancyVolume")
-    NewtonConvexCollisionCalculateBuoyancyVolume :: proc(convexCollision : ^NewtonCollision, matrix : ^_c.float, fluidPlane : ^_c.float, centerOfBuoyancy : ^_c.float) -> _c.float ---;
+    NewtonConvexCollisionCalculateBuoyancyVolume :: proc(convexCollision : ^NewtonCollision, matrix4x4 : ^_c.float, fluidPlane : ^_c.float, centerOfBuoyancy : ^_c.float) -> _c.float ---;
 
     @(link_name="NewtonCollisionDataPointer")
     NewtonCollisionDataPointer :: proc(convexCollision : ^NewtonCollision) -> rawptr ---;
@@ -749,7 +749,7 @@ foreign newton {
     NewtonCompoundCollisionRemoveSubCollisionByIndex :: proc(compoundCollision : ^NewtonCollision, nodeIndex : _c.int) ---;
 
     @(link_name="NewtonCompoundCollisionSetSubCollisionMatrix")
-    NewtonCompoundCollisionSetSubCollisionMatrix :: proc(compoundCollision : ^NewtonCollision, collisionNode : rawptr, matrix : ^_c.float) ---;
+    NewtonCompoundCollisionSetSubCollisionMatrix :: proc(compoundCollision : ^NewtonCollision, collisionNode : rawptr, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonCompoundCollisionEndAddRemove")
     NewtonCompoundCollisionEndAddRemove :: proc(compoundCollision : ^NewtonCollision) ---;
@@ -836,7 +836,7 @@ foreign newton {
     NewtonSceneCollisionRemoveSubCollisionByIndex :: proc(sceneCollision : ^NewtonCollision, nodeIndex : _c.int) ---;
 
     @(link_name="NewtonSceneCollisionSetSubCollisionMatrix")
-    NewtonSceneCollisionSetSubCollisionMatrix :: proc(sceneCollision : ^NewtonCollision, collisionNode : rawptr, matrix : ^_c.float) ---;
+    NewtonSceneCollisionSetSubCollisionMatrix :: proc(sceneCollision : ^NewtonCollision, collisionNode : rawptr, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonSceneCollisionEndAddRemove")
     NewtonSceneCollisionEndAddRemove :: proc(sceneCollision : ^NewtonCollision) ---;
@@ -947,10 +947,10 @@ foreign newton {
     NewtonCollisionGetParentInstance :: proc(collision : ^NewtonCollision) -> ^NewtonCollision ---;
 
     @(link_name="NewtonCollisionSetMatrix")
-    NewtonCollisionSetMatrix :: proc(collision : ^NewtonCollision, matrix : ^_c.float) ---;
+    NewtonCollisionSetMatrix :: proc(collision : ^NewtonCollision, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonCollisionGetMatrix")
-    NewtonCollisionGetMatrix :: proc(collision : ^NewtonCollision, matrix : ^_c.float) ---;
+    NewtonCollisionGetMatrix :: proc(collision : ^NewtonCollision, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonCollisionSetScale")
     NewtonCollisionSetScale :: proc(collision : ^NewtonCollision, scaleX : _c.float, scaleY : _c.float, scaleZ : _c.float) ---;
@@ -971,7 +971,7 @@ foreign newton {
     NewtonCollisionIntersectionTest :: proc(newtonWorld : ^NewtonWorld, collisionA : ^NewtonCollision, matrixA : ^_c.float, collisionB : ^NewtonCollision, matrixB : ^_c.float, threadIndex : _c.int) -> _c.int ---;
 
     @(link_name="NewtonCollisionPointDistance")
-    NewtonCollisionPointDistance :: proc(newtonWorld : ^NewtonWorld, point : ^_c.float, collision : ^NewtonCollision, matrix : ^_c.float, contact : ^_c.float, normal : ^_c.float, threadIndex : _c.int) -> _c.int ---;
+    NewtonCollisionPointDistance :: proc(newtonWorld : ^NewtonWorld, point : ^_c.float, collision : ^NewtonCollision, matrix4x4 : ^_c.float, contact : ^_c.float, normal : ^_c.float, threadIndex : _c.int) -> _c.int ---;
 
     @(link_name="NewtonCollisionClosestPoint")
     NewtonCollisionClosestPoint :: proc(newtonWorld : ^NewtonWorld, collisionA : ^NewtonCollision, matrixA : ^_c.float, collisionB : ^NewtonCollision, matrixB : ^_c.float, contactA : ^_c.float, contactB : ^_c.float, normalAB : ^_c.float, threadIndex : _c.int) -> _c.int ---;
@@ -989,10 +989,10 @@ foreign newton {
     NewtonCollisionRayCast :: proc(collision : ^NewtonCollision, p0 : ^_c.float, p1 : ^_c.float, normal : ^_c.float, attribute : ^_c.longlong) -> _c.float ---;
 
     @(link_name="NewtonCollisionCalculateAABB")
-    NewtonCollisionCalculateAABB :: proc(collision : ^NewtonCollision, matrix : ^_c.float, p0 : ^_c.float, p1 : ^_c.float) ---;
+    NewtonCollisionCalculateAABB :: proc(collision : ^NewtonCollision, matrix4x4 : ^_c.float, p0 : ^_c.float, p1 : ^_c.float) ---;
 
     @(link_name="NewtonCollisionForEachPolygonDo")
-    NewtonCollisionForEachPolygonDo :: proc(collision : ^NewtonCollision, matrix : ^_c.float, callback : NewtonCollisionIterator, userData : rawptr) ---;
+    NewtonCollisionForEachPolygonDo :: proc(collision : ^NewtonCollision, matrix4x4 : ^_c.float, callback : NewtonCollisionIterator, userData : rawptr) ---;
 
     @(link_name="NewtonCollisionAggregateCreate")
     NewtonCollisionAggregateCreate :: proc(world : ^NewtonWorld) -> rawptr ---;
@@ -1013,22 +1013,22 @@ foreign newton {
     NewtonCollisionAggregateSetSelfCollision :: proc(aggregate : rawptr, state : _c.int) ---;
 
     @(link_name="NewtonSetEulerAngle")
-    NewtonSetEulerAngle :: proc(eulersAngles : ^_c.float, matrix : ^_c.float) ---;
+    NewtonSetEulerAngle :: proc(eulersAngles : ^_c.float, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonGetEulerAngle")
-    NewtonGetEulerAngle :: proc(matrix : ^_c.float, eulersAngles0 : ^_c.float, eulersAngles1 : ^_c.float) ---;
+    NewtonGetEulerAngle :: proc(matrix4x4 : ^_c.float, eulersAngles0 : ^_c.float, eulersAngles1 : ^_c.float) ---;
 
     @(link_name="NewtonCalculateSpringDamperAcceleration")
     NewtonCalculateSpringDamperAcceleration :: proc(dt : _c.float, ks : _c.float, x : _c.float, kd : _c.float, s : _c.float) -> _c.float ---;
 
     @(link_name="NewtonCreateDynamicBody")
-    NewtonCreateDynamicBody :: proc(newtonWorld : ^NewtonWorld, collision : ^NewtonCollision, matrix : ^_c.float) -> ^NewtonBody ---;
+    NewtonCreateDynamicBody :: proc(newtonWorld : ^NewtonWorld, collision : ^NewtonCollision, matrix4x4 : ^_c.float) -> ^NewtonBody ---;
 
     @(link_name="NewtonCreateKinematicBody")
-    NewtonCreateKinematicBody :: proc(newtonWorld : ^NewtonWorld, collision : ^NewtonCollision, matrix : ^_c.float) -> ^NewtonBody ---;
+    NewtonCreateKinematicBody :: proc(newtonWorld : ^NewtonWorld, collision : ^NewtonCollision, matrix4x4 : ^_c.float) -> ^NewtonBody ---;
 
     @(link_name="NewtonCreateAsymetricDynamicBody")
-    NewtonCreateAsymetricDynamicBody :: proc(newtonWorld : ^NewtonWorld, collision : ^NewtonCollision, matrix : ^_c.float) -> ^NewtonBody ---;
+    NewtonCreateAsymetricDynamicBody :: proc(newtonWorld : ^NewtonWorld, collision : ^NewtonCollision, matrix4x4 : ^_c.float) -> ^NewtonBody ---;
 
     @(link_name="NewtonDestroyBody")
     NewtonDestroyBody :: proc(body : ^NewtonBody) ---;
@@ -1067,13 +1067,13 @@ foreign newton {
     NewtonBodySetMassProperties :: proc(body : ^NewtonBody, mass : _c.float, collision : ^NewtonCollision) ---;
 
     @(link_name="NewtonBodySetMatrix")
-    NewtonBodySetMatrix :: proc(body : ^NewtonBody, matrix : ^_c.float) ---;
+    NewtonBodySetMatrix :: proc(body : ^NewtonBody, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonBodySetMatrixNoSleep")
-    NewtonBodySetMatrixNoSleep :: proc(body : ^NewtonBody, matrix : ^_c.float) ---;
+    NewtonBodySetMatrixNoSleep :: proc(body : ^NewtonBody, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonBodySetMatrixRecursive")
-    NewtonBodySetMatrixRecursive :: proc(body : ^NewtonBody, matrix : ^_c.float) ---;
+    NewtonBodySetMatrixRecursive :: proc(body : ^NewtonBody, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonBodySetMaterialGroupID")
     NewtonBodySetMaterialGroupID :: proc(body : ^NewtonBody, id : _c.int) ---;
@@ -1187,7 +1187,7 @@ foreign newton {
     NewtonBodyGetPosition :: proc(body : ^NewtonBody, pos : ^_c.float) ---;
 
     @(link_name="NewtonBodyGetMatrix")
-    NewtonBodyGetMatrix :: proc(body : ^NewtonBody, matrix : ^_c.float) ---;
+    NewtonBodyGetMatrix :: proc(body : ^NewtonBody, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonBodyGetRotation")
     NewtonBodyGetRotation :: proc(body : ^NewtonBody, rotation : ^_c.float) ---;
@@ -1568,10 +1568,10 @@ foreign newton {
     NewtonMeshFlipWinding :: proc(mesh : ^NewtonMesh) ---;
 
     @(link_name="NewtonMeshApplyTransform")
-    NewtonMeshApplyTransform :: proc(mesh : ^NewtonMesh, matrix : ^_c.float) ---;
+    NewtonMeshApplyTransform :: proc(mesh : ^NewtonMesh, matrix4x4 : ^_c.float) ---;
 
     @(link_name="NewtonMeshCalculateOOBB")
-    NewtonMeshCalculateOOBB :: proc(mesh : ^NewtonMesh, matrix : ^_c.float, x : ^_c.float, y : ^_c.float, z : ^_c.float) ---;
+    NewtonMeshCalculateOOBB :: proc(mesh : ^NewtonMesh, matrix4x4 : ^_c.float, x : ^_c.float, y : ^_c.float, z : ^_c.float) ---;
 
     @(link_name="NewtonMeshCalculateVertexNormals")
     NewtonMeshCalculateVertexNormals :: proc(mesh : ^NewtonMesh, angleInRadians : _c.float) ---;
