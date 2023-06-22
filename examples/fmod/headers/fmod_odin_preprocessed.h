@@ -31,6 +31,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 typedef int                       FMOD_BOOL;
 typedef struct FMOD_SYSTEM        FMOD_SYSTEM;
 typedef struct FMOD_SOUND         FMOD_SOUND;
@@ -60,7 +81,7 @@ typedef enum
     FMOD_ERR_CDDA_INIT,             
     FMOD_ERR_CDDA_INVALID_DEVICE,   
     FMOD_ERR_CDDA_NOAUDIO,          
-    FMOD_ERR_CDDA_NODEVICES,         
+    FMOD_ERR_CDDA_NODEVICES,        
     FMOD_ERR_CDDA_NODISC,           
     FMOD_ERR_CDDA_READ,             
     FMOD_ERR_CHANNEL_ALLOC,         
@@ -193,13 +214,13 @@ typedef struct
 typedef enum
 {
     FMOD_OUTPUTTYPE_AUTODETECT,      
-                                     
+
     FMOD_OUTPUTTYPE_UNKNOWN,         
     FMOD_OUTPUTTYPE_NOSOUND,         
     FMOD_OUTPUTTYPE_WAVWRITER,       
     FMOD_OUTPUTTYPE_NOSOUND_NRT,     
     FMOD_OUTPUTTYPE_WAVWRITER_NRT,   
-                                     
+
     FMOD_OUTPUTTYPE_DSOUND,          
     FMOD_OUTPUTTYPE_WINMM,           
     FMOD_OUTPUTTYPE_WASAPI,          
@@ -216,7 +237,7 @@ typedef enum
 	FMOD_OUTPUTTYPE_WII,			 
     FMOD_OUTPUTTYPE_3DS,             
     FMOD_OUTPUTTYPE_AUDIOTRACK,      
-    FMOD_OUTPUTTYPE_OPENSL,             
+    FMOD_OUTPUTTYPE_OPENSL,          
     FMOD_OUTPUTTYPE_NACL,            
     FMOD_OUTPUTTYPE_WIIU,            
 	FMOD_OUTPUTTYPE_ASOUND,		 	 
@@ -287,7 +308,7 @@ typedef enum
     FMOD_SPEAKERMODE_SURROUND,         
     FMOD_SPEAKERMODE_5POINT1,          
     FMOD_SPEAKERMODE_7POINT1,          
-    
+
     FMOD_SPEAKERMODE_SRS5_1_MATRIX,    
     FMOD_SPEAKERMODE_DOLBY5_1_MATRIX,  
     FMOD_SPEAKERMODE_MYEARS,           
@@ -308,7 +329,7 @@ typedef enum
     FMOD_SPEAKER_BACK_RIGHT,
     FMOD_SPEAKER_SIDE_LEFT,
     FMOD_SPEAKER_SIDE_RIGHT,
-    
+
     FMOD_SPEAKER_MAX,                                       
     FMOD_SPEAKER_MONO        = FMOD_SPEAKER_FRONT_LEFT,     
     FMOD_SPEAKER_NULL        = 65535,                       
@@ -413,7 +434,7 @@ typedef enum
     FMOD_SOUND_FORMAT_XWMA,             
     FMOD_SOUND_FORMAT_VORBIS,           
 
-    FMOD_SOUND_FORMAT_MAX,                 
+    FMOD_SOUND_FORMAT_MAX,              
     FMOD_SOUND_FORMAT_FORCEINT = 65536  
 } FMOD_SOUND_FORMAT;
 
@@ -473,7 +494,7 @@ typedef enum
 
 
 
-typedef enum 
+typedef enum
 {
     FMOD_SOUNDGROUP_BEHAVIOR_FAIL,              
     FMOD_SOUNDGROUP_BEHAVIOR_MUTE,              
@@ -514,26 +535,26 @@ typedef enum
 
 
 
-typedef FMOD_RESULT ( *FMOD_SYSTEM_CALLBACK)       (FMOD_SYSTEM *system, FMOD_SYSTEM_CALLBACKTYPE type, void *commanddata1, void *commanddata2);
+typedef FMOD_RESULT (*FMOD_SYSTEM_CALLBACK)       (FMOD_SYSTEM *system, FMOD_SYSTEM_CALLBACKTYPE type, void *commanddata1, void *commanddata2);
 
-typedef FMOD_RESULT ( *FMOD_CHANNEL_CALLBACK)      (FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, void *commanddata1, void *commanddata2);
+typedef FMOD_RESULT (*FMOD_CHANNEL_CALLBACK)      (FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, void *commanddata1, void *commanddata2);
 
-typedef FMOD_RESULT ( *FMOD_SOUND_NONBLOCKCALLBACK)(FMOD_SOUND *sound, FMOD_RESULT result);
-typedef FMOD_RESULT ( *FMOD_SOUND_PCMREADCALLBACK)(FMOD_SOUND *sound, void *data, unsigned int datalen);
-typedef FMOD_RESULT ( *FMOD_SOUND_PCMSETPOSCALLBACK)(FMOD_SOUND *sound, int subsound, unsigned int position, FMOD_TIMEUNIT postype);
+typedef FMOD_RESULT (*FMOD_SOUND_NONBLOCKCALLBACK)(FMOD_SOUND *sound, FMOD_RESULT result);
+typedef FMOD_RESULT (*FMOD_SOUND_PCMREADCALLBACK)(FMOD_SOUND *sound, void *data, unsigned int datalen);
+typedef FMOD_RESULT (*FMOD_SOUND_PCMSETPOSCALLBACK)(FMOD_SOUND *sound, int subsound, unsigned int position, FMOD_TIMEUNIT postype);
 
-typedef FMOD_RESULT ( *FMOD_FILE_OPENCALLBACK)     (const char *name, int unicode, unsigned int *filesize, void **handle, void **userdata);
-typedef FMOD_RESULT ( *FMOD_FILE_CLOSECALLBACK)    (void *handle, void *userdata);
-typedef FMOD_RESULT ( *FMOD_FILE_READCALLBACK)     (void *handle, void *buffer, unsigned int sizebytes, unsigned int *bytesread, void *userdata);
-typedef FMOD_RESULT ( *FMOD_FILE_SEEKCALLBACK)     (void *handle, unsigned int pos, void *userdata);
-typedef FMOD_RESULT ( *FMOD_FILE_ASYNCREADCALLBACK)(FMOD_ASYNCREADINFO *info, void *userdata);
-typedef FMOD_RESULT ( *FMOD_FILE_ASYNCCANCELCALLBACK)(void *handle, void *userdata);
+typedef FMOD_RESULT (*FMOD_FILE_OPENCALLBACK)     (const char *name, int unicode, unsigned int *filesize, void **handle, void **userdata);
+typedef FMOD_RESULT (*FMOD_FILE_CLOSECALLBACK)    (void *handle, void *userdata);
+typedef FMOD_RESULT (*FMOD_FILE_READCALLBACK)     (void *handle, void *buffer, unsigned int sizebytes, unsigned int *bytesread, void *userdata);
+typedef FMOD_RESULT (*FMOD_FILE_SEEKCALLBACK)     (void *handle, unsigned int pos, void *userdata);
+typedef FMOD_RESULT (*FMOD_FILE_ASYNCREADCALLBACK)(FMOD_ASYNCREADINFO *info, void *userdata);
+typedef FMOD_RESULT (*FMOD_FILE_ASYNCCANCELCALLBACK)(void *handle, void *userdata);
 
-typedef void *      ( *FMOD_MEMORY_ALLOCCALLBACK)  (unsigned int size, FMOD_MEMORY_TYPE type, const char *sourcestr);
-typedef void *      ( *FMOD_MEMORY_REALLOCCALLBACK)(void *ptr, unsigned int size, FMOD_MEMORY_TYPE type, const char *sourcestr);
-typedef void        ( *FMOD_MEMORY_FREECALLBACK)   (void *ptr, FMOD_MEMORY_TYPE type, const char *sourcestr);
+typedef void *      (*FMOD_MEMORY_ALLOCCALLBACK)  (unsigned int size, FMOD_MEMORY_TYPE type, const char *sourcestr);
+typedef void *      (*FMOD_MEMORY_REALLOCCALLBACK)(void *ptr, unsigned int size, FMOD_MEMORY_TYPE type, const char *sourcestr);
+typedef void        (*FMOD_MEMORY_FREECALLBACK)   (void *ptr, FMOD_MEMORY_TYPE type, const char *sourcestr);
 
-typedef float       ( *FMOD_3D_ROLLOFFCALLBACK)    (FMOD_CHANNEL *channel, float distance);
+typedef float       (*FMOD_3D_ROLLOFFCALLBACK)    (FMOD_CHANNEL *channel, float distance);
 
 
 
@@ -545,7 +566,7 @@ typedef enum
     FMOD_DSP_FFT_WINDOW_HANNING,         
     FMOD_DSP_FFT_WINDOW_BLACKMAN,        
     FMOD_DSP_FFT_WINDOW_BLACKMANHARRIS,  
-    
+
     FMOD_DSP_FFT_WINDOW_MAX,             
     FMOD_DSP_FFT_WINDOW_FORCEINT = 65536 
 } FMOD_DSP_FFT_WINDOW;
@@ -702,7 +723,7 @@ typedef struct FMOD_CREATESOUNDEXINFO
     FMOD_TIMEUNIT                  initialseekpostype; 
     int                            ignoresetfilesystem;
     int                            cddaforceaspi;      
-    unsigned int                   audioqueuepolicy;    
+    unsigned int                   audioqueuepolicy;   
     unsigned int                   minmidigranularity; 
     int                            nonblockthreadid;   
 } FMOD_CREATESOUNDEXINFO;
@@ -804,14 +825,14 @@ typedef struct FMOD_REVERB_CHANNELPROPERTIES
 
 
 typedef struct FMOD_ADVANCEDSETTINGS
-{                       
+{
     int             cbsize;                     
     int             maxMPEGcodecs;              
     int             maxADPCMcodecs;             
     int             maxXMAcodecs;               
-    int             maxCELTcodecs;                  
-    int             maxVORBIScodecs;                
-    int             maxAT9Codecs;                   
+    int             maxCELTcodecs;              
+    int             maxVORBIScodecs;            
+    int             maxAT9Codecs;               
     int             maxPCMcodecs;               
     int             ASIONumChannels;            
     char          **ASIOChannelList;            
@@ -857,16 +878,16 @@ typedef enum
 typedef struct FMOD_CODEC_STATE FMOD_CODEC_STATE;
 typedef struct FMOD_CODEC_WAVEFORMAT FMOD_CODEC_WAVEFORMAT;
 
- 
-typedef FMOD_RESULT ( *FMOD_CODEC_OPENCALLBACK)        (FMOD_CODEC_STATE *codec_state, FMOD_MODE usermode, FMOD_CREATESOUNDEXINFO *userexinfo);
-typedef FMOD_RESULT ( *FMOD_CODEC_CLOSECALLBACK)       (FMOD_CODEC_STATE *codec_state);
-typedef FMOD_RESULT ( *FMOD_CODEC_READCALLBACK)        (FMOD_CODEC_STATE *codec_state, void *buffer, unsigned int sizebytes, unsigned int *bytesread);
-typedef FMOD_RESULT ( *FMOD_CODEC_GETLENGTHCALLBACK)   (FMOD_CODEC_STATE *codec_state, unsigned int *length, FMOD_TIMEUNIT lengthtype);
-typedef FMOD_RESULT ( *FMOD_CODEC_SETPOSITIONCALLBACK) (FMOD_CODEC_STATE *codec_state, int subsound, unsigned int position, FMOD_TIMEUNIT postype);
-typedef FMOD_RESULT ( *FMOD_CODEC_GETPOSITIONCALLBACK) (FMOD_CODEC_STATE *codec_state, unsigned int *position, FMOD_TIMEUNIT postype);
-typedef FMOD_RESULT ( *FMOD_CODEC_SOUNDCREATECALLBACK) (FMOD_CODEC_STATE *codec_state, int subsound, FMOD_SOUND *sound);
-typedef FMOD_RESULT ( *FMOD_CODEC_METADATACALLBACK)    (FMOD_CODEC_STATE *codec_state, FMOD_TAGTYPE tagtype, char *name, void *data, unsigned int datalen, FMOD_TAGDATATYPE datatype, int unique);
-typedef FMOD_RESULT ( *FMOD_CODEC_GETWAVEFORMAT)       (FMOD_CODEC_STATE *codec_state, int index, FMOD_CODEC_WAVEFORMAT *waveformat);
+
+typedef FMOD_RESULT (*FMOD_CODEC_OPENCALLBACK)        (FMOD_CODEC_STATE *codec_state, FMOD_MODE usermode, FMOD_CREATESOUNDEXINFO *userexinfo);
+typedef FMOD_RESULT (*FMOD_CODEC_CLOSECALLBACK)       (FMOD_CODEC_STATE *codec_state);
+typedef FMOD_RESULT (*FMOD_CODEC_READCALLBACK)        (FMOD_CODEC_STATE *codec_state, void *buffer, unsigned int sizebytes, unsigned int *bytesread);
+typedef FMOD_RESULT (*FMOD_CODEC_GETLENGTHCALLBACK)   (FMOD_CODEC_STATE *codec_state, unsigned int *length, FMOD_TIMEUNIT lengthtype);
+typedef FMOD_RESULT (*FMOD_CODEC_SETPOSITIONCALLBACK) (FMOD_CODEC_STATE *codec_state, int subsound, unsigned int position, FMOD_TIMEUNIT postype);
+typedef FMOD_RESULT (*FMOD_CODEC_GETPOSITIONCALLBACK) (FMOD_CODEC_STATE *codec_state, unsigned int *position, FMOD_TIMEUNIT postype);
+typedef FMOD_RESULT (*FMOD_CODEC_SOUNDCREATECALLBACK) (FMOD_CODEC_STATE *codec_state, int subsound, FMOD_SOUND *sound);
+typedef FMOD_RESULT (*FMOD_CODEC_METADATACALLBACK)    (FMOD_CODEC_STATE *codec_state, FMOD_TAGTYPE tagtype, char *name, void *data, unsigned int datalen, FMOD_TAGDATATYPE datatype, int unique);
+typedef FMOD_RESULT (*FMOD_CODEC_GETWAVEFORMAT)       (FMOD_CODEC_STATE *codec_state, int index, FMOD_CODEC_WAVEFORMAT *waveformat);
 
 
 
@@ -910,7 +931,7 @@ struct FMOD_CODEC_STATE
     int                         numsubsounds;  
     FMOD_CODEC_WAVEFORMAT      *waveformat;    
     void                       *plugindata;    
-                                               
+
     void                       *filehandle;    
     unsigned int                filesize;      
     FMOD_FILE_READCALLBACK      fileread;      
@@ -940,14 +961,14 @@ struct FMOD_CODEC_STATE
 typedef struct FMOD_DSP_STATE FMOD_DSP_STATE;
 
 
-typedef FMOD_RESULT ( *FMOD_DSP_CREATECALLBACK)     (FMOD_DSP_STATE *dsp_state);
-typedef FMOD_RESULT ( *FMOD_DSP_RELEASECALLBACK)    (FMOD_DSP_STATE *dsp_state);
-typedef FMOD_RESULT ( *FMOD_DSP_RESETCALLBACK)      (FMOD_DSP_STATE *dsp_state);
-typedef FMOD_RESULT ( *FMOD_DSP_READCALLBACK)       (FMOD_DSP_STATE *dsp_state, float *inbuffer, float *outbuffer, unsigned int length, int inchannels, int outchannels);
-typedef FMOD_RESULT ( *FMOD_DSP_SETPOSITIONCALLBACK)(FMOD_DSP_STATE *dsp_state, unsigned int pos);
-typedef FMOD_RESULT ( *FMOD_DSP_SETPARAMCALLBACK)   (FMOD_DSP_STATE *dsp_state, int index, float value);
-typedef FMOD_RESULT ( *FMOD_DSP_GETPARAMCALLBACK)   (FMOD_DSP_STATE *dsp_state, int index, float *value, char *valuestr);
-typedef FMOD_RESULT ( *FMOD_DSP_DIALOGCALLBACK)     (FMOD_DSP_STATE *dsp_state, void *hwnd, int show);
+typedef FMOD_RESULT (*FMOD_DSP_CREATECALLBACK)     (FMOD_DSP_STATE *dsp_state);
+typedef FMOD_RESULT (*FMOD_DSP_RELEASECALLBACK)    (FMOD_DSP_STATE *dsp_state);
+typedef FMOD_RESULT (*FMOD_DSP_RESETCALLBACK)      (FMOD_DSP_STATE *dsp_state);
+typedef FMOD_RESULT (*FMOD_DSP_READCALLBACK)       (FMOD_DSP_STATE *dsp_state, float *inbuffer, float *outbuffer, unsigned int length, int inchannels, int outchannels);
+typedef FMOD_RESULT (*FMOD_DSP_SETPOSITIONCALLBACK)(FMOD_DSP_STATE *dsp_state, unsigned int pos);
+typedef FMOD_RESULT (*FMOD_DSP_SETPARAMCALLBACK)   (FMOD_DSP_STATE *dsp_state, int index, float value);
+typedef FMOD_RESULT (*FMOD_DSP_GETPARAMCALLBACK)   (FMOD_DSP_STATE *dsp_state, int index, float *value, char *valuestr);
+typedef FMOD_RESULT (*FMOD_DSP_DIALOGCALLBACK)     (FMOD_DSP_STATE *dsp_state, void *hwnd, int show);
 
 
 typedef enum
@@ -1179,7 +1200,7 @@ typedef enum
 
 typedef enum
 {
-    FMOD_DSP_COMPRESSOR_THRESHOLD,   
+    FMOD_DSP_COMPRESSOR_THRESHOLD,  
     FMOD_DSP_COMPRESSOR_ATTACK,     
     FMOD_DSP_COMPRESSOR_RELEASE,    
     FMOD_DSP_COMPRESSOR_GAINMAKEUP  
@@ -1359,520 +1380,520 @@ typedef struct FMOD_MEMORY_USAGE_DETAILS
 
 
 
-FMOD_RESULT  FMOD_Memory_Initialize           (void *poolmem, int poollen, FMOD_MEMORY_ALLOCCALLBACK useralloc, FMOD_MEMORY_REALLOCCALLBACK userrealloc, FMOD_MEMORY_FREECALLBACK userfree, FMOD_MEMORY_TYPE memtypeflags);
-FMOD_RESULT  FMOD_Memory_GetStats             (int *currentalloced, int *maxalloced, FMOD_BOOL blocking);
-FMOD_RESULT  FMOD_Debug_SetLevel              (FMOD_DEBUGLEVEL level);
-FMOD_RESULT  FMOD_Debug_GetLevel              (FMOD_DEBUGLEVEL *level);
-FMOD_RESULT  FMOD_File_SetDiskBusy            (int busy);
-FMOD_RESULT  FMOD_File_GetDiskBusy            (int *busy);
+FMOD_RESULT FMOD_Memory_Initialize           (void *poolmem, int poollen, FMOD_MEMORY_ALLOCCALLBACK useralloc, FMOD_MEMORY_REALLOCCALLBACK userrealloc, FMOD_MEMORY_FREECALLBACK userfree, FMOD_MEMORY_TYPE memtypeflags);
+FMOD_RESULT FMOD_Memory_GetStats             (int *currentalloced, int *maxalloced, FMOD_BOOL blocking);
+FMOD_RESULT FMOD_Debug_SetLevel              (FMOD_DEBUGLEVEL level);
+FMOD_RESULT FMOD_Debug_GetLevel              (FMOD_DEBUGLEVEL *level);
+FMOD_RESULT FMOD_File_SetDiskBusy            (int busy);
+FMOD_RESULT FMOD_File_GetDiskBusy            (int *busy);
 
 
 
-FMOD_RESULT  FMOD_System_Create               (FMOD_SYSTEM **system); 
-FMOD_RESULT  FMOD_System_Release              (FMOD_SYSTEM *system); 
+FMOD_RESULT FMOD_System_Create               (FMOD_SYSTEM **system);
+FMOD_RESULT FMOD_System_Release              (FMOD_SYSTEM *system);
 
 
 
 
 
 
-FMOD_RESULT  FMOD_System_SetOutput              (FMOD_SYSTEM *system, FMOD_OUTPUTTYPE output);
-FMOD_RESULT  FMOD_System_GetOutput              (FMOD_SYSTEM *system, FMOD_OUTPUTTYPE *output);
-FMOD_RESULT  FMOD_System_GetNumDrivers          (FMOD_SYSTEM *system, int *numdrivers);
-FMOD_RESULT  FMOD_System_GetDriverInfo          (FMOD_SYSTEM *system, int id, char *name, int namelen, FMOD_GUID *guid);
-FMOD_RESULT  FMOD_System_GetDriverInfoW         (FMOD_SYSTEM *system, int id, short *name, int namelen, FMOD_GUID *guid);
-FMOD_RESULT  FMOD_System_GetDriverCaps          (FMOD_SYSTEM *system, int id, FMOD_CAPS *caps, int *controlpaneloutputrate, FMOD_SPEAKERMODE *controlpanelspeakermode);
-FMOD_RESULT  FMOD_System_SetDriver              (FMOD_SYSTEM *system, int driver);
-FMOD_RESULT  FMOD_System_GetDriver              (FMOD_SYSTEM *system, int *driver);
-FMOD_RESULT  FMOD_System_SetHardwareChannels    (FMOD_SYSTEM *system, int numhardwarechannels);
-FMOD_RESULT  FMOD_System_SetSoftwareChannels    (FMOD_SYSTEM *system, int numsoftwarechannels);
-FMOD_RESULT  FMOD_System_GetSoftwareChannels    (FMOD_SYSTEM *system, int *numsoftwarechannels);
-FMOD_RESULT  FMOD_System_SetSoftwareFormat      (FMOD_SYSTEM *system, int samplerate, FMOD_SOUND_FORMAT format, int numoutputchannels, int maxinputchannels, FMOD_DSP_RESAMPLER resamplemethod);
-FMOD_RESULT  FMOD_System_GetSoftwareFormat      (FMOD_SYSTEM *system, int *samplerate, FMOD_SOUND_FORMAT *format, int *numoutputchannels, int *maxinputchannels, FMOD_DSP_RESAMPLER *resamplemethod, int *bits);
-FMOD_RESULT  FMOD_System_SetDSPBufferSize       (FMOD_SYSTEM *system, unsigned int bufferlength, int numbuffers);
-FMOD_RESULT  FMOD_System_GetDSPBufferSize       (FMOD_SYSTEM *system, unsigned int *bufferlength, int *numbuffers);
-FMOD_RESULT  FMOD_System_SetFileSystem          (FMOD_SYSTEM *system, FMOD_FILE_OPENCALLBACK useropen, FMOD_FILE_CLOSECALLBACK userclose, FMOD_FILE_READCALLBACK userread, FMOD_FILE_SEEKCALLBACK userseek, FMOD_FILE_ASYNCREADCALLBACK userasyncread, FMOD_FILE_ASYNCCANCELCALLBACK userasynccancel, int blockalign);
-FMOD_RESULT  FMOD_System_AttachFileSystem       (FMOD_SYSTEM *system, FMOD_FILE_OPENCALLBACK useropen, FMOD_FILE_CLOSECALLBACK userclose, FMOD_FILE_READCALLBACK userread, FMOD_FILE_SEEKCALLBACK userseek);
-FMOD_RESULT  FMOD_System_SetAdvancedSettings    (FMOD_SYSTEM *system, FMOD_ADVANCEDSETTINGS *settings);
-FMOD_RESULT  FMOD_System_GetAdvancedSettings    (FMOD_SYSTEM *system, FMOD_ADVANCEDSETTINGS *settings);
-FMOD_RESULT  FMOD_System_SetSpeakerMode         (FMOD_SYSTEM *system, FMOD_SPEAKERMODE speakermode);
-FMOD_RESULT  FMOD_System_GetSpeakerMode         (FMOD_SYSTEM *system, FMOD_SPEAKERMODE *speakermode);
-FMOD_RESULT  FMOD_System_SetCallback            (FMOD_SYSTEM *system, FMOD_SYSTEM_CALLBACK callback);
+FMOD_RESULT FMOD_System_SetOutput              (FMOD_SYSTEM *system, FMOD_OUTPUTTYPE output);
+FMOD_RESULT FMOD_System_GetOutput              (FMOD_SYSTEM *system, FMOD_OUTPUTTYPE *output);
+FMOD_RESULT FMOD_System_GetNumDrivers          (FMOD_SYSTEM *system, int *numdrivers);
+FMOD_RESULT FMOD_System_GetDriverInfo          (FMOD_SYSTEM *system, int id, char *name, int namelen, FMOD_GUID *guid);
+FMOD_RESULT FMOD_System_GetDriverInfoW         (FMOD_SYSTEM *system, int id, short *name, int namelen, FMOD_GUID *guid);
+FMOD_RESULT FMOD_System_GetDriverCaps          (FMOD_SYSTEM *system, int id, FMOD_CAPS *caps, int *controlpaneloutputrate, FMOD_SPEAKERMODE *controlpanelspeakermode);
+FMOD_RESULT FMOD_System_SetDriver              (FMOD_SYSTEM *system, int driver);
+FMOD_RESULT FMOD_System_GetDriver              (FMOD_SYSTEM *system, int *driver);
+FMOD_RESULT FMOD_System_SetHardwareChannels    (FMOD_SYSTEM *system, int numhardwarechannels);
+FMOD_RESULT FMOD_System_SetSoftwareChannels    (FMOD_SYSTEM *system, int numsoftwarechannels);
+FMOD_RESULT FMOD_System_GetSoftwareChannels    (FMOD_SYSTEM *system, int *numsoftwarechannels);
+FMOD_RESULT FMOD_System_SetSoftwareFormat      (FMOD_SYSTEM *system, int samplerate, FMOD_SOUND_FORMAT format, int numoutputchannels, int maxinputchannels, FMOD_DSP_RESAMPLER resamplemethod);
+FMOD_RESULT FMOD_System_GetSoftwareFormat      (FMOD_SYSTEM *system, int *samplerate, FMOD_SOUND_FORMAT *format, int *numoutputchannels, int *maxinputchannels, FMOD_DSP_RESAMPLER *resamplemethod, int *bits);
+FMOD_RESULT FMOD_System_SetDSPBufferSize       (FMOD_SYSTEM *system, unsigned int bufferlength, int numbuffers);
+FMOD_RESULT FMOD_System_GetDSPBufferSize       (FMOD_SYSTEM *system, unsigned int *bufferlength, int *numbuffers);
+FMOD_RESULT FMOD_System_SetFileSystem          (FMOD_SYSTEM *system, FMOD_FILE_OPENCALLBACK useropen, FMOD_FILE_CLOSECALLBACK userclose, FMOD_FILE_READCALLBACK userread, FMOD_FILE_SEEKCALLBACK userseek, FMOD_FILE_ASYNCREADCALLBACK userasyncread, FMOD_FILE_ASYNCCANCELCALLBACK userasynccancel, int blockalign);
+FMOD_RESULT FMOD_System_AttachFileSystem       (FMOD_SYSTEM *system, FMOD_FILE_OPENCALLBACK useropen, FMOD_FILE_CLOSECALLBACK userclose, FMOD_FILE_READCALLBACK userread, FMOD_FILE_SEEKCALLBACK userseek);
+FMOD_RESULT FMOD_System_SetAdvancedSettings    (FMOD_SYSTEM *system, FMOD_ADVANCEDSETTINGS *settings);
+FMOD_RESULT FMOD_System_GetAdvancedSettings    (FMOD_SYSTEM *system, FMOD_ADVANCEDSETTINGS *settings);
+FMOD_RESULT FMOD_System_SetSpeakerMode         (FMOD_SYSTEM *system, FMOD_SPEAKERMODE speakermode);
+FMOD_RESULT FMOD_System_GetSpeakerMode         (FMOD_SYSTEM *system, FMOD_SPEAKERMODE *speakermode);
+FMOD_RESULT FMOD_System_SetCallback            (FMOD_SYSTEM *system, FMOD_SYSTEM_CALLBACK callback);
 
 
 
-FMOD_RESULT  FMOD_System_SetPluginPath          (FMOD_SYSTEM *system, const char *path);
-FMOD_RESULT  FMOD_System_LoadPlugin             (FMOD_SYSTEM *system, const char *filename, unsigned int *handle, unsigned int priority);
-FMOD_RESULT  FMOD_System_UnloadPlugin           (FMOD_SYSTEM *system, unsigned int handle);
-FMOD_RESULT  FMOD_System_GetNumPlugins          (FMOD_SYSTEM *system, FMOD_PLUGINTYPE plugintype, int *numplugins);
-FMOD_RESULT  FMOD_System_GetPluginHandle        (FMOD_SYSTEM *system, FMOD_PLUGINTYPE plugintype, int index, unsigned int *handle);
-FMOD_RESULT  FMOD_System_GetPluginInfo          (FMOD_SYSTEM *system, unsigned int handle, FMOD_PLUGINTYPE *plugintype, char *name, int namelen, unsigned int *version);
-FMOD_RESULT  FMOD_System_SetOutputByPlugin      (FMOD_SYSTEM *system, unsigned int handle);
-FMOD_RESULT  FMOD_System_GetOutputByPlugin      (FMOD_SYSTEM *system, unsigned int *handle);
-FMOD_RESULT  FMOD_System_CreateDSPByPlugin      (FMOD_SYSTEM *system, unsigned int handle, FMOD_DSP **dsp);
-FMOD_RESULT  FMOD_System_RegisterCodec          (FMOD_SYSTEM *system, FMOD_CODEC_DESCRIPTION *description, unsigned int *handle, unsigned int priority);
-FMOD_RESULT  FMOD_System_RegisterDSP            (FMOD_SYSTEM *system, FMOD_DSP_DESCRIPTION *description, unsigned int *handle);
+FMOD_RESULT FMOD_System_SetPluginPath          (FMOD_SYSTEM *system, const char *path);
+FMOD_RESULT FMOD_System_LoadPlugin             (FMOD_SYSTEM *system, const char *filename, unsigned int *handle, unsigned int priority);
+FMOD_RESULT FMOD_System_UnloadPlugin           (FMOD_SYSTEM *system, unsigned int handle);
+FMOD_RESULT FMOD_System_GetNumPlugins          (FMOD_SYSTEM *system, FMOD_PLUGINTYPE plugintype, int *numplugins);
+FMOD_RESULT FMOD_System_GetPluginHandle        (FMOD_SYSTEM *system, FMOD_PLUGINTYPE plugintype, int index, unsigned int *handle);
+FMOD_RESULT FMOD_System_GetPluginInfo          (FMOD_SYSTEM *system, unsigned int handle, FMOD_PLUGINTYPE *plugintype, char *name, int namelen, unsigned int *version);
+FMOD_RESULT FMOD_System_SetOutputByPlugin      (FMOD_SYSTEM *system, unsigned int handle);
+FMOD_RESULT FMOD_System_GetOutputByPlugin      (FMOD_SYSTEM *system, unsigned int *handle);
+FMOD_RESULT FMOD_System_CreateDSPByPlugin      (FMOD_SYSTEM *system, unsigned int handle, FMOD_DSP **dsp);
+FMOD_RESULT FMOD_System_RegisterCodec          (FMOD_SYSTEM *system, FMOD_CODEC_DESCRIPTION *description, unsigned int *handle, unsigned int priority);
+FMOD_RESULT FMOD_System_RegisterDSP            (FMOD_SYSTEM *system, FMOD_DSP_DESCRIPTION *description, unsigned int *handle);
 
 
 
-FMOD_RESULT  FMOD_System_Init                   (FMOD_SYSTEM *system, int maxchannels, FMOD_INITFLAGS flags, void *extradriverdata);
-FMOD_RESULT  FMOD_System_Close                  (FMOD_SYSTEM *system);
+FMOD_RESULT FMOD_System_Init                   (FMOD_SYSTEM *system, int maxchannels, FMOD_INITFLAGS flags, void *extradriverdata);
+FMOD_RESULT FMOD_System_Close                  (FMOD_SYSTEM *system);
 
 
 
-FMOD_RESULT  FMOD_System_Update                 (FMOD_SYSTEM *system);
+FMOD_RESULT FMOD_System_Update                 (FMOD_SYSTEM *system);
 
-FMOD_RESULT  FMOD_System_Set3DSettings          (FMOD_SYSTEM *system, float dopplerscale, float distancefactor, float rolloffscale);
-FMOD_RESULT  FMOD_System_Get3DSettings          (FMOD_SYSTEM *system, float *dopplerscale, float *distancefactor, float *rolloffscale);
-FMOD_RESULT  FMOD_System_Set3DNumListeners      (FMOD_SYSTEM *system, int numlisteners);
-FMOD_RESULT  FMOD_System_Get3DNumListeners      (FMOD_SYSTEM *system, int *numlisteners);
-FMOD_RESULT  FMOD_System_Set3DListenerAttributes(FMOD_SYSTEM *system, int listener, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel, const FMOD_VECTOR *forward, const FMOD_VECTOR *up);
-FMOD_RESULT  FMOD_System_Get3DListenerAttributes(FMOD_SYSTEM *system, int listener, FMOD_VECTOR *pos, FMOD_VECTOR *vel, FMOD_VECTOR *forward, FMOD_VECTOR *up);
-FMOD_RESULT  FMOD_System_Set3DRolloffCallback   (FMOD_SYSTEM *system, FMOD_3D_ROLLOFFCALLBACK callback);
-FMOD_RESULT  FMOD_System_Set3DSpeakerPosition   (FMOD_SYSTEM *system, FMOD_SPEAKER speaker, float x, float y, FMOD_BOOL active);
-FMOD_RESULT  FMOD_System_Get3DSpeakerPosition   (FMOD_SYSTEM *system, FMOD_SPEAKER speaker, float *x, float *y, FMOD_BOOL *active);
+FMOD_RESULT FMOD_System_Set3DSettings          (FMOD_SYSTEM *system, float dopplerscale, float distancefactor, float rolloffscale);
+FMOD_RESULT FMOD_System_Get3DSettings          (FMOD_SYSTEM *system, float *dopplerscale, float *distancefactor, float *rolloffscale);
+FMOD_RESULT FMOD_System_Set3DNumListeners      (FMOD_SYSTEM *system, int numlisteners);
+FMOD_RESULT FMOD_System_Get3DNumListeners      (FMOD_SYSTEM *system, int *numlisteners);
+FMOD_RESULT FMOD_System_Set3DListenerAttributes(FMOD_SYSTEM *system, int listener, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel, const FMOD_VECTOR *forward, const FMOD_VECTOR *up);
+FMOD_RESULT FMOD_System_Get3DListenerAttributes(FMOD_SYSTEM *system, int listener, FMOD_VECTOR *pos, FMOD_VECTOR *vel, FMOD_VECTOR *forward, FMOD_VECTOR *up);
+FMOD_RESULT FMOD_System_Set3DRolloffCallback   (FMOD_SYSTEM *system, FMOD_3D_ROLLOFFCALLBACK callback);
+FMOD_RESULT FMOD_System_Set3DSpeakerPosition   (FMOD_SYSTEM *system, FMOD_SPEAKER speaker, float x, float y, FMOD_BOOL active);
+FMOD_RESULT FMOD_System_Get3DSpeakerPosition   (FMOD_SYSTEM *system, FMOD_SPEAKER speaker, float *x, float *y, FMOD_BOOL *active);
 
-FMOD_RESULT  FMOD_System_SetStreamBufferSize    (FMOD_SYSTEM *system, unsigned int filebuffersize, FMOD_TIMEUNIT filebuffersizetype);
-FMOD_RESULT  FMOD_System_GetStreamBufferSize    (FMOD_SYSTEM *system, unsigned int *filebuffersize, FMOD_TIMEUNIT *filebuffersizetype);
+FMOD_RESULT FMOD_System_SetStreamBufferSize    (FMOD_SYSTEM *system, unsigned int filebuffersize, FMOD_TIMEUNIT filebuffersizetype);
+FMOD_RESULT FMOD_System_GetStreamBufferSize    (FMOD_SYSTEM *system, unsigned int *filebuffersize, FMOD_TIMEUNIT *filebuffersizetype);
 
 
 
-FMOD_RESULT  FMOD_System_GetVersion             (FMOD_SYSTEM *system, unsigned int *version);
-FMOD_RESULT  FMOD_System_GetOutputHandle        (FMOD_SYSTEM *system, void **handle);
-FMOD_RESULT  FMOD_System_GetChannelsPlaying     (FMOD_SYSTEM *system, int *channels);
-FMOD_RESULT  FMOD_System_GetHardwareChannels    (FMOD_SYSTEM *system, int *numhardwarechannels);
-FMOD_RESULT  FMOD_System_GetCPUUsage            (FMOD_SYSTEM *system, float *dsp, float *stream, float *geometry, float *update, float *total);
-FMOD_RESULT  FMOD_System_GetSoundRAM            (FMOD_SYSTEM *system, int *currentalloced, int *maxalloced, int *total);
-FMOD_RESULT  FMOD_System_GetNumCDROMDrives      (FMOD_SYSTEM *system, int *numdrives);
-FMOD_RESULT  FMOD_System_GetCDROMDriveName      (FMOD_SYSTEM *system, int drive, char *drivename, int drivenamelen, char *scsiname, int scsinamelen, char *devicename, int devicenamelen);
-FMOD_RESULT  FMOD_System_GetSpectrum            (FMOD_SYSTEM *system, float *spectrumarray, int numvalues, int channeloffset, FMOD_DSP_FFT_WINDOW windowtype);
-FMOD_RESULT  FMOD_System_GetWaveData            (FMOD_SYSTEM *system, float *wavearray, int numvalues, int channeloffset);
+FMOD_RESULT FMOD_System_GetVersion             (FMOD_SYSTEM *system, unsigned int *version);
+FMOD_RESULT FMOD_System_GetOutputHandle        (FMOD_SYSTEM *system, void **handle);
+FMOD_RESULT FMOD_System_GetChannelsPlaying     (FMOD_SYSTEM *system, int *channels);
+FMOD_RESULT FMOD_System_GetHardwareChannels    (FMOD_SYSTEM *system, int *numhardwarechannels);
+FMOD_RESULT FMOD_System_GetCPUUsage            (FMOD_SYSTEM *system, float *dsp, float *stream, float *geometry, float *update, float *total);
+FMOD_RESULT FMOD_System_GetSoundRAM            (FMOD_SYSTEM *system, int *currentalloced, int *maxalloced, int *total);
+FMOD_RESULT FMOD_System_GetNumCDROMDrives      (FMOD_SYSTEM *system, int *numdrives);
+FMOD_RESULT FMOD_System_GetCDROMDriveName      (FMOD_SYSTEM *system, int drive, char *drivename, int drivenamelen, char *scsiname, int scsinamelen, char *devicename, int devicenamelen);
+FMOD_RESULT FMOD_System_GetSpectrum            (FMOD_SYSTEM *system, float *spectrumarray, int numvalues, int channeloffset, FMOD_DSP_FFT_WINDOW windowtype);
+FMOD_RESULT FMOD_System_GetWaveData            (FMOD_SYSTEM *system, float *wavearray, int numvalues, int channeloffset);
 
 
 
-FMOD_RESULT  FMOD_System_CreateSound            (FMOD_SYSTEM *system, const char *name_or_data, FMOD_MODE mode, FMOD_CREATESOUNDEXINFO *exinfo, FMOD_SOUND **sound);
-FMOD_RESULT  FMOD_System_CreateStream           (FMOD_SYSTEM *system, const char *name_or_data, FMOD_MODE mode, FMOD_CREATESOUNDEXINFO *exinfo, FMOD_SOUND **sound);
-FMOD_RESULT  FMOD_System_CreateDSP              (FMOD_SYSTEM *system, FMOD_DSP_DESCRIPTION *description, FMOD_DSP **dsp);
-FMOD_RESULT  FMOD_System_CreateDSPByType        (FMOD_SYSTEM *system, FMOD_DSP_TYPE type, FMOD_DSP **dsp);
-FMOD_RESULT  FMOD_System_CreateChannelGroup     (FMOD_SYSTEM *system, const char *name, FMOD_CHANNELGROUP **channelgroup);
-FMOD_RESULT  FMOD_System_CreateSoundGroup       (FMOD_SYSTEM *system, const char *name, FMOD_SOUNDGROUP **soundgroup);
-FMOD_RESULT  FMOD_System_CreateReverb           (FMOD_SYSTEM *system, FMOD_REVERB **reverb);
+FMOD_RESULT FMOD_System_CreateSound            (FMOD_SYSTEM *system, const char *name_or_data, FMOD_MODE mode, FMOD_CREATESOUNDEXINFO *exinfo, FMOD_SOUND **sound);
+FMOD_RESULT FMOD_System_CreateStream           (FMOD_SYSTEM *system, const char *name_or_data, FMOD_MODE mode, FMOD_CREATESOUNDEXINFO *exinfo, FMOD_SOUND **sound);
+FMOD_RESULT FMOD_System_CreateDSP              (FMOD_SYSTEM *system, FMOD_DSP_DESCRIPTION *description, FMOD_DSP **dsp);
+FMOD_RESULT FMOD_System_CreateDSPByType        (FMOD_SYSTEM *system, FMOD_DSP_TYPE type, FMOD_DSP **dsp);
+FMOD_RESULT FMOD_System_CreateChannelGroup     (FMOD_SYSTEM *system, const char *name, FMOD_CHANNELGROUP **channelgroup);
+FMOD_RESULT FMOD_System_CreateSoundGroup       (FMOD_SYSTEM *system, const char *name, FMOD_SOUNDGROUP **soundgroup);
+FMOD_RESULT FMOD_System_CreateReverb           (FMOD_SYSTEM *system, FMOD_REVERB **reverb);
 
-FMOD_RESULT  FMOD_System_PlaySound              (FMOD_SYSTEM *system, FMOD_CHANNELINDEX channelid, FMOD_SOUND *sound, FMOD_BOOL paused, FMOD_CHANNEL **channel);
-FMOD_RESULT  FMOD_System_PlayDSP                (FMOD_SYSTEM *system, FMOD_CHANNELINDEX channelid, FMOD_DSP *dsp, FMOD_BOOL paused, FMOD_CHANNEL **channel);
-FMOD_RESULT  FMOD_System_GetChannel             (FMOD_SYSTEM *system, int channelid, FMOD_CHANNEL **channel);
-FMOD_RESULT  FMOD_System_GetMasterChannelGroup  (FMOD_SYSTEM *system, FMOD_CHANNELGROUP **channelgroup);
-FMOD_RESULT  FMOD_System_GetMasterSoundGroup    (FMOD_SYSTEM *system, FMOD_SOUNDGROUP **soundgroup);
+FMOD_RESULT FMOD_System_PlaySound              (FMOD_SYSTEM *system, FMOD_CHANNELINDEX channelid, FMOD_SOUND *sound, FMOD_BOOL paused, FMOD_CHANNEL **channel);
+FMOD_RESULT FMOD_System_PlayDSP                (FMOD_SYSTEM *system, FMOD_CHANNELINDEX channelid, FMOD_DSP *dsp, FMOD_BOOL paused, FMOD_CHANNEL **channel);
+FMOD_RESULT FMOD_System_GetChannel             (FMOD_SYSTEM *system, int channelid, FMOD_CHANNEL **channel);
+FMOD_RESULT FMOD_System_GetMasterChannelGroup  (FMOD_SYSTEM *system, FMOD_CHANNELGROUP **channelgroup);
+FMOD_RESULT FMOD_System_GetMasterSoundGroup    (FMOD_SYSTEM *system, FMOD_SOUNDGROUP **soundgroup);
 
 
 
-FMOD_RESULT  FMOD_System_SetReverbProperties    (FMOD_SYSTEM *system, const FMOD_REVERB_PROPERTIES *prop);
-FMOD_RESULT  FMOD_System_GetReverbProperties    (FMOD_SYSTEM *system, FMOD_REVERB_PROPERTIES *prop);
-FMOD_RESULT  FMOD_System_SetReverbAmbientProperties(FMOD_SYSTEM *system, FMOD_REVERB_PROPERTIES *prop);
-FMOD_RESULT  FMOD_System_GetReverbAmbientProperties(FMOD_SYSTEM *system, FMOD_REVERB_PROPERTIES *prop);
+FMOD_RESULT FMOD_System_SetReverbProperties    (FMOD_SYSTEM *system, const FMOD_REVERB_PROPERTIES *prop);
+FMOD_RESULT FMOD_System_GetReverbProperties    (FMOD_SYSTEM *system, FMOD_REVERB_PROPERTIES *prop);
+FMOD_RESULT FMOD_System_SetReverbAmbientProperties(FMOD_SYSTEM *system, FMOD_REVERB_PROPERTIES *prop);
+FMOD_RESULT FMOD_System_GetReverbAmbientProperties(FMOD_SYSTEM *system, FMOD_REVERB_PROPERTIES *prop);
 
 
 
-FMOD_RESULT  FMOD_System_GetDSPHead             (FMOD_SYSTEM *system, FMOD_DSP **dsp);
-FMOD_RESULT  FMOD_System_AddDSP                 (FMOD_SYSTEM *system, FMOD_DSP *dsp, FMOD_DSPCONNECTION **connection);
-FMOD_RESULT  FMOD_System_LockDSP                (FMOD_SYSTEM *system);
-FMOD_RESULT  FMOD_System_UnlockDSP              (FMOD_SYSTEM *system);
-FMOD_RESULT  FMOD_System_GetDSPClock            (FMOD_SYSTEM *system, unsigned int *hi, unsigned int *lo);
+FMOD_RESULT FMOD_System_GetDSPHead             (FMOD_SYSTEM *system, FMOD_DSP **dsp);
+FMOD_RESULT FMOD_System_AddDSP                 (FMOD_SYSTEM *system, FMOD_DSP *dsp, FMOD_DSPCONNECTION **connection);
+FMOD_RESULT FMOD_System_LockDSP                (FMOD_SYSTEM *system);
+FMOD_RESULT FMOD_System_UnlockDSP              (FMOD_SYSTEM *system);
+FMOD_RESULT FMOD_System_GetDSPClock            (FMOD_SYSTEM *system, unsigned int *hi, unsigned int *lo);
 
 
 
-FMOD_RESULT  FMOD_System_GetRecordNumDrivers    (FMOD_SYSTEM *system, int *numdrivers);
-FMOD_RESULT  FMOD_System_GetRecordDriverInfo    (FMOD_SYSTEM *system, int id, char *name, int namelen, FMOD_GUID *guid);
-FMOD_RESULT  FMOD_System_GetRecordDriverInfoW   (FMOD_SYSTEM *system, int id, short *name, int namelen, FMOD_GUID *guid);
-FMOD_RESULT  FMOD_System_GetRecordDriverCaps    (FMOD_SYSTEM *system, int id, FMOD_CAPS *caps, int *minfrequency, int *maxfrequency);
-FMOD_RESULT  FMOD_System_GetRecordPosition      (FMOD_SYSTEM *system, int id, unsigned int *position);
+FMOD_RESULT FMOD_System_GetRecordNumDrivers    (FMOD_SYSTEM *system, int *numdrivers);
+FMOD_RESULT FMOD_System_GetRecordDriverInfo    (FMOD_SYSTEM *system, int id, char *name, int namelen, FMOD_GUID *guid);
+FMOD_RESULT FMOD_System_GetRecordDriverInfoW   (FMOD_SYSTEM *system, int id, short *name, int namelen, FMOD_GUID *guid);
+FMOD_RESULT FMOD_System_GetRecordDriverCaps    (FMOD_SYSTEM *system, int id, FMOD_CAPS *caps, int *minfrequency, int *maxfrequency);
+FMOD_RESULT FMOD_System_GetRecordPosition      (FMOD_SYSTEM *system, int id, unsigned int *position);
 
-FMOD_RESULT  FMOD_System_RecordStart            (FMOD_SYSTEM *system, int id, FMOD_SOUND *sound, FMOD_BOOL loop);
-FMOD_RESULT  FMOD_System_RecordStop             (FMOD_SYSTEM *system, int id);
-FMOD_RESULT  FMOD_System_IsRecording            (FMOD_SYSTEM *system, int id, FMOD_BOOL *recording);
+FMOD_RESULT FMOD_System_RecordStart            (FMOD_SYSTEM *system, int id, FMOD_SOUND *sound, FMOD_BOOL loop);
+FMOD_RESULT FMOD_System_RecordStop             (FMOD_SYSTEM *system, int id);
+FMOD_RESULT FMOD_System_IsRecording            (FMOD_SYSTEM *system, int id, FMOD_BOOL *recording);
 
 
 
-FMOD_RESULT  FMOD_System_CreateGeometry         (FMOD_SYSTEM *system, int maxpolygons, int maxvertices, FMOD_GEOMETRY **geometry);
-FMOD_RESULT  FMOD_System_SetGeometrySettings    (FMOD_SYSTEM *system, float maxworldsize);
-FMOD_RESULT  FMOD_System_GetGeometrySettings    (FMOD_SYSTEM *system, float *maxworldsize);
-FMOD_RESULT  FMOD_System_LoadGeometry           (FMOD_SYSTEM *system, const void *data, int datasize, FMOD_GEOMETRY **geometry);
-FMOD_RESULT  FMOD_System_GetGeometryOcclusion   (FMOD_SYSTEM *system, const FMOD_VECTOR *listener, const FMOD_VECTOR *source, float *direct, float *reverb);
+FMOD_RESULT FMOD_System_CreateGeometry         (FMOD_SYSTEM *system, int maxpolygons, int maxvertices, FMOD_GEOMETRY **geometry);
+FMOD_RESULT FMOD_System_SetGeometrySettings    (FMOD_SYSTEM *system, float maxworldsize);
+FMOD_RESULT FMOD_System_GetGeometrySettings    (FMOD_SYSTEM *system, float *maxworldsize);
+FMOD_RESULT FMOD_System_LoadGeometry           (FMOD_SYSTEM *system, const void *data, int datasize, FMOD_GEOMETRY **geometry);
+FMOD_RESULT FMOD_System_GetGeometryOcclusion   (FMOD_SYSTEM *system, const FMOD_VECTOR *listener, const FMOD_VECTOR *source, float *direct, float *reverb);
 
 
 
-FMOD_RESULT  FMOD_System_SetNetworkProxy        (FMOD_SYSTEM *system, const char *proxy);
-FMOD_RESULT  FMOD_System_GetNetworkProxy        (FMOD_SYSTEM *system, char *proxy, int proxylen);
-FMOD_RESULT  FMOD_System_SetNetworkTimeout      (FMOD_SYSTEM *system, int timeout);
-FMOD_RESULT  FMOD_System_GetNetworkTimeout      (FMOD_SYSTEM *system, int *timeout);
+FMOD_RESULT FMOD_System_SetNetworkProxy        (FMOD_SYSTEM *system, const char *proxy);
+FMOD_RESULT FMOD_System_GetNetworkProxy        (FMOD_SYSTEM *system, char *proxy, int proxylen);
+FMOD_RESULT FMOD_System_SetNetworkTimeout      (FMOD_SYSTEM *system, int timeout);
+FMOD_RESULT FMOD_System_GetNetworkTimeout      (FMOD_SYSTEM *system, int *timeout);
 
 
 
-FMOD_RESULT  FMOD_System_SetUserData            (FMOD_SYSTEM *system, void *userdata);
-FMOD_RESULT  FMOD_System_GetUserData            (FMOD_SYSTEM *system, void **userdata);
+FMOD_RESULT FMOD_System_SetUserData            (FMOD_SYSTEM *system, void *userdata);
+FMOD_RESULT FMOD_System_GetUserData            (FMOD_SYSTEM *system, void **userdata);
 
-FMOD_RESULT  FMOD_System_GetMemoryInfo          (FMOD_SYSTEM *system, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_System_GetMemoryInfo          (FMOD_SYSTEM *system, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_Sound_Release                 (FMOD_SOUND *sound);
-FMOD_RESULT  FMOD_Sound_GetSystemObject         (FMOD_SOUND *sound, FMOD_SYSTEM **system);
+FMOD_RESULT FMOD_Sound_Release                 (FMOD_SOUND *sound);
+FMOD_RESULT FMOD_Sound_GetSystemObject         (FMOD_SOUND *sound, FMOD_SYSTEM **system);
 
 
 
-FMOD_RESULT  FMOD_Sound_Lock                    (FMOD_SOUND *sound, unsigned int offset, unsigned int length, void **ptr1, void **ptr2, unsigned int *len1, unsigned int *len2);
-FMOD_RESULT  FMOD_Sound_Unlock                  (FMOD_SOUND *sound, void *ptr1, void *ptr2, unsigned int len1, unsigned int len2);
-FMOD_RESULT  FMOD_Sound_SetDefaults             (FMOD_SOUND *sound, float frequency, float volume, float pan, int priority);
-FMOD_RESULT  FMOD_Sound_GetDefaults             (FMOD_SOUND *sound, float *frequency, float *volume, float *pan, int *priority);
-FMOD_RESULT  FMOD_Sound_SetVariations           (FMOD_SOUND *sound, float frequencyvar, float volumevar, float panvar);
-FMOD_RESULT  FMOD_Sound_GetVariations           (FMOD_SOUND *sound, float *frequencyvar, float *volumevar, float *panvar);
-FMOD_RESULT  FMOD_Sound_Set3DMinMaxDistance     (FMOD_SOUND *sound, float min, float max);
-FMOD_RESULT  FMOD_Sound_Get3DMinMaxDistance     (FMOD_SOUND *sound, float *min, float *max);
-FMOD_RESULT  FMOD_Sound_Set3DConeSettings       (FMOD_SOUND *sound, float insideconeangle, float outsideconeangle, float outsidevolume);
-FMOD_RESULT  FMOD_Sound_Get3DConeSettings       (FMOD_SOUND *sound, float *insideconeangle, float *outsideconeangle, float *outsidevolume);
-FMOD_RESULT  FMOD_Sound_Set3DCustomRolloff      (FMOD_SOUND *sound, FMOD_VECTOR *points, int numpoints);
-FMOD_RESULT  FMOD_Sound_Get3DCustomRolloff      (FMOD_SOUND *sound, FMOD_VECTOR **points, int *numpoints);
-FMOD_RESULT  FMOD_Sound_SetSubSound             (FMOD_SOUND *sound, int index, FMOD_SOUND *subsound);
-FMOD_RESULT  FMOD_Sound_GetSubSound             (FMOD_SOUND *sound, int index, FMOD_SOUND **subsound);
-FMOD_RESULT  FMOD_Sound_SetSubSoundSentence     (FMOD_SOUND *sound, int *subsoundlist, int numsubsounds);
-FMOD_RESULT  FMOD_Sound_GetName                 (FMOD_SOUND *sound, char *name, int namelen);
-FMOD_RESULT  FMOD_Sound_GetLength               (FMOD_SOUND *sound, unsigned int *length, FMOD_TIMEUNIT lengthtype);
-FMOD_RESULT  FMOD_Sound_GetFormat               (FMOD_SOUND *sound, FMOD_SOUND_TYPE *type, FMOD_SOUND_FORMAT *format, int *channels, int *bits);
-FMOD_RESULT  FMOD_Sound_GetNumSubSounds         (FMOD_SOUND *sound, int *numsubsounds);
-FMOD_RESULT  FMOD_Sound_GetNumTags              (FMOD_SOUND *sound, int *numtags, int *numtagsupdated);
-FMOD_RESULT  FMOD_Sound_GetTag                  (FMOD_SOUND *sound, const char *name, int index, FMOD_TAG *tag);
-FMOD_RESULT  FMOD_Sound_GetOpenState            (FMOD_SOUND *sound, FMOD_OPENSTATE *openstate, unsigned int *percentbuffered, FMOD_BOOL *starving, FMOD_BOOL *diskbusy);
-FMOD_RESULT  FMOD_Sound_ReadData                (FMOD_SOUND *sound, void *buffer, unsigned int lenbytes, unsigned int *read);
-FMOD_RESULT  FMOD_Sound_SeekData                (FMOD_SOUND *sound, unsigned int pcm);
+FMOD_RESULT FMOD_Sound_Lock                    (FMOD_SOUND *sound, unsigned int offset, unsigned int length, void **ptr1, void **ptr2, unsigned int *len1, unsigned int *len2);
+FMOD_RESULT FMOD_Sound_Unlock                  (FMOD_SOUND *sound, void *ptr1, void *ptr2, unsigned int len1, unsigned int len2);
+FMOD_RESULT FMOD_Sound_SetDefaults             (FMOD_SOUND *sound, float frequency, float volume, float pan, int priority);
+FMOD_RESULT FMOD_Sound_GetDefaults             (FMOD_SOUND *sound, float *frequency, float *volume, float *pan, int *priority);
+FMOD_RESULT FMOD_Sound_SetVariations           (FMOD_SOUND *sound, float frequencyvar, float volumevar, float panvar);
+FMOD_RESULT FMOD_Sound_GetVariations           (FMOD_SOUND *sound, float *frequencyvar, float *volumevar, float *panvar);
+FMOD_RESULT FMOD_Sound_Set3DMinMaxDistance     (FMOD_SOUND *sound, float min, float max);
+FMOD_RESULT FMOD_Sound_Get3DMinMaxDistance     (FMOD_SOUND *sound, float *min, float *max);
+FMOD_RESULT FMOD_Sound_Set3DConeSettings       (FMOD_SOUND *sound, float insideconeangle, float outsideconeangle, float outsidevolume);
+FMOD_RESULT FMOD_Sound_Get3DConeSettings       (FMOD_SOUND *sound, float *insideconeangle, float *outsideconeangle, float *outsidevolume);
+FMOD_RESULT FMOD_Sound_Set3DCustomRolloff      (FMOD_SOUND *sound, FMOD_VECTOR *points, int numpoints);
+FMOD_RESULT FMOD_Sound_Get3DCustomRolloff      (FMOD_SOUND *sound, FMOD_VECTOR **points, int *numpoints);
+FMOD_RESULT FMOD_Sound_SetSubSound             (FMOD_SOUND *sound, int index, FMOD_SOUND *subsound);
+FMOD_RESULT FMOD_Sound_GetSubSound             (FMOD_SOUND *sound, int index, FMOD_SOUND **subsound);
+FMOD_RESULT FMOD_Sound_SetSubSoundSentence     (FMOD_SOUND *sound, int *subsoundlist, int numsubsounds);
+FMOD_RESULT FMOD_Sound_GetName                 (FMOD_SOUND *sound, char *name, int namelen);
+FMOD_RESULT FMOD_Sound_GetLength               (FMOD_SOUND *sound, unsigned int *length, FMOD_TIMEUNIT lengthtype);
+FMOD_RESULT FMOD_Sound_GetFormat               (FMOD_SOUND *sound, FMOD_SOUND_TYPE *type, FMOD_SOUND_FORMAT *format, int *channels, int *bits);
+FMOD_RESULT FMOD_Sound_GetNumSubSounds         (FMOD_SOUND *sound, int *numsubsounds);
+FMOD_RESULT FMOD_Sound_GetNumTags              (FMOD_SOUND *sound, int *numtags, int *numtagsupdated);
+FMOD_RESULT FMOD_Sound_GetTag                  (FMOD_SOUND *sound, const char *name, int index, FMOD_TAG *tag);
+FMOD_RESULT FMOD_Sound_GetOpenState            (FMOD_SOUND *sound, FMOD_OPENSTATE *openstate, unsigned int *percentbuffered, FMOD_BOOL *starving, FMOD_BOOL *diskbusy);
+FMOD_RESULT FMOD_Sound_ReadData                (FMOD_SOUND *sound, void *buffer, unsigned int lenbytes, unsigned int *read);
+FMOD_RESULT FMOD_Sound_SeekData                (FMOD_SOUND *sound, unsigned int pcm);
 
-FMOD_RESULT  FMOD_Sound_SetSoundGroup           (FMOD_SOUND *sound, FMOD_SOUNDGROUP *soundgroup);
-FMOD_RESULT  FMOD_Sound_GetSoundGroup           (FMOD_SOUND *sound, FMOD_SOUNDGROUP **soundgroup);
+FMOD_RESULT FMOD_Sound_SetSoundGroup           (FMOD_SOUND *sound, FMOD_SOUNDGROUP *soundgroup);
+FMOD_RESULT FMOD_Sound_GetSoundGroup           (FMOD_SOUND *sound, FMOD_SOUNDGROUP **soundgroup);
 
 
 
-FMOD_RESULT  FMOD_Sound_GetNumSyncPoints        (FMOD_SOUND *sound, int *numsyncpoints);
-FMOD_RESULT  FMOD_Sound_GetSyncPoint            (FMOD_SOUND *sound, int index, FMOD_SYNCPOINT **point);
-FMOD_RESULT  FMOD_Sound_GetSyncPointInfo        (FMOD_SOUND *sound, FMOD_SYNCPOINT *point, char *name, int namelen, unsigned int *offset, FMOD_TIMEUNIT offsettype);
-FMOD_RESULT  FMOD_Sound_AddSyncPoint            (FMOD_SOUND *sound, unsigned int offset, FMOD_TIMEUNIT offsettype, const char *name, FMOD_SYNCPOINT **point);
-FMOD_RESULT  FMOD_Sound_DeleteSyncPoint         (FMOD_SOUND *sound, FMOD_SYNCPOINT *point);
+FMOD_RESULT FMOD_Sound_GetNumSyncPoints        (FMOD_SOUND *sound, int *numsyncpoints);
+FMOD_RESULT FMOD_Sound_GetSyncPoint            (FMOD_SOUND *sound, int index, FMOD_SYNCPOINT **point);
+FMOD_RESULT FMOD_Sound_GetSyncPointInfo        (FMOD_SOUND *sound, FMOD_SYNCPOINT *point, char *name, int namelen, unsigned int *offset, FMOD_TIMEUNIT offsettype);
+FMOD_RESULT FMOD_Sound_AddSyncPoint            (FMOD_SOUND *sound, unsigned int offset, FMOD_TIMEUNIT offsettype, const char *name, FMOD_SYNCPOINT **point);
+FMOD_RESULT FMOD_Sound_DeleteSyncPoint         (FMOD_SOUND *sound, FMOD_SYNCPOINT *point);
 
 
 
-FMOD_RESULT  FMOD_Sound_SetMode                 (FMOD_SOUND *sound, FMOD_MODE mode);
-FMOD_RESULT  FMOD_Sound_GetMode                 (FMOD_SOUND *sound, FMOD_MODE *mode);
-FMOD_RESULT  FMOD_Sound_SetLoopCount            (FMOD_SOUND *sound, int loopcount);
-FMOD_RESULT  FMOD_Sound_GetLoopCount            (FMOD_SOUND *sound, int *loopcount);
-FMOD_RESULT  FMOD_Sound_SetLoopPoints           (FMOD_SOUND *sound, unsigned int loopstart, FMOD_TIMEUNIT loopstarttype, unsigned int loopend, FMOD_TIMEUNIT loopendtype);
-FMOD_RESULT  FMOD_Sound_GetLoopPoints           (FMOD_SOUND *sound, unsigned int *loopstart, FMOD_TIMEUNIT loopstarttype, unsigned int *loopend, FMOD_TIMEUNIT loopendtype);
+FMOD_RESULT FMOD_Sound_SetMode                 (FMOD_SOUND *sound, FMOD_MODE mode);
+FMOD_RESULT FMOD_Sound_GetMode                 (FMOD_SOUND *sound, FMOD_MODE *mode);
+FMOD_RESULT FMOD_Sound_SetLoopCount            (FMOD_SOUND *sound, int loopcount);
+FMOD_RESULT FMOD_Sound_GetLoopCount            (FMOD_SOUND *sound, int *loopcount);
+FMOD_RESULT FMOD_Sound_SetLoopPoints           (FMOD_SOUND *sound, unsigned int loopstart, FMOD_TIMEUNIT loopstarttype, unsigned int loopend, FMOD_TIMEUNIT loopendtype);
+FMOD_RESULT FMOD_Sound_GetLoopPoints           (FMOD_SOUND *sound, unsigned int *loopstart, FMOD_TIMEUNIT loopstarttype, unsigned int *loopend, FMOD_TIMEUNIT loopendtype);
 
 
 
-FMOD_RESULT  FMOD_Sound_GetMusicNumChannels     (FMOD_SOUND *sound, int *numchannels);
-FMOD_RESULT  FMOD_Sound_SetMusicChannelVolume   (FMOD_SOUND *sound, int channel, float volume);
-FMOD_RESULT  FMOD_Sound_GetMusicChannelVolume   (FMOD_SOUND *sound, int channel, float *volume);
-FMOD_RESULT  FMOD_Sound_SetMusicSpeed           (FMOD_SOUND *sound, float speed);
-FMOD_RESULT  FMOD_Sound_GetMusicSpeed           (FMOD_SOUND *sound, float *speed);
+FMOD_RESULT FMOD_Sound_GetMusicNumChannels     (FMOD_SOUND *sound, int *numchannels);
+FMOD_RESULT FMOD_Sound_SetMusicChannelVolume   (FMOD_SOUND *sound, int channel, float volume);
+FMOD_RESULT FMOD_Sound_GetMusicChannelVolume   (FMOD_SOUND *sound, int channel, float *volume);
+FMOD_RESULT FMOD_Sound_SetMusicSpeed           (FMOD_SOUND *sound, float speed);
+FMOD_RESULT FMOD_Sound_GetMusicSpeed           (FMOD_SOUND *sound, float *speed);
 
 
 
-FMOD_RESULT  FMOD_Sound_SetUserData             (FMOD_SOUND *sound, void *userdata);
-FMOD_RESULT  FMOD_Sound_GetUserData             (FMOD_SOUND *sound, void **userdata);
+FMOD_RESULT FMOD_Sound_SetUserData             (FMOD_SOUND *sound, void *userdata);
+FMOD_RESULT FMOD_Sound_GetUserData             (FMOD_SOUND *sound, void **userdata);
 
-FMOD_RESULT  FMOD_Sound_GetMemoryInfo           (FMOD_SOUND *sound, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_Sound_GetMemoryInfo           (FMOD_SOUND *sound, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_Channel_GetSystemObject       (FMOD_CHANNEL *channel, FMOD_SYSTEM **system);
+FMOD_RESULT FMOD_Channel_GetSystemObject       (FMOD_CHANNEL *channel, FMOD_SYSTEM **system);
 
-FMOD_RESULT  FMOD_Channel_Stop                  (FMOD_CHANNEL *channel);
-FMOD_RESULT  FMOD_Channel_SetPaused             (FMOD_CHANNEL *channel, FMOD_BOOL paused);
-FMOD_RESULT  FMOD_Channel_GetPaused             (FMOD_CHANNEL *channel, FMOD_BOOL *paused);
-FMOD_RESULT  FMOD_Channel_SetVolume             (FMOD_CHANNEL *channel, float volume);
-FMOD_RESULT  FMOD_Channel_GetVolume             (FMOD_CHANNEL *channel, float *volume);
-FMOD_RESULT  FMOD_Channel_SetFrequency          (FMOD_CHANNEL *channel, float frequency);
-FMOD_RESULT  FMOD_Channel_GetFrequency          (FMOD_CHANNEL *channel, float *frequency);
-FMOD_RESULT  FMOD_Channel_SetPan                (FMOD_CHANNEL *channel, float pan);
-FMOD_RESULT  FMOD_Channel_GetPan                (FMOD_CHANNEL *channel, float *pan);
-FMOD_RESULT  FMOD_Channel_SetDelay              (FMOD_CHANNEL *channel, FMOD_DELAYTYPE delaytype, unsigned int delayhi, unsigned int delaylo);
-FMOD_RESULT  FMOD_Channel_GetDelay              (FMOD_CHANNEL *channel, FMOD_DELAYTYPE delaytype, unsigned int *delayhi, unsigned int *delaylo);
-FMOD_RESULT  FMOD_Channel_SetSpeakerMix         (FMOD_CHANNEL *channel, float frontleft, float frontright, float center, float lfe, float backleft, float backright, float sideleft, float sideright);
-FMOD_RESULT  FMOD_Channel_GetSpeakerMix         (FMOD_CHANNEL *channel, float *frontleft, float *frontright, float *center, float *lfe, float *backleft, float *backright, float *sideleft, float *sideright);
-FMOD_RESULT  FMOD_Channel_SetSpeakerLevels      (FMOD_CHANNEL *channel, FMOD_SPEAKER speaker, float *levels, int numlevels);
-FMOD_RESULT  FMOD_Channel_GetSpeakerLevels      (FMOD_CHANNEL *channel, FMOD_SPEAKER speaker, float *levels, int numlevels);
-FMOD_RESULT  FMOD_Channel_SetInputChannelMix    (FMOD_CHANNEL *channel, float *levels, int numlevels);
-FMOD_RESULT  FMOD_Channel_GetInputChannelMix    (FMOD_CHANNEL *channel, float *levels, int numlevels);
-FMOD_RESULT  FMOD_Channel_SetMute               (FMOD_CHANNEL *channel, FMOD_BOOL mute);
-FMOD_RESULT  FMOD_Channel_GetMute               (FMOD_CHANNEL *channel, FMOD_BOOL *mute);
-FMOD_RESULT  FMOD_Channel_SetPriority           (FMOD_CHANNEL *channel, int priority);
-FMOD_RESULT  FMOD_Channel_GetPriority           (FMOD_CHANNEL *channel, int *priority);
-FMOD_RESULT  FMOD_Channel_SetPosition           (FMOD_CHANNEL *channel, unsigned int position, FMOD_TIMEUNIT postype);
-FMOD_RESULT  FMOD_Channel_GetPosition           (FMOD_CHANNEL *channel, unsigned int *position, FMOD_TIMEUNIT postype);
-FMOD_RESULT  FMOD_Channel_SetReverbProperties   (FMOD_CHANNEL *channel, const FMOD_REVERB_CHANNELPROPERTIES *prop);
-FMOD_RESULT  FMOD_Channel_GetReverbProperties   (FMOD_CHANNEL *channel, FMOD_REVERB_CHANNELPROPERTIES *prop);
-FMOD_RESULT  FMOD_Channel_SetLowPassGain        (FMOD_CHANNEL *channel, float gain);
-FMOD_RESULT  FMOD_Channel_GetLowPassGain        (FMOD_CHANNEL *channel, float *gain);
+FMOD_RESULT FMOD_Channel_Stop                  (FMOD_CHANNEL *channel);
+FMOD_RESULT FMOD_Channel_SetPaused             (FMOD_CHANNEL *channel, FMOD_BOOL paused);
+FMOD_RESULT FMOD_Channel_GetPaused             (FMOD_CHANNEL *channel, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_Channel_SetVolume             (FMOD_CHANNEL *channel, float volume);
+FMOD_RESULT FMOD_Channel_GetVolume             (FMOD_CHANNEL *channel, float *volume);
+FMOD_RESULT FMOD_Channel_SetFrequency          (FMOD_CHANNEL *channel, float frequency);
+FMOD_RESULT FMOD_Channel_GetFrequency          (FMOD_CHANNEL *channel, float *frequency);
+FMOD_RESULT FMOD_Channel_SetPan                (FMOD_CHANNEL *channel, float pan);
+FMOD_RESULT FMOD_Channel_GetPan                (FMOD_CHANNEL *channel, float *pan);
+FMOD_RESULT FMOD_Channel_SetDelay              (FMOD_CHANNEL *channel, FMOD_DELAYTYPE delaytype, unsigned int delayhi, unsigned int delaylo);
+FMOD_RESULT FMOD_Channel_GetDelay              (FMOD_CHANNEL *channel, FMOD_DELAYTYPE delaytype, unsigned int *delayhi, unsigned int *delaylo);
+FMOD_RESULT FMOD_Channel_SetSpeakerMix         (FMOD_CHANNEL *channel, float frontleft, float frontright, float center, float lfe, float backleft, float backright, float sideleft, float sideright);
+FMOD_RESULT FMOD_Channel_GetSpeakerMix         (FMOD_CHANNEL *channel, float *frontleft, float *frontright, float *center, float *lfe, float *backleft, float *backright, float *sideleft, float *sideright);
+FMOD_RESULT FMOD_Channel_SetSpeakerLevels      (FMOD_CHANNEL *channel, FMOD_SPEAKER speaker, float *levels, int numlevels);
+FMOD_RESULT FMOD_Channel_GetSpeakerLevels      (FMOD_CHANNEL *channel, FMOD_SPEAKER speaker, float *levels, int numlevels);
+FMOD_RESULT FMOD_Channel_SetInputChannelMix    (FMOD_CHANNEL *channel, float *levels, int numlevels);
+FMOD_RESULT FMOD_Channel_GetInputChannelMix    (FMOD_CHANNEL *channel, float *levels, int numlevels);
+FMOD_RESULT FMOD_Channel_SetMute               (FMOD_CHANNEL *channel, FMOD_BOOL mute);
+FMOD_RESULT FMOD_Channel_GetMute               (FMOD_CHANNEL *channel, FMOD_BOOL *mute);
+FMOD_RESULT FMOD_Channel_SetPriority           (FMOD_CHANNEL *channel, int priority);
+FMOD_RESULT FMOD_Channel_GetPriority           (FMOD_CHANNEL *channel, int *priority);
+FMOD_RESULT FMOD_Channel_SetPosition           (FMOD_CHANNEL *channel, unsigned int position, FMOD_TIMEUNIT postype);
+FMOD_RESULT FMOD_Channel_GetPosition           (FMOD_CHANNEL *channel, unsigned int *position, FMOD_TIMEUNIT postype);
+FMOD_RESULT FMOD_Channel_SetReverbProperties   (FMOD_CHANNEL *channel, const FMOD_REVERB_CHANNELPROPERTIES *prop);
+FMOD_RESULT FMOD_Channel_GetReverbProperties   (FMOD_CHANNEL *channel, FMOD_REVERB_CHANNELPROPERTIES *prop);
+FMOD_RESULT FMOD_Channel_SetLowPassGain        (FMOD_CHANNEL *channel, float gain);
+FMOD_RESULT FMOD_Channel_GetLowPassGain        (FMOD_CHANNEL *channel, float *gain);
 
-FMOD_RESULT  FMOD_Channel_SetChannelGroup       (FMOD_CHANNEL *channel, FMOD_CHANNELGROUP *channelgroup);
-FMOD_RESULT  FMOD_Channel_GetChannelGroup       (FMOD_CHANNEL *channel, FMOD_CHANNELGROUP **channelgroup);
-FMOD_RESULT  FMOD_Channel_SetCallback           (FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACK callback);
+FMOD_RESULT FMOD_Channel_SetChannelGroup       (FMOD_CHANNEL *channel, FMOD_CHANNELGROUP *channelgroup);
+FMOD_RESULT FMOD_Channel_GetChannelGroup       (FMOD_CHANNEL *channel, FMOD_CHANNELGROUP **channelgroup);
+FMOD_RESULT FMOD_Channel_SetCallback           (FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACK callback);
 
 
 
-FMOD_RESULT  FMOD_Channel_Set3DAttributes       (FMOD_CHANNEL *channel, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel);
-FMOD_RESULT  FMOD_Channel_Get3DAttributes       (FMOD_CHANNEL *channel, FMOD_VECTOR *pos, FMOD_VECTOR *vel);
-FMOD_RESULT  FMOD_Channel_Set3DMinMaxDistance   (FMOD_CHANNEL *channel, float mindistance, float maxdistance);
-FMOD_RESULT  FMOD_Channel_Get3DMinMaxDistance   (FMOD_CHANNEL *channel, float *mindistance, float *maxdistance);
-FMOD_RESULT  FMOD_Channel_Set3DConeSettings     (FMOD_CHANNEL *channel, float insideconeangle, float outsideconeangle, float outsidevolume);
-FMOD_RESULT  FMOD_Channel_Get3DConeSettings     (FMOD_CHANNEL *channel, float *insideconeangle, float *outsideconeangle, float *outsidevolume);
-FMOD_RESULT  FMOD_Channel_Set3DConeOrientation  (FMOD_CHANNEL *channel, FMOD_VECTOR *orientation);
-FMOD_RESULT  FMOD_Channel_Get3DConeOrientation  (FMOD_CHANNEL *channel, FMOD_VECTOR *orientation);
-FMOD_RESULT  FMOD_Channel_Set3DCustomRolloff    (FMOD_CHANNEL *channel, FMOD_VECTOR *points, int numpoints);
-FMOD_RESULT  FMOD_Channel_Get3DCustomRolloff    (FMOD_CHANNEL *channel, FMOD_VECTOR **points, int *numpoints);
-FMOD_RESULT  FMOD_Channel_Set3DOcclusion        (FMOD_CHANNEL *channel, float directocclusion, float reverbocclusion);
-FMOD_RESULT  FMOD_Channel_Get3DOcclusion        (FMOD_CHANNEL *channel, float *directocclusion, float *reverbocclusion);
-FMOD_RESULT  FMOD_Channel_Set3DSpread           (FMOD_CHANNEL *channel, float angle);
-FMOD_RESULT  FMOD_Channel_Get3DSpread           (FMOD_CHANNEL *channel, float *angle);
-FMOD_RESULT  FMOD_Channel_Set3DPanLevel         (FMOD_CHANNEL *channel, float level);
-FMOD_RESULT  FMOD_Channel_Get3DPanLevel         (FMOD_CHANNEL *channel, float *level);
-FMOD_RESULT  FMOD_Channel_Set3DDopplerLevel     (FMOD_CHANNEL *channel, float level);
-FMOD_RESULT  FMOD_Channel_Get3DDopplerLevel     (FMOD_CHANNEL *channel, float *level);
-FMOD_RESULT  FMOD_Channel_Set3DDistanceFilter   (FMOD_CHANNEL *channel, FMOD_BOOL custom, float customLevel, float centerFreq);
-FMOD_RESULT  FMOD_Channel_Get3DDistanceFilter   (FMOD_CHANNEL *channel, FMOD_BOOL *custom, float *customLevel, float *centerFreq);
+FMOD_RESULT FMOD_Channel_Set3DAttributes       (FMOD_CHANNEL *channel, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel);
+FMOD_RESULT FMOD_Channel_Get3DAttributes       (FMOD_CHANNEL *channel, FMOD_VECTOR *pos, FMOD_VECTOR *vel);
+FMOD_RESULT FMOD_Channel_Set3DMinMaxDistance   (FMOD_CHANNEL *channel, float mindistance, float maxdistance);
+FMOD_RESULT FMOD_Channel_Get3DMinMaxDistance   (FMOD_CHANNEL *channel, float *mindistance, float *maxdistance);
+FMOD_RESULT FMOD_Channel_Set3DConeSettings     (FMOD_CHANNEL *channel, float insideconeangle, float outsideconeangle, float outsidevolume);
+FMOD_RESULT FMOD_Channel_Get3DConeSettings     (FMOD_CHANNEL *channel, float *insideconeangle, float *outsideconeangle, float *outsidevolume);
+FMOD_RESULT FMOD_Channel_Set3DConeOrientation  (FMOD_CHANNEL *channel, FMOD_VECTOR *orientation);
+FMOD_RESULT FMOD_Channel_Get3DConeOrientation  (FMOD_CHANNEL *channel, FMOD_VECTOR *orientation);
+FMOD_RESULT FMOD_Channel_Set3DCustomRolloff    (FMOD_CHANNEL *channel, FMOD_VECTOR *points, int numpoints);
+FMOD_RESULT FMOD_Channel_Get3DCustomRolloff    (FMOD_CHANNEL *channel, FMOD_VECTOR **points, int *numpoints);
+FMOD_RESULT FMOD_Channel_Set3DOcclusion        (FMOD_CHANNEL *channel, float directocclusion, float reverbocclusion);
+FMOD_RESULT FMOD_Channel_Get3DOcclusion        (FMOD_CHANNEL *channel, float *directocclusion, float *reverbocclusion);
+FMOD_RESULT FMOD_Channel_Set3DSpread           (FMOD_CHANNEL *channel, float angle);
+FMOD_RESULT FMOD_Channel_Get3DSpread           (FMOD_CHANNEL *channel, float *angle);
+FMOD_RESULT FMOD_Channel_Set3DPanLevel         (FMOD_CHANNEL *channel, float level);
+FMOD_RESULT FMOD_Channel_Get3DPanLevel         (FMOD_CHANNEL *channel, float *level);
+FMOD_RESULT FMOD_Channel_Set3DDopplerLevel     (FMOD_CHANNEL *channel, float level);
+FMOD_RESULT FMOD_Channel_Get3DDopplerLevel     (FMOD_CHANNEL *channel, float *level);
+FMOD_RESULT FMOD_Channel_Set3DDistanceFilter   (FMOD_CHANNEL *channel, FMOD_BOOL custom, float customLevel, float centerFreq);
+FMOD_RESULT FMOD_Channel_Get3DDistanceFilter   (FMOD_CHANNEL *channel, FMOD_BOOL *custom, float *customLevel, float *centerFreq);
 
 
 
-FMOD_RESULT  FMOD_Channel_GetDSPHead            (FMOD_CHANNEL *channel, FMOD_DSP **dsp);
-FMOD_RESULT  FMOD_Channel_AddDSP                (FMOD_CHANNEL *channel, FMOD_DSP *dsp, FMOD_DSPCONNECTION **connection);
+FMOD_RESULT FMOD_Channel_GetDSPHead            (FMOD_CHANNEL *channel, FMOD_DSP **dsp);
+FMOD_RESULT FMOD_Channel_AddDSP                (FMOD_CHANNEL *channel, FMOD_DSP *dsp, FMOD_DSPCONNECTION **connection);
 
 
 
-FMOD_RESULT  FMOD_Channel_IsPlaying             (FMOD_CHANNEL *channel, FMOD_BOOL *isplaying);
-FMOD_RESULT  FMOD_Channel_IsVirtual             (FMOD_CHANNEL *channel, FMOD_BOOL *isvirtual);
-FMOD_RESULT  FMOD_Channel_GetAudibility         (FMOD_CHANNEL *channel, float *audibility);
-FMOD_RESULT  FMOD_Channel_GetCurrentSound       (FMOD_CHANNEL *channel, FMOD_SOUND **sound);
-FMOD_RESULT  FMOD_Channel_GetSpectrum           (FMOD_CHANNEL *channel, float *spectrumarray, int numvalues, int channeloffset, FMOD_DSP_FFT_WINDOW windowtype);
-FMOD_RESULT  FMOD_Channel_GetWaveData           (FMOD_CHANNEL *channel, float *wavearray, int numvalues, int channeloffset);
-FMOD_RESULT  FMOD_Channel_GetIndex              (FMOD_CHANNEL *channel, int *index);
+FMOD_RESULT FMOD_Channel_IsPlaying             (FMOD_CHANNEL *channel, FMOD_BOOL *isplaying);
+FMOD_RESULT FMOD_Channel_IsVirtual             (FMOD_CHANNEL *channel, FMOD_BOOL *isvirtual);
+FMOD_RESULT FMOD_Channel_GetAudibility         (FMOD_CHANNEL *channel, float *audibility);
+FMOD_RESULT FMOD_Channel_GetCurrentSound       (FMOD_CHANNEL *channel, FMOD_SOUND **sound);
+FMOD_RESULT FMOD_Channel_GetSpectrum           (FMOD_CHANNEL *channel, float *spectrumarray, int numvalues, int channeloffset, FMOD_DSP_FFT_WINDOW windowtype);
+FMOD_RESULT FMOD_Channel_GetWaveData           (FMOD_CHANNEL *channel, float *wavearray, int numvalues, int channeloffset);
+FMOD_RESULT FMOD_Channel_GetIndex              (FMOD_CHANNEL *channel, int *index);
 
 
 
-FMOD_RESULT  FMOD_Channel_SetMode               (FMOD_CHANNEL *channel, FMOD_MODE mode);
-FMOD_RESULT  FMOD_Channel_GetMode               (FMOD_CHANNEL *channel, FMOD_MODE *mode);
-FMOD_RESULT  FMOD_Channel_SetLoopCount          (FMOD_CHANNEL *channel, int loopcount);
-FMOD_RESULT  FMOD_Channel_GetLoopCount          (FMOD_CHANNEL *channel, int *loopcount);
-FMOD_RESULT  FMOD_Channel_SetLoopPoints         (FMOD_CHANNEL *channel, unsigned int loopstart, FMOD_TIMEUNIT loopstarttype, unsigned int loopend, FMOD_TIMEUNIT loopendtype);
-FMOD_RESULT  FMOD_Channel_GetLoopPoints         (FMOD_CHANNEL *channel, unsigned int *loopstart, FMOD_TIMEUNIT loopstarttype, unsigned int *loopend, FMOD_TIMEUNIT loopendtype);
+FMOD_RESULT FMOD_Channel_SetMode               (FMOD_CHANNEL *channel, FMOD_MODE mode);
+FMOD_RESULT FMOD_Channel_GetMode               (FMOD_CHANNEL *channel, FMOD_MODE *mode);
+FMOD_RESULT FMOD_Channel_SetLoopCount          (FMOD_CHANNEL *channel, int loopcount);
+FMOD_RESULT FMOD_Channel_GetLoopCount          (FMOD_CHANNEL *channel, int *loopcount);
+FMOD_RESULT FMOD_Channel_SetLoopPoints         (FMOD_CHANNEL *channel, unsigned int loopstart, FMOD_TIMEUNIT loopstarttype, unsigned int loopend, FMOD_TIMEUNIT loopendtype);
+FMOD_RESULT FMOD_Channel_GetLoopPoints         (FMOD_CHANNEL *channel, unsigned int *loopstart, FMOD_TIMEUNIT loopstarttype, unsigned int *loopend, FMOD_TIMEUNIT loopendtype);
 
 
 
-FMOD_RESULT  FMOD_Channel_SetUserData           (FMOD_CHANNEL *channel, void *userdata);
-FMOD_RESULT  FMOD_Channel_GetUserData           (FMOD_CHANNEL *channel, void **userdata);
+FMOD_RESULT FMOD_Channel_SetUserData           (FMOD_CHANNEL *channel, void *userdata);
+FMOD_RESULT FMOD_Channel_GetUserData           (FMOD_CHANNEL *channel, void **userdata);
 
-FMOD_RESULT  FMOD_Channel_GetMemoryInfo         (FMOD_CHANNEL *channel, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_Channel_GetMemoryInfo         (FMOD_CHANNEL *channel, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_ChannelGroup_Release          (FMOD_CHANNELGROUP *channelgroup);
-FMOD_RESULT  FMOD_ChannelGroup_GetSystemObject  (FMOD_CHANNELGROUP *channelgroup, FMOD_SYSTEM **system);
+FMOD_RESULT FMOD_ChannelGroup_Release          (FMOD_CHANNELGROUP *channelgroup);
+FMOD_RESULT FMOD_ChannelGroup_GetSystemObject  (FMOD_CHANNELGROUP *channelgroup, FMOD_SYSTEM **system);
 
 
 
-FMOD_RESULT  FMOD_ChannelGroup_SetVolume        (FMOD_CHANNELGROUP *channelgroup, float volume);
-FMOD_RESULT  FMOD_ChannelGroup_GetVolume        (FMOD_CHANNELGROUP *channelgroup, float *volume);
-FMOD_RESULT  FMOD_ChannelGroup_SetPitch         (FMOD_CHANNELGROUP *channelgroup, float pitch);
-FMOD_RESULT  FMOD_ChannelGroup_GetPitch         (FMOD_CHANNELGROUP *channelgroup, float *pitch);
-FMOD_RESULT  FMOD_ChannelGroup_Set3DOcclusion   (FMOD_CHANNELGROUP *channelgroup, float directocclusion, float reverbocclusion);
-FMOD_RESULT  FMOD_ChannelGroup_Get3DOcclusion   (FMOD_CHANNELGROUP *channelgroup, float *directocclusion, float *reverbocclusion);
-FMOD_RESULT  FMOD_ChannelGroup_SetPaused        (FMOD_CHANNELGROUP *channelgroup, FMOD_BOOL paused);
-FMOD_RESULT  FMOD_ChannelGroup_GetPaused        (FMOD_CHANNELGROUP *channelgroup, FMOD_BOOL *paused);
-FMOD_RESULT  FMOD_ChannelGroup_SetMute          (FMOD_CHANNELGROUP *channelgroup, FMOD_BOOL mute);
-FMOD_RESULT  FMOD_ChannelGroup_GetMute          (FMOD_CHANNELGROUP *channelgroup, FMOD_BOOL *mute);
+FMOD_RESULT FMOD_ChannelGroup_SetVolume        (FMOD_CHANNELGROUP *channelgroup, float volume);
+FMOD_RESULT FMOD_ChannelGroup_GetVolume        (FMOD_CHANNELGROUP *channelgroup, float *volume);
+FMOD_RESULT FMOD_ChannelGroup_SetPitch         (FMOD_CHANNELGROUP *channelgroup, float pitch);
+FMOD_RESULT FMOD_ChannelGroup_GetPitch         (FMOD_CHANNELGROUP *channelgroup, float *pitch);
+FMOD_RESULT FMOD_ChannelGroup_Set3DOcclusion   (FMOD_CHANNELGROUP *channelgroup, float directocclusion, float reverbocclusion);
+FMOD_RESULT FMOD_ChannelGroup_Get3DOcclusion   (FMOD_CHANNELGROUP *channelgroup, float *directocclusion, float *reverbocclusion);
+FMOD_RESULT FMOD_ChannelGroup_SetPaused        (FMOD_CHANNELGROUP *channelgroup, FMOD_BOOL paused);
+FMOD_RESULT FMOD_ChannelGroup_GetPaused        (FMOD_CHANNELGROUP *channelgroup, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_ChannelGroup_SetMute          (FMOD_CHANNELGROUP *channelgroup, FMOD_BOOL mute);
+FMOD_RESULT FMOD_ChannelGroup_GetMute          (FMOD_CHANNELGROUP *channelgroup, FMOD_BOOL *mute);
 
 
 
-FMOD_RESULT  FMOD_ChannelGroup_Stop             (FMOD_CHANNELGROUP *channelgroup);
-FMOD_RESULT  FMOD_ChannelGroup_OverrideVolume   (FMOD_CHANNELGROUP *channelgroup, float volume);
-FMOD_RESULT  FMOD_ChannelGroup_OverrideFrequency(FMOD_CHANNELGROUP *channelgroup, float frequency);
-FMOD_RESULT  FMOD_ChannelGroup_OverridePan      (FMOD_CHANNELGROUP *channelgroup, float pan);
-FMOD_RESULT  FMOD_ChannelGroup_OverrideReverbProperties(FMOD_CHANNELGROUP *channelgroup, const FMOD_REVERB_CHANNELPROPERTIES *prop);
-FMOD_RESULT  FMOD_ChannelGroup_Override3DAttributes(FMOD_CHANNELGROUP *channelgroup, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel);
-FMOD_RESULT  FMOD_ChannelGroup_OverrideSpeakerMix(FMOD_CHANNELGROUP *channelgroup, float frontleft, float frontright, float center, float lfe, float backleft, float backright, float sideleft, float sideright);
+FMOD_RESULT FMOD_ChannelGroup_Stop             (FMOD_CHANNELGROUP *channelgroup);
+FMOD_RESULT FMOD_ChannelGroup_OverrideVolume   (FMOD_CHANNELGROUP *channelgroup, float volume);
+FMOD_RESULT FMOD_ChannelGroup_OverrideFrequency(FMOD_CHANNELGROUP *channelgroup, float frequency);
+FMOD_RESULT FMOD_ChannelGroup_OverridePan      (FMOD_CHANNELGROUP *channelgroup, float pan);
+FMOD_RESULT FMOD_ChannelGroup_OverrideReverbProperties(FMOD_CHANNELGROUP *channelgroup, const FMOD_REVERB_CHANNELPROPERTIES *prop);
+FMOD_RESULT FMOD_ChannelGroup_Override3DAttributes(FMOD_CHANNELGROUP *channelgroup, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel);
+FMOD_RESULT FMOD_ChannelGroup_OverrideSpeakerMix(FMOD_CHANNELGROUP *channelgroup, float frontleft, float frontright, float center, float lfe, float backleft, float backright, float sideleft, float sideright);
 
 
 
-FMOD_RESULT  FMOD_ChannelGroup_AddGroup         (FMOD_CHANNELGROUP *channelgroup, FMOD_CHANNELGROUP *group);
-FMOD_RESULT  FMOD_ChannelGroup_GetNumGroups     (FMOD_CHANNELGROUP *channelgroup, int *numgroups);
-FMOD_RESULT  FMOD_ChannelGroup_GetGroup         (FMOD_CHANNELGROUP *channelgroup, int index, FMOD_CHANNELGROUP **group);
-FMOD_RESULT  FMOD_ChannelGroup_GetParentGroup   (FMOD_CHANNELGROUP *channelgroup, FMOD_CHANNELGROUP **group);
+FMOD_RESULT FMOD_ChannelGroup_AddGroup         (FMOD_CHANNELGROUP *channelgroup, FMOD_CHANNELGROUP *group);
+FMOD_RESULT FMOD_ChannelGroup_GetNumGroups     (FMOD_CHANNELGROUP *channelgroup, int *numgroups);
+FMOD_RESULT FMOD_ChannelGroup_GetGroup         (FMOD_CHANNELGROUP *channelgroup, int index, FMOD_CHANNELGROUP **group);
+FMOD_RESULT FMOD_ChannelGroup_GetParentGroup   (FMOD_CHANNELGROUP *channelgroup, FMOD_CHANNELGROUP **group);
 
 
 
-FMOD_RESULT  FMOD_ChannelGroup_GetDSPHead       (FMOD_CHANNELGROUP *channelgroup, FMOD_DSP **dsp);
-FMOD_RESULT  FMOD_ChannelGroup_AddDSP           (FMOD_CHANNELGROUP *channelgroup, FMOD_DSP *dsp, FMOD_DSPCONNECTION **connection);
+FMOD_RESULT FMOD_ChannelGroup_GetDSPHead       (FMOD_CHANNELGROUP *channelgroup, FMOD_DSP **dsp);
+FMOD_RESULT FMOD_ChannelGroup_AddDSP           (FMOD_CHANNELGROUP *channelgroup, FMOD_DSP *dsp, FMOD_DSPCONNECTION **connection);
 
 
 
-FMOD_RESULT  FMOD_ChannelGroup_GetName          (FMOD_CHANNELGROUP *channelgroup, char *name, int namelen);
-FMOD_RESULT  FMOD_ChannelGroup_GetNumChannels   (FMOD_CHANNELGROUP *channelgroup, int *numchannels);
-FMOD_RESULT  FMOD_ChannelGroup_GetChannel       (FMOD_CHANNELGROUP *channelgroup, int index, FMOD_CHANNEL **channel);
-FMOD_RESULT  FMOD_ChannelGroup_GetSpectrum      (FMOD_CHANNELGROUP *channelgroup, float *spectrumarray, int numvalues, int channeloffset, FMOD_DSP_FFT_WINDOW windowtype);
-FMOD_RESULT  FMOD_ChannelGroup_GetWaveData      (FMOD_CHANNELGROUP *channelgroup, float *wavearray, int numvalues, int channeloffset);
+FMOD_RESULT FMOD_ChannelGroup_GetName          (FMOD_CHANNELGROUP *channelgroup, char *name, int namelen);
+FMOD_RESULT FMOD_ChannelGroup_GetNumChannels   (FMOD_CHANNELGROUP *channelgroup, int *numchannels);
+FMOD_RESULT FMOD_ChannelGroup_GetChannel       (FMOD_CHANNELGROUP *channelgroup, int index, FMOD_CHANNEL **channel);
+FMOD_RESULT FMOD_ChannelGroup_GetSpectrum      (FMOD_CHANNELGROUP *channelgroup, float *spectrumarray, int numvalues, int channeloffset, FMOD_DSP_FFT_WINDOW windowtype);
+FMOD_RESULT FMOD_ChannelGroup_GetWaveData      (FMOD_CHANNELGROUP *channelgroup, float *wavearray, int numvalues, int channeloffset);
 
 
 
-FMOD_RESULT  FMOD_ChannelGroup_SetUserData      (FMOD_CHANNELGROUP *channelgroup, void *userdata);
-FMOD_RESULT  FMOD_ChannelGroup_GetUserData      (FMOD_CHANNELGROUP *channelgroup, void **userdata);
+FMOD_RESULT FMOD_ChannelGroup_SetUserData      (FMOD_CHANNELGROUP *channelgroup, void *userdata);
+FMOD_RESULT FMOD_ChannelGroup_GetUserData      (FMOD_CHANNELGROUP *channelgroup, void **userdata);
 
-FMOD_RESULT  FMOD_ChannelGroup_GetMemoryInfo    (FMOD_CHANNELGROUP *channelgroup, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_ChannelGroup_GetMemoryInfo    (FMOD_CHANNELGROUP *channelgroup, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_SoundGroup_Release            (FMOD_SOUNDGROUP *soundgroup);
-FMOD_RESULT  FMOD_SoundGroup_GetSystemObject    (FMOD_SOUNDGROUP *soundgroup, FMOD_SYSTEM **system);
+FMOD_RESULT FMOD_SoundGroup_Release            (FMOD_SOUNDGROUP *soundgroup);
+FMOD_RESULT FMOD_SoundGroup_GetSystemObject    (FMOD_SOUNDGROUP *soundgroup, FMOD_SYSTEM **system);
 
 
 
-FMOD_RESULT  FMOD_SoundGroup_SetMaxAudible      (FMOD_SOUNDGROUP *soundgroup, int maxaudible);
-FMOD_RESULT  FMOD_SoundGroup_GetMaxAudible      (FMOD_SOUNDGROUP *soundgroup, int *maxaudible);
-FMOD_RESULT  FMOD_SoundGroup_SetMaxAudibleBehavior(FMOD_SOUNDGROUP *soundgroup, FMOD_SOUNDGROUP_BEHAVIOR behavior);
-FMOD_RESULT  FMOD_SoundGroup_GetMaxAudibleBehavior(FMOD_SOUNDGROUP *soundgroup, FMOD_SOUNDGROUP_BEHAVIOR *behavior);
-FMOD_RESULT  FMOD_SoundGroup_SetMuteFadeSpeed   (FMOD_SOUNDGROUP *soundgroup, float speed);
-FMOD_RESULT  FMOD_SoundGroup_GetMuteFadeSpeed   (FMOD_SOUNDGROUP *soundgroup, float *speed);
-FMOD_RESULT  FMOD_SoundGroup_SetVolume          (FMOD_SOUNDGROUP *soundgroup, float volume);
-FMOD_RESULT  FMOD_SoundGroup_GetVolume          (FMOD_SOUNDGROUP *soundgroup, float *volume);
-FMOD_RESULT  FMOD_SoundGroup_Stop               (FMOD_SOUNDGROUP *soundgroup);
+FMOD_RESULT FMOD_SoundGroup_SetMaxAudible      (FMOD_SOUNDGROUP *soundgroup, int maxaudible);
+FMOD_RESULT FMOD_SoundGroup_GetMaxAudible      (FMOD_SOUNDGROUP *soundgroup, int *maxaudible);
+FMOD_RESULT FMOD_SoundGroup_SetMaxAudibleBehavior(FMOD_SOUNDGROUP *soundgroup, FMOD_SOUNDGROUP_BEHAVIOR behavior);
+FMOD_RESULT FMOD_SoundGroup_GetMaxAudibleBehavior(FMOD_SOUNDGROUP *soundgroup, FMOD_SOUNDGROUP_BEHAVIOR *behavior);
+FMOD_RESULT FMOD_SoundGroup_SetMuteFadeSpeed   (FMOD_SOUNDGROUP *soundgroup, float speed);
+FMOD_RESULT FMOD_SoundGroup_GetMuteFadeSpeed   (FMOD_SOUNDGROUP *soundgroup, float *speed);
+FMOD_RESULT FMOD_SoundGroup_SetVolume          (FMOD_SOUNDGROUP *soundgroup, float volume);
+FMOD_RESULT FMOD_SoundGroup_GetVolume          (FMOD_SOUNDGROUP *soundgroup, float *volume);
+FMOD_RESULT FMOD_SoundGroup_Stop               (FMOD_SOUNDGROUP *soundgroup);
 
 
 
-FMOD_RESULT  FMOD_SoundGroup_GetName            (FMOD_SOUNDGROUP *soundgroup, char *name, int namelen);
-FMOD_RESULT  FMOD_SoundGroup_GetNumSounds       (FMOD_SOUNDGROUP *soundgroup, int *numsounds);
-FMOD_RESULT  FMOD_SoundGroup_GetSound           (FMOD_SOUNDGROUP *soundgroup, int index, FMOD_SOUND **sound);
-FMOD_RESULT  FMOD_SoundGroup_GetNumPlaying      (FMOD_SOUNDGROUP *soundgroup, int *numplaying);
+FMOD_RESULT FMOD_SoundGroup_GetName            (FMOD_SOUNDGROUP *soundgroup, char *name, int namelen);
+FMOD_RESULT FMOD_SoundGroup_GetNumSounds       (FMOD_SOUNDGROUP *soundgroup, int *numsounds);
+FMOD_RESULT FMOD_SoundGroup_GetSound           (FMOD_SOUNDGROUP *soundgroup, int index, FMOD_SOUND **sound);
+FMOD_RESULT FMOD_SoundGroup_GetNumPlaying      (FMOD_SOUNDGROUP *soundgroup, int *numplaying);
 
 
 
-FMOD_RESULT  FMOD_SoundGroup_SetUserData        (FMOD_SOUNDGROUP *soundgroup, void *userdata);
-FMOD_RESULT  FMOD_SoundGroup_GetUserData        (FMOD_SOUNDGROUP *soundgroup, void **userdata);
+FMOD_RESULT FMOD_SoundGroup_SetUserData        (FMOD_SOUNDGROUP *soundgroup, void *userdata);
+FMOD_RESULT FMOD_SoundGroup_GetUserData        (FMOD_SOUNDGROUP *soundgroup, void **userdata);
 
-FMOD_RESULT  FMOD_SoundGroup_GetMemoryInfo      (FMOD_SOUNDGROUP *soundgroup, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_SoundGroup_GetMemoryInfo      (FMOD_SOUNDGROUP *soundgroup, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_DSP_Release                   (FMOD_DSP *dsp);
-FMOD_RESULT  FMOD_DSP_GetSystemObject           (FMOD_DSP *dsp, FMOD_SYSTEM **system);
+FMOD_RESULT FMOD_DSP_Release                   (FMOD_DSP *dsp);
+FMOD_RESULT FMOD_DSP_GetSystemObject           (FMOD_DSP *dsp, FMOD_SYSTEM **system);
 
 
 
-FMOD_RESULT  FMOD_DSP_AddInput                  (FMOD_DSP *dsp, FMOD_DSP *target, FMOD_DSPCONNECTION **connection);
-FMOD_RESULT  FMOD_DSP_DisconnectFrom            (FMOD_DSP *dsp, FMOD_DSP *target);
-FMOD_RESULT  FMOD_DSP_DisconnectAll             (FMOD_DSP *dsp, FMOD_BOOL inputs, FMOD_BOOL outputs);
-FMOD_RESULT  FMOD_DSP_Remove                    (FMOD_DSP *dsp);
-FMOD_RESULT  FMOD_DSP_GetNumInputs              (FMOD_DSP *dsp, int *numinputs);
-FMOD_RESULT  FMOD_DSP_GetNumOutputs             (FMOD_DSP *dsp, int *numoutputs);
-FMOD_RESULT  FMOD_DSP_GetInput                  (FMOD_DSP *dsp, int index, FMOD_DSP **input, FMOD_DSPCONNECTION **inputconnection);
-FMOD_RESULT  FMOD_DSP_GetOutput                 (FMOD_DSP *dsp, int index, FMOD_DSP **output, FMOD_DSPCONNECTION **outputconnection);
+FMOD_RESULT FMOD_DSP_AddInput                  (FMOD_DSP *dsp, FMOD_DSP *target, FMOD_DSPCONNECTION **connection);
+FMOD_RESULT FMOD_DSP_DisconnectFrom            (FMOD_DSP *dsp, FMOD_DSP *target);
+FMOD_RESULT FMOD_DSP_DisconnectAll             (FMOD_DSP *dsp, FMOD_BOOL inputs, FMOD_BOOL outputs);
+FMOD_RESULT FMOD_DSP_Remove                    (FMOD_DSP *dsp);
+FMOD_RESULT FMOD_DSP_GetNumInputs              (FMOD_DSP *dsp, int *numinputs);
+FMOD_RESULT FMOD_DSP_GetNumOutputs             (FMOD_DSP *dsp, int *numoutputs);
+FMOD_RESULT FMOD_DSP_GetInput                  (FMOD_DSP *dsp, int index, FMOD_DSP **input, FMOD_DSPCONNECTION **inputconnection);
+FMOD_RESULT FMOD_DSP_GetOutput                 (FMOD_DSP *dsp, int index, FMOD_DSP **output, FMOD_DSPCONNECTION **outputconnection);
 
 
 
-FMOD_RESULT  FMOD_DSP_SetActive                 (FMOD_DSP *dsp, FMOD_BOOL active);
-FMOD_RESULT  FMOD_DSP_GetActive                 (FMOD_DSP *dsp, FMOD_BOOL *active);
-FMOD_RESULT  FMOD_DSP_SetBypass                 (FMOD_DSP *dsp, FMOD_BOOL bypass);
-FMOD_RESULT  FMOD_DSP_GetBypass                 (FMOD_DSP *dsp, FMOD_BOOL *bypass);
-FMOD_RESULT  FMOD_DSP_SetSpeakerActive          (FMOD_DSP *dsp, FMOD_SPEAKER speaker, FMOD_BOOL active);
-FMOD_RESULT  FMOD_DSP_GetSpeakerActive          (FMOD_DSP *dsp, FMOD_SPEAKER speaker, FMOD_BOOL *active);
-FMOD_RESULT  FMOD_DSP_Reset                     (FMOD_DSP *dsp);
+FMOD_RESULT FMOD_DSP_SetActive                 (FMOD_DSP *dsp, FMOD_BOOL active);
+FMOD_RESULT FMOD_DSP_GetActive                 (FMOD_DSP *dsp, FMOD_BOOL *active);
+FMOD_RESULT FMOD_DSP_SetBypass                 (FMOD_DSP *dsp, FMOD_BOOL bypass);
+FMOD_RESULT FMOD_DSP_GetBypass                 (FMOD_DSP *dsp, FMOD_BOOL *bypass);
+FMOD_RESULT FMOD_DSP_SetSpeakerActive          (FMOD_DSP *dsp, FMOD_SPEAKER speaker, FMOD_BOOL active);
+FMOD_RESULT FMOD_DSP_GetSpeakerActive          (FMOD_DSP *dsp, FMOD_SPEAKER speaker, FMOD_BOOL *active);
+FMOD_RESULT FMOD_DSP_Reset                     (FMOD_DSP *dsp);
 
 
 
-FMOD_RESULT  FMOD_DSP_SetParameter              (FMOD_DSP *dsp, int index, float value);
-FMOD_RESULT  FMOD_DSP_GetParameter              (FMOD_DSP *dsp, int index, float *value, char *valuestr, int valuestrlen);
-FMOD_RESULT  FMOD_DSP_GetNumParameters          (FMOD_DSP *dsp, int *numparams);
-FMOD_RESULT  FMOD_DSP_GetParameterInfo          (FMOD_DSP *dsp, int index, char *name, char *label, char *description, int descriptionlen, float *min, float *max);
-FMOD_RESULT  FMOD_DSP_ShowConfigDialog          (FMOD_DSP *dsp, void *hwnd, FMOD_BOOL show);
+FMOD_RESULT FMOD_DSP_SetParameter              (FMOD_DSP *dsp, int index, float value);
+FMOD_RESULT FMOD_DSP_GetParameter              (FMOD_DSP *dsp, int index, float *value, char *valuestr, int valuestrlen);
+FMOD_RESULT FMOD_DSP_GetNumParameters          (FMOD_DSP *dsp, int *numparams);
+FMOD_RESULT FMOD_DSP_GetParameterInfo          (FMOD_DSP *dsp, int index, char *name, char *label, char *description, int descriptionlen, float *min, float *max);
+FMOD_RESULT FMOD_DSP_ShowConfigDialog          (FMOD_DSP *dsp, void *hwnd, FMOD_BOOL show);
 
 
 
-FMOD_RESULT  FMOD_DSP_GetInfo                   (FMOD_DSP *dsp, char *name, unsigned int *version, int *channels, int *configwidth, int *configheight);
-FMOD_RESULT  FMOD_DSP_GetType                   (FMOD_DSP *dsp, FMOD_DSP_TYPE *type);
-FMOD_RESULT  FMOD_DSP_SetDefaults               (FMOD_DSP *dsp, float frequency, float volume, float pan, int priority);
-FMOD_RESULT  FMOD_DSP_GetDefaults               (FMOD_DSP *dsp, float *frequency, float *volume, float *pan, int *priority);
+FMOD_RESULT FMOD_DSP_GetInfo                   (FMOD_DSP *dsp, char *name, unsigned int *version, int *channels, int *configwidth, int *configheight);
+FMOD_RESULT FMOD_DSP_GetType                   (FMOD_DSP *dsp, FMOD_DSP_TYPE *type);
+FMOD_RESULT FMOD_DSP_SetDefaults               (FMOD_DSP *dsp, float frequency, float volume, float pan, int priority);
+FMOD_RESULT FMOD_DSP_GetDefaults               (FMOD_DSP *dsp, float *frequency, float *volume, float *pan, int *priority);
 
 
 
-FMOD_RESULT  FMOD_DSP_SetUserData               (FMOD_DSP *dsp, void *userdata);
-FMOD_RESULT  FMOD_DSP_GetUserData               (FMOD_DSP *dsp, void **userdata);
+FMOD_RESULT FMOD_DSP_SetUserData               (FMOD_DSP *dsp, void *userdata);
+FMOD_RESULT FMOD_DSP_GetUserData               (FMOD_DSP *dsp, void **userdata);
 
-FMOD_RESULT  FMOD_DSP_GetMemoryInfo             (FMOD_DSP *dsp, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_DSP_GetMemoryInfo             (FMOD_DSP *dsp, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_DSPConnection_GetInput        (FMOD_DSPCONNECTION *dspconnection, FMOD_DSP **input);
-FMOD_RESULT  FMOD_DSPConnection_GetOutput       (FMOD_DSPCONNECTION *dspconnection, FMOD_DSP **output);
-FMOD_RESULT  FMOD_DSPConnection_SetMix          (FMOD_DSPCONNECTION *dspconnection, float volume);
-FMOD_RESULT  FMOD_DSPConnection_GetMix          (FMOD_DSPCONNECTION *dspconnection, float *volume);
-FMOD_RESULT  FMOD_DSPConnection_SetLevels       (FMOD_DSPCONNECTION *dspconnection, FMOD_SPEAKER speaker, float *levels, int numlevels);
-FMOD_RESULT  FMOD_DSPConnection_GetLevels       (FMOD_DSPCONNECTION *dspconnection, FMOD_SPEAKER speaker, float *levels, int numlevels);
+FMOD_RESULT FMOD_DSPConnection_GetInput        (FMOD_DSPCONNECTION *dspconnection, FMOD_DSP **input);
+FMOD_RESULT FMOD_DSPConnection_GetOutput       (FMOD_DSPCONNECTION *dspconnection, FMOD_DSP **output);
+FMOD_RESULT FMOD_DSPConnection_SetMix          (FMOD_DSPCONNECTION *dspconnection, float volume);
+FMOD_RESULT FMOD_DSPConnection_GetMix          (FMOD_DSPCONNECTION *dspconnection, float *volume);
+FMOD_RESULT FMOD_DSPConnection_SetLevels       (FMOD_DSPCONNECTION *dspconnection, FMOD_SPEAKER speaker, float *levels, int numlevels);
+FMOD_RESULT FMOD_DSPConnection_GetLevels       (FMOD_DSPCONNECTION *dspconnection, FMOD_SPEAKER speaker, float *levels, int numlevels);
 
 
 
-FMOD_RESULT  FMOD_DSPConnection_SetUserData     (FMOD_DSPCONNECTION *dspconnection, void *userdata);
-FMOD_RESULT  FMOD_DSPConnection_GetUserData     (FMOD_DSPCONNECTION *dspconnection, void **userdata);
+FMOD_RESULT FMOD_DSPConnection_SetUserData     (FMOD_DSPCONNECTION *dspconnection, void *userdata);
+FMOD_RESULT FMOD_DSPConnection_GetUserData     (FMOD_DSPCONNECTION *dspconnection, void **userdata);
 
-FMOD_RESULT  FMOD_DSPConnection_GetMemoryInfo   (FMOD_DSPCONNECTION *dspconnection, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_DSPConnection_GetMemoryInfo   (FMOD_DSPCONNECTION *dspconnection, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_Geometry_Release              (FMOD_GEOMETRY *geometry);
+FMOD_RESULT FMOD_Geometry_Release              (FMOD_GEOMETRY *geometry);
 
 
 
-FMOD_RESULT  FMOD_Geometry_AddPolygon           (FMOD_GEOMETRY *geometry, float directocclusion, float reverbocclusion, FMOD_BOOL doublesided, int numvertices, const FMOD_VECTOR *vertices, int *polygonindex);
-FMOD_RESULT  FMOD_Geometry_GetNumPolygons       (FMOD_GEOMETRY *geometry, int *numpolygons);
-FMOD_RESULT  FMOD_Geometry_GetMaxPolygons       (FMOD_GEOMETRY *geometry, int *maxpolygons, int *maxvertices);
-FMOD_RESULT  FMOD_Geometry_GetPolygonNumVertices(FMOD_GEOMETRY *geometry, int index, int *numvertices);
-FMOD_RESULT  FMOD_Geometry_SetPolygonVertex     (FMOD_GEOMETRY *geometry, int index, int vertexindex, const FMOD_VECTOR *vertex);
-FMOD_RESULT  FMOD_Geometry_GetPolygonVertex     (FMOD_GEOMETRY *geometry, int index, int vertexindex, FMOD_VECTOR *vertex);
-FMOD_RESULT  FMOD_Geometry_SetPolygonAttributes (FMOD_GEOMETRY *geometry, int index, float directocclusion, float reverbocclusion, FMOD_BOOL doublesided);
-FMOD_RESULT  FMOD_Geometry_GetPolygonAttributes (FMOD_GEOMETRY *geometry, int index, float *directocclusion, float *reverbocclusion, FMOD_BOOL *doublesided);
+FMOD_RESULT FMOD_Geometry_AddPolygon           (FMOD_GEOMETRY *geometry, float directocclusion, float reverbocclusion, FMOD_BOOL doublesided, int numvertices, const FMOD_VECTOR *vertices, int *polygonindex);
+FMOD_RESULT FMOD_Geometry_GetNumPolygons       (FMOD_GEOMETRY *geometry, int *numpolygons);
+FMOD_RESULT FMOD_Geometry_GetMaxPolygons       (FMOD_GEOMETRY *geometry, int *maxpolygons, int *maxvertices);
+FMOD_RESULT FMOD_Geometry_GetPolygonNumVertices(FMOD_GEOMETRY *geometry, int index, int *numvertices);
+FMOD_RESULT FMOD_Geometry_SetPolygonVertex     (FMOD_GEOMETRY *geometry, int index, int vertexindex, const FMOD_VECTOR *vertex);
+FMOD_RESULT FMOD_Geometry_GetPolygonVertex     (FMOD_GEOMETRY *geometry, int index, int vertexindex, FMOD_VECTOR *vertex);
+FMOD_RESULT FMOD_Geometry_SetPolygonAttributes (FMOD_GEOMETRY *geometry, int index, float directocclusion, float reverbocclusion, FMOD_BOOL doublesided);
+FMOD_RESULT FMOD_Geometry_GetPolygonAttributes (FMOD_GEOMETRY *geometry, int index, float *directocclusion, float *reverbocclusion, FMOD_BOOL *doublesided);
 
 
 
-FMOD_RESULT  FMOD_Geometry_SetActive            (FMOD_GEOMETRY *geometry, FMOD_BOOL active);
-FMOD_RESULT  FMOD_Geometry_GetActive            (FMOD_GEOMETRY *geometry, FMOD_BOOL *active);
-FMOD_RESULT  FMOD_Geometry_SetRotation          (FMOD_GEOMETRY *geometry, const FMOD_VECTOR *forward, const FMOD_VECTOR *up);
-FMOD_RESULT  FMOD_Geometry_GetRotation          (FMOD_GEOMETRY *geometry, FMOD_VECTOR *forward, FMOD_VECTOR *up);
-FMOD_RESULT  FMOD_Geometry_SetPosition          (FMOD_GEOMETRY *geometry, const FMOD_VECTOR *position);
-FMOD_RESULT  FMOD_Geometry_GetPosition          (FMOD_GEOMETRY *geometry, FMOD_VECTOR *position);
-FMOD_RESULT  FMOD_Geometry_SetScale             (FMOD_GEOMETRY *geometry, const FMOD_VECTOR *scale);
-FMOD_RESULT  FMOD_Geometry_GetScale             (FMOD_GEOMETRY *geometry, FMOD_VECTOR *scale);
-FMOD_RESULT  FMOD_Geometry_Save                 (FMOD_GEOMETRY *geometry, void *data, int *datasize);
+FMOD_RESULT FMOD_Geometry_SetActive            (FMOD_GEOMETRY *geometry, FMOD_BOOL active);
+FMOD_RESULT FMOD_Geometry_GetActive            (FMOD_GEOMETRY *geometry, FMOD_BOOL *active);
+FMOD_RESULT FMOD_Geometry_SetRotation          (FMOD_GEOMETRY *geometry, const FMOD_VECTOR *forward, const FMOD_VECTOR *up);
+FMOD_RESULT FMOD_Geometry_GetRotation          (FMOD_GEOMETRY *geometry, FMOD_VECTOR *forward, FMOD_VECTOR *up);
+FMOD_RESULT FMOD_Geometry_SetPosition          (FMOD_GEOMETRY *geometry, const FMOD_VECTOR *position);
+FMOD_RESULT FMOD_Geometry_GetPosition          (FMOD_GEOMETRY *geometry, FMOD_VECTOR *position);
+FMOD_RESULT FMOD_Geometry_SetScale             (FMOD_GEOMETRY *geometry, const FMOD_VECTOR *scale);
+FMOD_RESULT FMOD_Geometry_GetScale             (FMOD_GEOMETRY *geometry, FMOD_VECTOR *scale);
+FMOD_RESULT FMOD_Geometry_Save                 (FMOD_GEOMETRY *geometry, void *data, int *datasize);
 
 
 
-FMOD_RESULT  FMOD_Geometry_SetUserData          (FMOD_GEOMETRY *geometry, void *userdata);
-FMOD_RESULT  FMOD_Geometry_GetUserData          (FMOD_GEOMETRY *geometry, void **userdata);
+FMOD_RESULT FMOD_Geometry_SetUserData          (FMOD_GEOMETRY *geometry, void *userdata);
+FMOD_RESULT FMOD_Geometry_GetUserData          (FMOD_GEOMETRY *geometry, void **userdata);
 
-FMOD_RESULT  FMOD_Geometry_GetMemoryInfo        (FMOD_GEOMETRY *geometry, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_Geometry_GetMemoryInfo        (FMOD_GEOMETRY *geometry, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_Reverb_Release                (FMOD_REVERB *reverb);
+FMOD_RESULT FMOD_Reverb_Release                (FMOD_REVERB *reverb);
 
 
 
-FMOD_RESULT  FMOD_Reverb_Set3DAttributes        (FMOD_REVERB *reverb, const FMOD_VECTOR *position, float mindistance, float maxdistance);
-FMOD_RESULT  FMOD_Reverb_Get3DAttributes        (FMOD_REVERB *reverb, FMOD_VECTOR *position, float *mindistance, float *maxdistance);
-FMOD_RESULT  FMOD_Reverb_SetProperties          (FMOD_REVERB *reverb, const FMOD_REVERB_PROPERTIES *properties);
-FMOD_RESULT  FMOD_Reverb_GetProperties          (FMOD_REVERB *reverb, FMOD_REVERB_PROPERTIES *properties);
-FMOD_RESULT  FMOD_Reverb_SetActive              (FMOD_REVERB *reverb, FMOD_BOOL active);
-FMOD_RESULT  FMOD_Reverb_GetActive              (FMOD_REVERB *reverb, FMOD_BOOL *active);
+FMOD_RESULT FMOD_Reverb_Set3DAttributes        (FMOD_REVERB *reverb, const FMOD_VECTOR *position, float mindistance, float maxdistance);
+FMOD_RESULT FMOD_Reverb_Get3DAttributes        (FMOD_REVERB *reverb, FMOD_VECTOR *position, float *mindistance, float *maxdistance);
+FMOD_RESULT FMOD_Reverb_SetProperties          (FMOD_REVERB *reverb, const FMOD_REVERB_PROPERTIES *properties);
+FMOD_RESULT FMOD_Reverb_GetProperties          (FMOD_REVERB *reverb, FMOD_REVERB_PROPERTIES *properties);
+FMOD_RESULT FMOD_Reverb_SetActive              (FMOD_REVERB *reverb, FMOD_BOOL active);
+FMOD_RESULT FMOD_Reverb_GetActive              (FMOD_REVERB *reverb, FMOD_BOOL *active);
 
 
 
-FMOD_RESULT  FMOD_Reverb_SetUserData            (FMOD_REVERB *reverb, void *userdata);
-FMOD_RESULT  FMOD_Reverb_GetUserData            (FMOD_REVERB *reverb, void **userdata);
+FMOD_RESULT FMOD_Reverb_SetUserData            (FMOD_REVERB *reverb, void *userdata);
+FMOD_RESULT FMOD_Reverb_GetUserData            (FMOD_REVERB *reverb, void **userdata);
 
-FMOD_RESULT  FMOD_Reverb_GetMemoryInfo          (FMOD_REVERB *reverb, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_Reverb_GetMemoryInfo          (FMOD_REVERB *reverb, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
@@ -2092,6 +2113,8 @@ typedef struct FMOD_EVENT_SYSTEMINFO
 {
 
 
+
+
     int                      numevents;          
     int                      numinstances;       
     int                      maxwavebanks;       
@@ -2106,6 +2129,8 @@ typedef struct FMOD_EVENT_SYSTEMINFO
 
 typedef struct FMOD_EVENT_PROJECTINFO
 {
+
+
 
 
     int                      index;            
@@ -2123,6 +2148,8 @@ typedef struct FMOD_EVENT_PROJECTINFO
 
 typedef struct FMOD_EVENT_INFO
 {
+
+
 
 
     int                      memoryused;        
@@ -2157,6 +2184,8 @@ typedef struct FMOD_EVENT_SOUNDDEFINFO
 {
 
 
+
+
     char                    *name;              
     int                      numentries;        
     const char             **entrynames;        
@@ -2170,6 +2199,8 @@ typedef struct FMOD_EVENT_LOADINFO
 {
 
 
+
+
     unsigned int  size;                         
     char         *encryptionkey;                
     float         sounddefentrylimit;           
@@ -2180,7 +2211,7 @@ typedef struct FMOD_EVENT_LOADINFO
 } FMOD_EVENT_LOADINFO;
 
 
-typedef FMOD_RESULT ( *FMOD_EVENT_CALLBACK) (FMOD_EVENT *event, FMOD_EVENT_CALLBACKTYPE type, void *param1, void *param2, void *userdata);
+typedef FMOD_RESULT (*FMOD_EVENT_CALLBACK) (FMOD_EVENT *event, FMOD_EVENT_CALLBACKTYPE type, void *param1, void *param2, void *userdata);
 
 
 
@@ -2194,7 +2225,7 @@ typedef enum
 } FMOD_EVENTQUEUE_CALLBACKTYPE;
 
 
-typedef FMOD_RESULT ( *FMOD_EVENTQUEUE_CALLBACK)(FMOD_EVENTQUEUE_CALLBACKTYPE type, FMOD_EVENTQUEUE *queue, FMOD_EVENTQUEUEENTRY *entry, void *callbackuserdata);
+typedef FMOD_RESULT (*FMOD_EVENTQUEUE_CALLBACK)(FMOD_EVENTQUEUE_CALLBACKTYPE type, FMOD_EVENTQUEUE *queue, FMOD_EVENTQUEUEENTRY *entry, void *callbackuserdata);
 
 
 
@@ -2252,7 +2283,7 @@ typedef enum
 } FMOD_MUSIC_CALLBACKTYPE;
 
 
-typedef FMOD_RESULT ( *FMOD_MUSIC_CALLBACK) (FMOD_MUSIC_CALLBACKTYPE type, void *param1, void *param2, void *userdata);
+typedef FMOD_RESULT (*FMOD_MUSIC_CALLBACK) (FMOD_MUSIC_CALLBACKTYPE type, void *param1, void *param2, void *userdata);
 
 
 
@@ -2263,7 +2294,7 @@ typedef FMOD_RESULT ( *FMOD_MUSIC_CALLBACK) (FMOD_MUSIC_CALLBACKTYPE type, void 
 
 
 
-FMOD_RESULT  FMOD_EventSystem_Create(FMOD_EVENTSYSTEM **eventsystem);
+FMOD_RESULT FMOD_EventSystem_Create(FMOD_EVENTSYSTEM **eventsystem);
 
 
 
@@ -2271,293 +2302,293 @@ FMOD_RESULT  FMOD_EventSystem_Create(FMOD_EVENTSYSTEM **eventsystem);
 
 
 
-FMOD_RESULT  FMOD_EventSystem_Init              (FMOD_EVENTSYSTEM *eventsystem, int maxchannels, FMOD_INITFLAGS flags, void *extradriverdata, FMOD_EVENT_INITFLAGS eventflags);
-FMOD_RESULT  FMOD_EventSystem_Release           (FMOD_EVENTSYSTEM *eventsystem);
-FMOD_RESULT  FMOD_EventSystem_Update            (FMOD_EVENTSYSTEM *eventsystem);
-FMOD_RESULT  FMOD_EventSystem_SetMediaPath      (FMOD_EVENTSYSTEM *eventsystem, const char *path);
-FMOD_RESULT  FMOD_EventSystem_SetPluginPath     (FMOD_EVENTSYSTEM *eventsystem, const char *path);
-FMOD_RESULT  FMOD_EventSystem_GetVersion        (FMOD_EVENTSYSTEM *eventsystem, unsigned int *version);
-FMOD_RESULT  FMOD_EventSystem_GetInfo           (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENT_SYSTEMINFO *info);
-FMOD_RESULT  FMOD_EventSystem_GetSystemObject   (FMOD_EVENTSYSTEM *eventsystem, FMOD_SYSTEM **system);
-FMOD_RESULT  FMOD_EventSystem_GetMusicSystem    (FMOD_EVENTSYSTEM *eventsystem, FMOD_MUSICSYSTEM **musicsystem);
-FMOD_RESULT  FMOD_EventSystem_SetLanguage       (FMOD_EVENTSYSTEM *eventsystem, const char *language);
-FMOD_RESULT  FMOD_EventSystem_GetLanguage       (FMOD_EVENTSYSTEM *eventsystem, char *language);
-FMOD_RESULT  FMOD_EventSystem_RegisterDSP       (FMOD_EVENTSYSTEM *eventsystem, FMOD_DSP_DESCRIPTION *description, unsigned int *handle);
+FMOD_RESULT FMOD_EventSystem_Init              (FMOD_EVENTSYSTEM *eventsystem, int maxchannels, FMOD_INITFLAGS flags, void *extradriverdata, FMOD_EVENT_INITFLAGS eventflags);
+FMOD_RESULT FMOD_EventSystem_Release           (FMOD_EVENTSYSTEM *eventsystem);
+FMOD_RESULT FMOD_EventSystem_Update            (FMOD_EVENTSYSTEM *eventsystem);
+FMOD_RESULT FMOD_EventSystem_SetMediaPath      (FMOD_EVENTSYSTEM *eventsystem, const char *path);
+FMOD_RESULT FMOD_EventSystem_SetPluginPath     (FMOD_EVENTSYSTEM *eventsystem, const char *path);
+FMOD_RESULT FMOD_EventSystem_GetVersion        (FMOD_EVENTSYSTEM *eventsystem, unsigned int *version);
+FMOD_RESULT FMOD_EventSystem_GetInfo           (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENT_SYSTEMINFO *info);
+FMOD_RESULT FMOD_EventSystem_GetSystemObject   (FMOD_EVENTSYSTEM *eventsystem, FMOD_SYSTEM **system);
+FMOD_RESULT FMOD_EventSystem_GetMusicSystem    (FMOD_EVENTSYSTEM *eventsystem, FMOD_MUSICSYSTEM **musicsystem);
+FMOD_RESULT FMOD_EventSystem_SetLanguage       (FMOD_EVENTSYSTEM *eventsystem, const char *language);
+FMOD_RESULT FMOD_EventSystem_GetLanguage       (FMOD_EVENTSYSTEM *eventsystem, char *language);
+FMOD_RESULT FMOD_EventSystem_RegisterDSP       (FMOD_EVENTSYSTEM *eventsystem, FMOD_DSP_DESCRIPTION *description, unsigned int *handle);
 
 
 
-FMOD_RESULT  FMOD_EventSystem_Load              (FMOD_EVENTSYSTEM *eventsystem, const char *name_or_data, FMOD_EVENT_LOADINFO *loadinfo, FMOD_EVENTPROJECT **project);
-FMOD_RESULT  FMOD_EventSystem_Unload            (FMOD_EVENTSYSTEM *eventsystem);
+FMOD_RESULT FMOD_EventSystem_Load              (FMOD_EVENTSYSTEM *eventsystem, const char *name_or_data, FMOD_EVENT_LOADINFO *loadinfo, FMOD_EVENTPROJECT **project);
+FMOD_RESULT FMOD_EventSystem_Unload            (FMOD_EVENTSYSTEM *eventsystem);
 
 
 
-FMOD_RESULT  FMOD_EventSystem_GetProject        (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENTPROJECT **project);
-FMOD_RESULT  FMOD_EventSystem_GetProjectByIndex (FMOD_EVENTSYSTEM *eventsystem, int index, FMOD_EVENTPROJECT **project);
-FMOD_RESULT  FMOD_EventSystem_GetNumProjects    (FMOD_EVENTSYSTEM *eventsystem, int *numprojects);
-FMOD_RESULT  FMOD_EventSystem_GetCategory       (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT  FMOD_EventSystem_GetCategoryByIndex(FMOD_EVENTSYSTEM *eventsystem, int index, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT  FMOD_EventSystem_GetMusicCategory  (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT  FMOD_EventSystem_GetNumCategories  (FMOD_EVENTSYSTEM *eventsystem, int *numcategories);
-FMOD_RESULT  FMOD_EventSystem_GetGroup          (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT  FMOD_EventSystem_GetEvent          (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventSystem_GetEventBySystemID(FMOD_EVENTSYSTEM *eventsystem, unsigned int systemid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventSystem_GetEventByGUID    (FMOD_EVENTSYSTEM *eventsystem, const FMOD_GUID *guid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventSystem_GetEventByGUIDString(FMOD_EVENTSYSTEM *eventsystem, const char *guid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventSystem_GetNumEvents      (FMOD_EVENTSYSTEM *eventsystem, int *numevents);
+FMOD_RESULT FMOD_EventSystem_GetProject        (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENTPROJECT **project);
+FMOD_RESULT FMOD_EventSystem_GetProjectByIndex (FMOD_EVENTSYSTEM *eventsystem, int index, FMOD_EVENTPROJECT **project);
+FMOD_RESULT FMOD_EventSystem_GetNumProjects    (FMOD_EVENTSYSTEM *eventsystem, int *numprojects);
+FMOD_RESULT FMOD_EventSystem_GetCategory       (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventSystem_GetCategoryByIndex(FMOD_EVENTSYSTEM *eventsystem, int index, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventSystem_GetMusicCategory  (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventSystem_GetNumCategories  (FMOD_EVENTSYSTEM *eventsystem, int *numcategories);
+FMOD_RESULT FMOD_EventSystem_GetGroup          (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventSystem_GetEvent          (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventSystem_GetEventBySystemID(FMOD_EVENTSYSTEM *eventsystem, unsigned int systemid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventSystem_GetEventByGUID    (FMOD_EVENTSYSTEM *eventsystem, const FMOD_GUID *guid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventSystem_GetEventByGUIDString(FMOD_EVENTSYSTEM *eventsystem, const char *guid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventSystem_GetNumEvents      (FMOD_EVENTSYSTEM *eventsystem, int *numevents);
 
 
 
-FMOD_RESULT  FMOD_EventSystem_SetReverbProperties(FMOD_EVENTSYSTEM *eventsystem, const FMOD_REVERB_PROPERTIES *props);
-FMOD_RESULT  FMOD_EventSystem_GetReverbProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventSystem_SetReverbProperties(FMOD_EVENTSYSTEM *eventsystem, const FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventSystem_GetReverbProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
 
-FMOD_RESULT  FMOD_EventSystem_GetReverbPreset   (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_REVERB_PROPERTIES *props, int *index);
-FMOD_RESULT  FMOD_EventSystem_GetReverbPresetByIndex(FMOD_EVENTSYSTEM *eventsystem, const int index, FMOD_REVERB_PROPERTIES *props, char **name);
-FMOD_RESULT  FMOD_EventSystem_GetNumReverbPresets(FMOD_EVENTSYSTEM *eventsystem, int *numpresets);
+FMOD_RESULT FMOD_EventSystem_GetReverbPreset   (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_REVERB_PROPERTIES *props, int *index);
+FMOD_RESULT FMOD_EventSystem_GetReverbPresetByIndex(FMOD_EVENTSYSTEM *eventsystem, const int index, FMOD_REVERB_PROPERTIES *props, char **name);
+FMOD_RESULT FMOD_EventSystem_GetNumReverbPresets(FMOD_EVENTSYSTEM *eventsystem, int *numpresets);
 
-FMOD_RESULT  FMOD_EventSystem_CreateReverb      (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTREVERB **reverb);
-FMOD_RESULT  FMOD_EventSystem_SetReverbAmbientProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
-FMOD_RESULT  FMOD_EventSystem_GetReverbAmbientProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventSystem_CreateReverb      (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTREVERB **reverb);
+FMOD_RESULT FMOD_EventSystem_SetReverbAmbientProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventSystem_GetReverbAmbientProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
 
 
 
-FMOD_RESULT  FMOD_EventSystem_CreateEventQueue  (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTQUEUE **queue);
-FMOD_RESULT  FMOD_EventSystem_CreateEventQueueEntry(FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENT *event, FMOD_EVENTQUEUEENTRY **entry);
+FMOD_RESULT FMOD_EventSystem_CreateEventQueue  (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTQUEUE **queue);
+FMOD_RESULT FMOD_EventSystem_CreateEventQueueEntry(FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENT *event, FMOD_EVENTQUEUEENTRY **entry);
 
 
 
-FMOD_RESULT  FMOD_EventSystem_Set3DNumListeners (FMOD_EVENTSYSTEM *eventsystem, int numlisteners);
-FMOD_RESULT  FMOD_EventSystem_Get3DNumListeners (FMOD_EVENTSYSTEM *eventsystem, int *numlisteners);
-FMOD_RESULT  FMOD_EventSystem_Set3DListenerAttributes(FMOD_EVENTSYSTEM *eventsystem, int listener, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel, const FMOD_VECTOR *forward, const FMOD_VECTOR *up);
-FMOD_RESULT  FMOD_EventSystem_Get3DListenerAttributes(FMOD_EVENTSYSTEM *eventsystem, int listener, FMOD_VECTOR *pos, FMOD_VECTOR *vel, FMOD_VECTOR *forward, FMOD_VECTOR *up);
+FMOD_RESULT FMOD_EventSystem_Set3DNumListeners (FMOD_EVENTSYSTEM *eventsystem, int numlisteners);
+FMOD_RESULT FMOD_EventSystem_Get3DNumListeners (FMOD_EVENTSYSTEM *eventsystem, int *numlisteners);
+FMOD_RESULT FMOD_EventSystem_Set3DListenerAttributes(FMOD_EVENTSYSTEM *eventsystem, int listener, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel, const FMOD_VECTOR *forward, const FMOD_VECTOR *up);
+FMOD_RESULT FMOD_EventSystem_Get3DListenerAttributes(FMOD_EVENTSYSTEM *eventsystem, int listener, FMOD_VECTOR *pos, FMOD_VECTOR *vel, FMOD_VECTOR *forward, FMOD_VECTOR *up);
 
 
 
-FMOD_RESULT  FMOD_EventSystem_SetUserData       (FMOD_EVENTSYSTEM *eventsystem, void *userdata);
-FMOD_RESULT  FMOD_EventSystem_GetUserData       (FMOD_EVENTSYSTEM *eventsystem, void **userdata);
+FMOD_RESULT FMOD_EventSystem_SetUserData       (FMOD_EVENTSYSTEM *eventsystem, void *userdata);
+FMOD_RESULT FMOD_EventSystem_GetUserData       (FMOD_EVENTSYSTEM *eventsystem, void **userdata);
 
 
 
-FMOD_RESULT  FMOD_EventSystem_PreloadFSB        (FMOD_EVENTSYSTEM *eventsystem, const char *filename, int streaminstance, FMOD_SOUND *sound, FMOD_BOOL unloadprevious);
-FMOD_RESULT  FMOD_EventSystem_UnloadFSB         (FMOD_EVENTSYSTEM *eventsystem, const char *filename, int streaminstance);
+FMOD_RESULT FMOD_EventSystem_PreloadFSB        (FMOD_EVENTSYSTEM *eventsystem, const char *filename, int streaminstance, FMOD_SOUND *sound, FMOD_BOOL unloadprevious);
+FMOD_RESULT FMOD_EventSystem_UnloadFSB         (FMOD_EVENTSYSTEM *eventsystem, const char *filename, int streaminstance);
 
-FMOD_RESULT  FMOD_EventSystem_GetMemoryInfo     (FMOD_EVENTSYSTEM *eventsystem, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventSystem_GetMemoryInfo     (FMOD_EVENTSYSTEM *eventsystem, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_EventProject_Release          (FMOD_EVENTPROJECT *eventproject);
-FMOD_RESULT  FMOD_EventProject_GetInfo          (FMOD_EVENTPROJECT *eventproject, FMOD_EVENT_PROJECTINFO *info);
-FMOD_RESULT  FMOD_EventProject_GetGroup         (FMOD_EVENTPROJECT *eventproject, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT  FMOD_EventProject_GetGroupByIndex  (FMOD_EVENTPROJECT *eventproject, int index, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT  FMOD_EventProject_GetNumGroups     (FMOD_EVENTPROJECT *eventproject, int *numgroups);
-FMOD_RESULT  FMOD_EventProject_GetEvent         (FMOD_EVENTPROJECT *eventproject, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventProject_GetEventByProjectID(FMOD_EVENTPROJECT *eventproject, unsigned int projectid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventProject_GetNumEvents     (FMOD_EVENTPROJECT *eventproject, int *numevents);
-FMOD_RESULT  FMOD_EventProject_LoadSampleData   (FMOD_EVENTPROJECT *eventproject, int *eventid_array, int sizeof_eventid_array, char **groupname_array, int sizeof_groupname_array, FMOD_EVENT_MODE eventmode);
-FMOD_RESULT  FMOD_EventProject_StopAllEvents    (FMOD_EVENTPROJECT *eventproject, FMOD_BOOL immediate);
-FMOD_RESULT  FMOD_EventProject_CancelAllLoads   (FMOD_EVENTPROJECT *eventproject);
-FMOD_RESULT  FMOD_EventProject_SetUserData      (FMOD_EVENTPROJECT *eventproject, void *userdata);
-FMOD_RESULT  FMOD_EventProject_GetUserData      (FMOD_EVENTPROJECT *eventproject, void **userdata);
-
-FMOD_RESULT  FMOD_EventProject_GetMemoryInfo    (FMOD_EVENTPROJECT *eventproject, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
-
-
-
-FMOD_RESULT  FMOD_EventGroup_GetInfo            (FMOD_EVENTGROUP *eventgroup, int *index, char **name);
-FMOD_RESULT  FMOD_EventGroup_LoadEventData      (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT_RESOURCE resource, FMOD_EVENT_MODE mode);
-FMOD_RESULT  FMOD_EventGroup_FreeEventData      (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT *event, FMOD_BOOL waituntilready);
-FMOD_RESULT  FMOD_EventGroup_GetGroup           (FMOD_EVENTGROUP *eventgroup, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT  FMOD_EventGroup_GetGroupByIndex    (FMOD_EVENTGROUP *eventgroup, int index, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT  FMOD_EventGroup_GetParentGroup     (FMOD_EVENTGROUP *eventgroup, FMOD_EVENTGROUP **group);
-FMOD_RESULT  FMOD_EventGroup_GetParentProject   (FMOD_EVENTGROUP *eventgroup, FMOD_EVENTPROJECT **project);
-FMOD_RESULT  FMOD_EventGroup_GetNumGroups       (FMOD_EVENTGROUP *eventgroup, int *numgroups);
-FMOD_RESULT  FMOD_EventGroup_GetEvent           (FMOD_EVENTGROUP *eventgroup, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventGroup_GetEventByIndex    (FMOD_EVENTGROUP *eventgroup, int index, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventGroup_GetNumEvents       (FMOD_EVENTGROUP *eventgroup, int *numevents);
-FMOD_RESULT  FMOD_EventGroup_GetProperty        (FMOD_EVENTGROUP *eventgroup, const char *propertyname, void *value);
-FMOD_RESULT  FMOD_EventGroup_GetPropertyByIndex (FMOD_EVENTGROUP *eventgroup, int propertyindex, void *value);
-FMOD_RESULT  FMOD_EventGroup_GetNumProperties   (FMOD_EVENTGROUP *eventgroup, int *numproperties);
-FMOD_RESULT  FMOD_EventGroup_GetState           (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT_STATE *state);
-FMOD_RESULT  FMOD_EventGroup_SetUserData        (FMOD_EVENTGROUP *eventgroup, void *userdata);
-FMOD_RESULT  FMOD_EventGroup_GetUserData        (FMOD_EVENTGROUP *eventgroup, void **userdata);
-
-FMOD_RESULT  FMOD_EventGroup_GetMemoryInfo      (FMOD_EVENTGROUP *eventgroup, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
-
-
-
-FMOD_RESULT  FMOD_EventCategory_GetInfo         (FMOD_EVENTCATEGORY *eventcategory, int *index, char **name);
-FMOD_RESULT  FMOD_EventCategory_GetCategory     (FMOD_EVENTCATEGORY *eventcategory, const char *name, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT  FMOD_EventCategory_GetCategoryByIndex(FMOD_EVENTCATEGORY *eventcategory, int index, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT  FMOD_EventCategory_GetNumCategories(FMOD_EVENTCATEGORY *eventcategory, int *numcategories);
-FMOD_RESULT  FMOD_EventCategory_GetEventByIndex (FMOD_EVENTCATEGORY *eventcategory, int index, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT  FMOD_EventCategory_GetNumEvents    (FMOD_EVENTCATEGORY *eventcategory, int *numevents);
-FMOD_RESULT  FMOD_EventCategory_GetParentCategory(FMOD_EVENTCATEGORY *eventcategory, FMOD_EVENTCATEGORY **category);
-
-FMOD_RESULT  FMOD_EventCategory_StopAllEvents   (FMOD_EVENTCATEGORY *eventcategory);
-FMOD_RESULT  FMOD_EventCategory_SetVolume       (FMOD_EVENTCATEGORY *eventcategory, float volume);
-FMOD_RESULT  FMOD_EventCategory_GetVolume       (FMOD_EVENTCATEGORY *eventcategory, float *volume);
-FMOD_RESULT  FMOD_EventCategory_SetPitch        (FMOD_EVENTCATEGORY *eventcategory, float pitch, FMOD_EVENT_PITCHUNITS units);
-FMOD_RESULT  FMOD_EventCategory_GetPitch        (FMOD_EVENTCATEGORY *eventcategory, float *pitch, FMOD_EVENT_PITCHUNITS units);
-FMOD_RESULT  FMOD_EventCategory_SetPaused       (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL paused);
-FMOD_RESULT  FMOD_EventCategory_GetPaused       (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL *paused);
-FMOD_RESULT  FMOD_EventCategory_SetMute         (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL mute);
-FMOD_RESULT  FMOD_EventCategory_GetMute         (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL *mute);
-FMOD_RESULT  FMOD_EventCategory_GetChannelGroup (FMOD_EVENTCATEGORY *eventcategory, FMOD_CHANNELGROUP **channelgroup);
-FMOD_RESULT  FMOD_EventCategory_SetUserData     (FMOD_EVENTCATEGORY *eventcategory, void *userdata);
-FMOD_RESULT  FMOD_EventCategory_GetUserData     (FMOD_EVENTCATEGORY *eventcategory, void **userdata);
-
-FMOD_RESULT  FMOD_EventCategory_GetMemoryInfo   (FMOD_EVENTCATEGORY *eventcategory, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
-
-
-
-FMOD_RESULT  FMOD_Event_Release                 (FMOD_EVENT *event, FMOD_BOOL freeeventdata, FMOD_BOOL waituntilready);
-
-FMOD_RESULT  FMOD_Event_Start                   (FMOD_EVENT *event);
-FMOD_RESULT  FMOD_Event_Stop                    (FMOD_EVENT *event, FMOD_BOOL immediate);
-
-FMOD_RESULT  FMOD_Event_GetInfo                 (FMOD_EVENT *event, int *index, char **name, FMOD_EVENT_INFO *info);
-FMOD_RESULT  FMOD_Event_GetState                (FMOD_EVENT *event, FMOD_EVENT_STATE *state);
-FMOD_RESULT  FMOD_Event_GetParentGroup          (FMOD_EVENT *event, FMOD_EVENTGROUP **group);
-FMOD_RESULT  FMOD_Event_GetChannelGroup         (FMOD_EVENT *event, FMOD_CHANNELGROUP **channelgroup);
-FMOD_RESULT  FMOD_Event_SetCallback             (FMOD_EVENT *event, FMOD_EVENT_CALLBACK callback, void *userdata);
-
-FMOD_RESULT  FMOD_Event_GetParameter            (FMOD_EVENT *event, const char *name, FMOD_EVENTPARAMETER **parameter);
-FMOD_RESULT  FMOD_Event_GetParameterByIndex     (FMOD_EVENT *event, int index, FMOD_EVENTPARAMETER **parameter);
-FMOD_RESULT  FMOD_Event_GetNumParameters        (FMOD_EVENT *event, int *numparameters);
-FMOD_RESULT  FMOD_Event_GetProperty             (FMOD_EVENT *event, const char *propertyname, void *value, FMOD_BOOL this_instance);
-FMOD_RESULT  FMOD_Event_GetPropertyByIndex      (FMOD_EVENT *event, int propertyindex, void *value, FMOD_BOOL this_instance);
-FMOD_RESULT  FMOD_Event_SetProperty             (FMOD_EVENT *event, const char *propertyname, void *value, FMOD_BOOL this_instance);
-FMOD_RESULT  FMOD_Event_SetPropertyByIndex      (FMOD_EVENT *event, int propertyindex, void *value, FMOD_BOOL this_instance);
-FMOD_RESULT  FMOD_Event_GetNumProperties        (FMOD_EVENT *event, int *numproperties);
-FMOD_RESULT  FMOD_Event_GetPropertyInfo         (FMOD_EVENT *event, int *propertyindex, char **propertyname, FMOD_EVENTPROPERTY_TYPE *type);
-FMOD_RESULT  FMOD_Event_GetCategory             (FMOD_EVENT *event, FMOD_EVENTCATEGORY **category);
-
-FMOD_RESULT  FMOD_Event_SetVolume               (FMOD_EVENT *event, float volume);
-FMOD_RESULT  FMOD_Event_GetVolume               (FMOD_EVENT *event, float *volume);
-FMOD_RESULT  FMOD_Event_SetPitch                (FMOD_EVENT *event, float pitch, FMOD_EVENT_PITCHUNITS units);
-FMOD_RESULT  FMOD_Event_GetPitch                (FMOD_EVENT *event, float *pitch, FMOD_EVENT_PITCHUNITS units);
-FMOD_RESULT  FMOD_Event_SetPaused               (FMOD_EVENT *event, FMOD_BOOL paused);
-FMOD_RESULT  FMOD_Event_GetPaused               (FMOD_EVENT *event, FMOD_BOOL *paused);
-FMOD_RESULT  FMOD_Event_SetMute                 (FMOD_EVENT *event, FMOD_BOOL mute);
-FMOD_RESULT  FMOD_Event_GetMute                 (FMOD_EVENT *event, FMOD_BOOL *mute);
-FMOD_RESULT  FMOD_Event_Set3DAttributes         (FMOD_EVENT *event, const FMOD_VECTOR *position, const FMOD_VECTOR *velocity, const FMOD_VECTOR *orientation);
-FMOD_RESULT  FMOD_Event_Get3DAttributes         (FMOD_EVENT *event, FMOD_VECTOR *position, FMOD_VECTOR *velocity, FMOD_VECTOR *orientation);
-FMOD_RESULT  FMOD_Event_Set3DOcclusion          (FMOD_EVENT *event, float directocclusion, float reverbocclusion);
-FMOD_RESULT  FMOD_Event_Get3DOcclusion          (FMOD_EVENT *event, float *directocclusion, float *reverbocclusion);
-FMOD_RESULT  FMOD_Event_SetReverbProperties     (FMOD_EVENT *event, const FMOD_REVERB_CHANNELPROPERTIES *props);
-FMOD_RESULT  FMOD_Event_GetReverbProperties     (FMOD_EVENT *event, FMOD_REVERB_CHANNELPROPERTIES *props);
-FMOD_RESULT  FMOD_Event_SetUserData             (FMOD_EVENT *event, void *userdata);
-FMOD_RESULT  FMOD_Event_GetUserData             (FMOD_EVENT *event, void **userdata);
-
-FMOD_RESULT  FMOD_Event_GetMemoryInfo           (FMOD_EVENT *event, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
-
-
-
-FMOD_RESULT  FMOD_EventParameter_GetInfo        (FMOD_EVENTPARAMETER *eventparameter, int *index, char **name);
-FMOD_RESULT  FMOD_EventParameter_GetRange       (FMOD_EVENTPARAMETER *eventparameter, float *rangemin, float *rangemax);
-FMOD_RESULT  FMOD_EventParameter_SetValue       (FMOD_EVENTPARAMETER *eventparameter, float value);
-FMOD_RESULT  FMOD_EventParameter_GetValue       (FMOD_EVENTPARAMETER *eventparameter, float *value);
-FMOD_RESULT  FMOD_EventParameter_SetVelocity    (FMOD_EVENTPARAMETER *eventparameter, float value);
-FMOD_RESULT  FMOD_EventParameter_GetVelocity    (FMOD_EVENTPARAMETER *eventparameter, float *value);
-FMOD_RESULT  FMOD_EventParameter_SetSeekSpeed   (FMOD_EVENTPARAMETER *eventparameter, float value);
-FMOD_RESULT  FMOD_EventParameter_GetSeekSpeed   (FMOD_EVENTPARAMETER *eventparameter, float *value);
-FMOD_RESULT  FMOD_EventParameter_SetUserData    (FMOD_EVENTPARAMETER *eventparameter, void *userdata);
-FMOD_RESULT  FMOD_EventParameter_GetUserData    (FMOD_EVENTPARAMETER *eventparameter, void **userdata);
-FMOD_RESULT  FMOD_EventParameter_KeyOff         (FMOD_EVENTPARAMETER *eventparameter);
-FMOD_RESULT  FMOD_EventParameter_DisableAutomation(FMOD_EVENTPARAMETER *eventparameter, FMOD_BOOL disable);
-
-FMOD_RESULT  FMOD_EventParameter_GetMemoryInfo  (FMOD_EVENTPARAMETER *eventparameter, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
-
+FMOD_RESULT FMOD_EventProject_Release          (FMOD_EVENTPROJECT *eventproject);
+FMOD_RESULT FMOD_EventProject_GetInfo          (FMOD_EVENTPROJECT *eventproject, FMOD_EVENT_PROJECTINFO *info);
+FMOD_RESULT FMOD_EventProject_GetGroup         (FMOD_EVENTPROJECT *eventproject, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventProject_GetGroupByIndex  (FMOD_EVENTPROJECT *eventproject, int index, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventProject_GetNumGroups     (FMOD_EVENTPROJECT *eventproject, int *numgroups);
+FMOD_RESULT FMOD_EventProject_GetEvent         (FMOD_EVENTPROJECT *eventproject, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventProject_GetEventByProjectID(FMOD_EVENTPROJECT *eventproject, unsigned int projectid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventProject_GetNumEvents     (FMOD_EVENTPROJECT *eventproject, int *numevents);
+FMOD_RESULT FMOD_EventProject_LoadSampleData   (FMOD_EVENTPROJECT *eventproject, int *eventid_array, int sizeof_eventid_array, char **groupname_array, int sizeof_groupname_array, FMOD_EVENT_MODE eventmode);
+FMOD_RESULT FMOD_EventProject_StopAllEvents    (FMOD_EVENTPROJECT *eventproject, FMOD_BOOL immediate);
+FMOD_RESULT FMOD_EventProject_CancelAllLoads   (FMOD_EVENTPROJECT *eventproject);
+FMOD_RESULT FMOD_EventProject_SetUserData      (FMOD_EVENTPROJECT *eventproject, void *userdata);
+FMOD_RESULT FMOD_EventProject_GetUserData      (FMOD_EVENTPROJECT *eventproject, void **userdata);
+
+FMOD_RESULT FMOD_EventProject_GetMemoryInfo    (FMOD_EVENTPROJECT *eventproject, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+
+
+
+FMOD_RESULT FMOD_EventGroup_GetInfo            (FMOD_EVENTGROUP *eventgroup, int *index, char **name);
+FMOD_RESULT FMOD_EventGroup_LoadEventData      (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT_RESOURCE resource, FMOD_EVENT_MODE mode);
+FMOD_RESULT FMOD_EventGroup_FreeEventData      (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT *event, FMOD_BOOL waituntilready);
+FMOD_RESULT FMOD_EventGroup_GetGroup           (FMOD_EVENTGROUP *eventgroup, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventGroup_GetGroupByIndex    (FMOD_EVENTGROUP *eventgroup, int index, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventGroup_GetParentGroup     (FMOD_EVENTGROUP *eventgroup, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventGroup_GetParentProject   (FMOD_EVENTGROUP *eventgroup, FMOD_EVENTPROJECT **project);
+FMOD_RESULT FMOD_EventGroup_GetNumGroups       (FMOD_EVENTGROUP *eventgroup, int *numgroups);
+FMOD_RESULT FMOD_EventGroup_GetEvent           (FMOD_EVENTGROUP *eventgroup, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventGroup_GetEventByIndex    (FMOD_EVENTGROUP *eventgroup, int index, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventGroup_GetNumEvents       (FMOD_EVENTGROUP *eventgroup, int *numevents);
+FMOD_RESULT FMOD_EventGroup_GetProperty        (FMOD_EVENTGROUP *eventgroup, const char *propertyname, void *value);
+FMOD_RESULT FMOD_EventGroup_GetPropertyByIndex (FMOD_EVENTGROUP *eventgroup, int propertyindex, void *value);
+FMOD_RESULT FMOD_EventGroup_GetNumProperties   (FMOD_EVENTGROUP *eventgroup, int *numproperties);
+FMOD_RESULT FMOD_EventGroup_GetState           (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT_STATE *state);
+FMOD_RESULT FMOD_EventGroup_SetUserData        (FMOD_EVENTGROUP *eventgroup, void *userdata);
+FMOD_RESULT FMOD_EventGroup_GetUserData        (FMOD_EVENTGROUP *eventgroup, void **userdata);
+
+FMOD_RESULT FMOD_EventGroup_GetMemoryInfo      (FMOD_EVENTGROUP *eventgroup, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+
+
+
+FMOD_RESULT FMOD_EventCategory_GetInfo         (FMOD_EVENTCATEGORY *eventcategory, int *index, char **name);
+FMOD_RESULT FMOD_EventCategory_GetCategory     (FMOD_EVENTCATEGORY *eventcategory, const char *name, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventCategory_GetCategoryByIndex(FMOD_EVENTCATEGORY *eventcategory, int index, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventCategory_GetNumCategories(FMOD_EVENTCATEGORY *eventcategory, int *numcategories);
+FMOD_RESULT FMOD_EventCategory_GetEventByIndex (FMOD_EVENTCATEGORY *eventcategory, int index, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventCategory_GetNumEvents    (FMOD_EVENTCATEGORY *eventcategory, int *numevents);
+FMOD_RESULT FMOD_EventCategory_GetParentCategory(FMOD_EVENTCATEGORY *eventcategory, FMOD_EVENTCATEGORY **category);
+
+FMOD_RESULT FMOD_EventCategory_StopAllEvents   (FMOD_EVENTCATEGORY *eventcategory);
+FMOD_RESULT FMOD_EventCategory_SetVolume       (FMOD_EVENTCATEGORY *eventcategory, float volume);
+FMOD_RESULT FMOD_EventCategory_GetVolume       (FMOD_EVENTCATEGORY *eventcategory, float *volume);
+FMOD_RESULT FMOD_EventCategory_SetPitch        (FMOD_EVENTCATEGORY *eventcategory, float pitch, FMOD_EVENT_PITCHUNITS units);
+FMOD_RESULT FMOD_EventCategory_GetPitch        (FMOD_EVENTCATEGORY *eventcategory, float *pitch, FMOD_EVENT_PITCHUNITS units);
+FMOD_RESULT FMOD_EventCategory_SetPaused       (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL paused);
+FMOD_RESULT FMOD_EventCategory_GetPaused       (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_EventCategory_SetMute         (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL mute);
+FMOD_RESULT FMOD_EventCategory_GetMute         (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL *mute);
+FMOD_RESULT FMOD_EventCategory_GetChannelGroup (FMOD_EVENTCATEGORY *eventcategory, FMOD_CHANNELGROUP **channelgroup);
+FMOD_RESULT FMOD_EventCategory_SetUserData     (FMOD_EVENTCATEGORY *eventcategory, void *userdata);
+FMOD_RESULT FMOD_EventCategory_GetUserData     (FMOD_EVENTCATEGORY *eventcategory, void **userdata);
+
+FMOD_RESULT FMOD_EventCategory_GetMemoryInfo   (FMOD_EVENTCATEGORY *eventcategory, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+
+
+
+FMOD_RESULT FMOD_Event_Release                 (FMOD_EVENT *event, FMOD_BOOL freeeventdata, FMOD_BOOL waituntilready);
+
+FMOD_RESULT FMOD_Event_Start                   (FMOD_EVENT *event);
+FMOD_RESULT FMOD_Event_Stop                    (FMOD_EVENT *event, FMOD_BOOL immediate);
+
+FMOD_RESULT FMOD_Event_GetInfo                 (FMOD_EVENT *event, int *index, char **name, FMOD_EVENT_INFO *info);
+FMOD_RESULT FMOD_Event_GetState                (FMOD_EVENT *event, FMOD_EVENT_STATE *state);
+FMOD_RESULT FMOD_Event_GetParentGroup          (FMOD_EVENT *event, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_Event_GetChannelGroup         (FMOD_EVENT *event, FMOD_CHANNELGROUP **channelgroup);
+FMOD_RESULT FMOD_Event_SetCallback             (FMOD_EVENT *event, FMOD_EVENT_CALLBACK callback, void *userdata);
+
+FMOD_RESULT FMOD_Event_GetParameter            (FMOD_EVENT *event, const char *name, FMOD_EVENTPARAMETER **parameter);
+FMOD_RESULT FMOD_Event_GetParameterByIndex     (FMOD_EVENT *event, int index, FMOD_EVENTPARAMETER **parameter);
+FMOD_RESULT FMOD_Event_GetNumParameters        (FMOD_EVENT *event, int *numparameters);
+FMOD_RESULT FMOD_Event_GetProperty             (FMOD_EVENT *event, const char *propertyname, void *value, FMOD_BOOL this_instance);
+FMOD_RESULT FMOD_Event_GetPropertyByIndex      (FMOD_EVENT *event, int propertyindex, void *value, FMOD_BOOL this_instance);
+FMOD_RESULT FMOD_Event_SetProperty             (FMOD_EVENT *event, const char *propertyname, void *value, FMOD_BOOL this_instance);
+FMOD_RESULT FMOD_Event_SetPropertyByIndex      (FMOD_EVENT *event, int propertyindex, void *value, FMOD_BOOL this_instance);
+FMOD_RESULT FMOD_Event_GetNumProperties        (FMOD_EVENT *event, int *numproperties);
+FMOD_RESULT FMOD_Event_GetPropertyInfo         (FMOD_EVENT *event, int *propertyindex, char **propertyname, FMOD_EVENTPROPERTY_TYPE *type);
+FMOD_RESULT FMOD_Event_GetCategory             (FMOD_EVENT *event, FMOD_EVENTCATEGORY **category);
+
+FMOD_RESULT FMOD_Event_SetVolume               (FMOD_EVENT *event, float volume);
+FMOD_RESULT FMOD_Event_GetVolume               (FMOD_EVENT *event, float *volume);
+FMOD_RESULT FMOD_Event_SetPitch                (FMOD_EVENT *event, float pitch, FMOD_EVENT_PITCHUNITS units);
+FMOD_RESULT FMOD_Event_GetPitch                (FMOD_EVENT *event, float *pitch, FMOD_EVENT_PITCHUNITS units);
+FMOD_RESULT FMOD_Event_SetPaused               (FMOD_EVENT *event, FMOD_BOOL paused);
+FMOD_RESULT FMOD_Event_GetPaused               (FMOD_EVENT *event, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_Event_SetMute                 (FMOD_EVENT *event, FMOD_BOOL mute);
+FMOD_RESULT FMOD_Event_GetMute                 (FMOD_EVENT *event, FMOD_BOOL *mute);
+FMOD_RESULT FMOD_Event_Set3DAttributes         (FMOD_EVENT *event, const FMOD_VECTOR *position, const FMOD_VECTOR *velocity, const FMOD_VECTOR *orientation);
+FMOD_RESULT FMOD_Event_Get3DAttributes         (FMOD_EVENT *event, FMOD_VECTOR *position, FMOD_VECTOR *velocity, FMOD_VECTOR *orientation);
+FMOD_RESULT FMOD_Event_Set3DOcclusion          (FMOD_EVENT *event, float directocclusion, float reverbocclusion);
+FMOD_RESULT FMOD_Event_Get3DOcclusion          (FMOD_EVENT *event, float *directocclusion, float *reverbocclusion);
+FMOD_RESULT FMOD_Event_SetReverbProperties     (FMOD_EVENT *event, const FMOD_REVERB_CHANNELPROPERTIES *props);
+FMOD_RESULT FMOD_Event_GetReverbProperties     (FMOD_EVENT *event, FMOD_REVERB_CHANNELPROPERTIES *props);
+FMOD_RESULT FMOD_Event_SetUserData             (FMOD_EVENT *event, void *userdata);
+FMOD_RESULT FMOD_Event_GetUserData             (FMOD_EVENT *event, void **userdata);
+
+FMOD_RESULT FMOD_Event_GetMemoryInfo           (FMOD_EVENT *event, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+
+
+
+FMOD_RESULT FMOD_EventParameter_GetInfo        (FMOD_EVENTPARAMETER *eventparameter, int *index, char **name);
+FMOD_RESULT FMOD_EventParameter_GetRange       (FMOD_EVENTPARAMETER *eventparameter, float *rangemin, float *rangemax);
+FMOD_RESULT FMOD_EventParameter_SetValue       (FMOD_EVENTPARAMETER *eventparameter, float value);
+FMOD_RESULT FMOD_EventParameter_GetValue       (FMOD_EVENTPARAMETER *eventparameter, float *value);
+FMOD_RESULT FMOD_EventParameter_SetVelocity    (FMOD_EVENTPARAMETER *eventparameter, float value);
+FMOD_RESULT FMOD_EventParameter_GetVelocity    (FMOD_EVENTPARAMETER *eventparameter, float *value);
+FMOD_RESULT FMOD_EventParameter_SetSeekSpeed   (FMOD_EVENTPARAMETER *eventparameter, float value);
+FMOD_RESULT FMOD_EventParameter_GetSeekSpeed   (FMOD_EVENTPARAMETER *eventparameter, float *value);
+FMOD_RESULT FMOD_EventParameter_SetUserData    (FMOD_EVENTPARAMETER *eventparameter, void *userdata);
+FMOD_RESULT FMOD_EventParameter_GetUserData    (FMOD_EVENTPARAMETER *eventparameter, void **userdata);
+FMOD_RESULT FMOD_EventParameter_KeyOff         (FMOD_EVENTPARAMETER *eventparameter);
+FMOD_RESULT FMOD_EventParameter_DisableAutomation(FMOD_EVENTPARAMETER *eventparameter, FMOD_BOOL disable);
+
+FMOD_RESULT FMOD_EventParameter_GetMemoryInfo  (FMOD_EVENTPARAMETER *eventparameter, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+
 
 
-FMOD_RESULT  FMOD_EventReverb_Release           (FMOD_EVENTREVERB *eventreverb);
-FMOD_RESULT  FMOD_EventReverb_Set3DAttributes   (FMOD_EVENTREVERB *eventreverb, const FMOD_VECTOR *position, float mindistance, float maxdistance);
-FMOD_RESULT  FMOD_EventReverb_Get3DAttributes   (FMOD_EVENTREVERB *eventreverb, FMOD_VECTOR *position, float *mindistance, float *maxdistance);
-FMOD_RESULT  FMOD_EventReverb_SetProperties     (FMOD_EVENTREVERB *eventreverb, const FMOD_REVERB_PROPERTIES *props);
-FMOD_RESULT  FMOD_EventReverb_GetProperties     (FMOD_EVENTREVERB *eventreverb, FMOD_REVERB_PROPERTIES *props);
-FMOD_RESULT  FMOD_EventReverb_SetActive         (FMOD_EVENTREVERB *eventreverb, FMOD_BOOL active);
-FMOD_RESULT  FMOD_EventReverb_GetActive         (FMOD_EVENTREVERB *eventreverb, FMOD_BOOL *active);
-FMOD_RESULT  FMOD_EventReverb_SetUserData       (FMOD_EVENTREVERB *eventreverb, void *userdata);
-FMOD_RESULT  FMOD_EventReverb_GetUserData       (FMOD_EVENTREVERB *eventreverb, void **userdata);
+FMOD_RESULT FMOD_EventReverb_Release           (FMOD_EVENTREVERB *eventreverb);
+FMOD_RESULT FMOD_EventReverb_Set3DAttributes   (FMOD_EVENTREVERB *eventreverb, const FMOD_VECTOR *position, float mindistance, float maxdistance);
+FMOD_RESULT FMOD_EventReverb_Get3DAttributes   (FMOD_EVENTREVERB *eventreverb, FMOD_VECTOR *position, float *mindistance, float *maxdistance);
+FMOD_RESULT FMOD_EventReverb_SetProperties     (FMOD_EVENTREVERB *eventreverb, const FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventReverb_GetProperties     (FMOD_EVENTREVERB *eventreverb, FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventReverb_SetActive         (FMOD_EVENTREVERB *eventreverb, FMOD_BOOL active);
+FMOD_RESULT FMOD_EventReverb_GetActive         (FMOD_EVENTREVERB *eventreverb, FMOD_BOOL *active);
+FMOD_RESULT FMOD_EventReverb_SetUserData       (FMOD_EVENTREVERB *eventreverb, void *userdata);
+FMOD_RESULT FMOD_EventReverb_GetUserData       (FMOD_EVENTREVERB *eventreverb, void **userdata);
 
-FMOD_RESULT  FMOD_EventReverb_GetMemoryInfo     (FMOD_EVENTREVERB *eventreverb, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventReverb_GetMemoryInfo     (FMOD_EVENTREVERB *eventreverb, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_EventQueue_Release            (FMOD_EVENTQUEUE *eventqueue);
-FMOD_RESULT  FMOD_EventQueue_Add                (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY *entry, FMOD_BOOL allow_duplicates);
-FMOD_RESULT  FMOD_EventQueue_Remove             (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY *entry);
-FMOD_RESULT  FMOD_EventQueue_RemoveHead         (FMOD_EVENTQUEUE *eventqueue);
-FMOD_RESULT  FMOD_EventQueue_Clear              (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL stopallevents);
-FMOD_RESULT  FMOD_EventQueue_FindFirstEntry     (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY **entry);
-FMOD_RESULT  FMOD_EventQueue_FindNextEntry      (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY **entry);
-FMOD_RESULT  FMOD_EventQueue_SetPaused          (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL paused);
-FMOD_RESULT  FMOD_EventQueue_GetPaused          (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL *paused);
-FMOD_RESULT  FMOD_EventQueue_IncludeDuckingCategory(FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTCATEGORY *category, float ducked_volume, float unducked_volume, unsigned int duck_time, unsigned int unduck_time);
-FMOD_RESULT  FMOD_EventQueue_ExcludeDuckingCategory(FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTCATEGORY *category);
-FMOD_RESULT  FMOD_EventQueue_SetCallback        (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUE_CALLBACK callback, void *callbackuserdata);
-FMOD_RESULT  FMOD_EventQueue_SetUserData        (FMOD_EVENTQUEUE *eventqueue, void *userdata);
-FMOD_RESULT  FMOD_EventQueue_GetUserData        (FMOD_EVENTQUEUE *eventqueue, void **userdata);
-FMOD_RESULT  FMOD_EventQueue_Dump               (FMOD_EVENTQUEUE *eventqueue);
+FMOD_RESULT FMOD_EventQueue_Release            (FMOD_EVENTQUEUE *eventqueue);
+FMOD_RESULT FMOD_EventQueue_Add                (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY *entry, FMOD_BOOL allow_duplicates);
+FMOD_RESULT FMOD_EventQueue_Remove             (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY *entry);
+FMOD_RESULT FMOD_EventQueue_RemoveHead         (FMOD_EVENTQUEUE *eventqueue);
+FMOD_RESULT FMOD_EventQueue_Clear              (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL stopallevents);
+FMOD_RESULT FMOD_EventQueue_FindFirstEntry     (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY **entry);
+FMOD_RESULT FMOD_EventQueue_FindNextEntry      (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY **entry);
+FMOD_RESULT FMOD_EventQueue_SetPaused          (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL paused);
+FMOD_RESULT FMOD_EventQueue_GetPaused          (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_EventQueue_IncludeDuckingCategory(FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTCATEGORY *category, float ducked_volume, float unducked_volume, unsigned int duck_time, unsigned int unduck_time);
+FMOD_RESULT FMOD_EventQueue_ExcludeDuckingCategory(FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTCATEGORY *category);
+FMOD_RESULT FMOD_EventQueue_SetCallback        (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUE_CALLBACK callback, void *callbackuserdata);
+FMOD_RESULT FMOD_EventQueue_SetUserData        (FMOD_EVENTQUEUE *eventqueue, void *userdata);
+FMOD_RESULT FMOD_EventQueue_GetUserData        (FMOD_EVENTQUEUE *eventqueue, void **userdata);
+FMOD_RESULT FMOD_EventQueue_Dump               (FMOD_EVENTQUEUE *eventqueue);
 
-FMOD_RESULT  FMOD_EventQueue_GetMemoryInfo      (FMOD_EVENTQUEUE *eventqueue, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventQueue_GetMemoryInfo      (FMOD_EVENTQUEUE *eventqueue, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_EventQueueEntry_Release       (FMOD_EVENTQUEUEENTRY *eventqueueentry);
-FMOD_RESULT  FMOD_EventQueueEntry_GetInfoOnlyEvent(FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_EVENT **infoonlyevent);
-FMOD_RESULT  FMOD_EventQueueEntry_GetRealEvent  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_EVENT **realevent);
-FMOD_RESULT  FMOD_EventQueueEntry_SetPriority   (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned char priority);
-FMOD_RESULT  FMOD_EventQueueEntry_GetPriority   (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned char *priority);
-FMOD_RESULT  FMOD_EventQueueEntry_SetExpiryTime (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int expirytime);
-FMOD_RESULT  FMOD_EventQueueEntry_GetExpiryTime (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int *expirytime);
-FMOD_RESULT  FMOD_EventQueueEntry_SetDelayTime  (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int delay);
-FMOD_RESULT  FMOD_EventQueueEntry_GetDelayTime  (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int *delay);
-FMOD_RESULT  FMOD_EventQueueEntry_SetInterrupt  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_BOOL interrupt);
-FMOD_RESULT  FMOD_EventQueueEntry_GetInterrupt  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_BOOL *interrupt);
-FMOD_RESULT  FMOD_EventQueueEntry_SetCrossfadeTime(FMOD_EVENTQUEUEENTRY *eventqueueentry, int crossfade);
-FMOD_RESULT  FMOD_EventQueueEntry_GetCrossfadeTime(FMOD_EVENTQUEUEENTRY *eventqueueentry, int *crossfade);
-FMOD_RESULT  FMOD_EventQueueEntry_SetUserData   (FMOD_EVENTQUEUEENTRY *eventqueueentry, void *userdata);
-FMOD_RESULT  FMOD_EventQueueEntry_GetUserData   (FMOD_EVENTQUEUEENTRY *eventqueueentry, void **userdata);
+FMOD_RESULT FMOD_EventQueueEntry_Release       (FMOD_EVENTQUEUEENTRY *eventqueueentry);
+FMOD_RESULT FMOD_EventQueueEntry_GetInfoOnlyEvent(FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_EVENT **infoonlyevent);
+FMOD_RESULT FMOD_EventQueueEntry_GetRealEvent  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_EVENT **realevent);
+FMOD_RESULT FMOD_EventQueueEntry_SetPriority   (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned char priority);
+FMOD_RESULT FMOD_EventQueueEntry_GetPriority   (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned char *priority);
+FMOD_RESULT FMOD_EventQueueEntry_SetExpiryTime (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int expirytime);
+FMOD_RESULT FMOD_EventQueueEntry_GetExpiryTime (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int *expirytime);
+FMOD_RESULT FMOD_EventQueueEntry_SetDelayTime  (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int delay);
+FMOD_RESULT FMOD_EventQueueEntry_GetDelayTime  (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int *delay);
+FMOD_RESULT FMOD_EventQueueEntry_SetInterrupt  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_BOOL interrupt);
+FMOD_RESULT FMOD_EventQueueEntry_GetInterrupt  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_BOOL *interrupt);
+FMOD_RESULT FMOD_EventQueueEntry_SetCrossfadeTime(FMOD_EVENTQUEUEENTRY *eventqueueentry, int crossfade);
+FMOD_RESULT FMOD_EventQueueEntry_GetCrossfadeTime(FMOD_EVENTQUEUEENTRY *eventqueueentry, int *crossfade);
+FMOD_RESULT FMOD_EventQueueEntry_SetUserData   (FMOD_EVENTQUEUEENTRY *eventqueueentry, void *userdata);
+FMOD_RESULT FMOD_EventQueueEntry_GetUserData   (FMOD_EVENTQUEUEENTRY *eventqueueentry, void **userdata);
 
-FMOD_RESULT  FMOD_EventQueueEntry_GetMemoryInfo (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventQueueEntry_GetMemoryInfo (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_MusicSystem_Reset             (FMOD_MUSICSYSTEM *musicsystem);
-FMOD_RESULT  FMOD_MusicSystem_SetVolume         (FMOD_MUSICSYSTEM *musicsystem, float volume);
-FMOD_RESULT  FMOD_MusicSystem_GetVolume         (FMOD_MUSICSYSTEM *musicsystem, float *volume);
-FMOD_RESULT  FMOD_MusicSystem_SetReverbProperties(FMOD_MUSICSYSTEM *musicsystem, const FMOD_REVERB_CHANNELPROPERTIES *props);
-FMOD_RESULT  FMOD_MusicSystem_GetReverbProperties(FMOD_MUSICSYSTEM *musicsystem, FMOD_REVERB_CHANNELPROPERTIES *props);
-FMOD_RESULT  FMOD_MusicSystem_SetPaused         (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL paused);
-FMOD_RESULT  FMOD_MusicSystem_GetPaused         (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL *paused);
-FMOD_RESULT  FMOD_MusicSystem_SetMute           (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL mute);
-FMOD_RESULT  FMOD_MusicSystem_GetMute           (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL *mute);
-FMOD_RESULT  FMOD_MusicSystem_GetInfo           (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_INFO *info);
-FMOD_RESULT  FMOD_MusicSystem_PromptCue         (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CUE_ID id);
-FMOD_RESULT  FMOD_MusicSystem_PrepareCue        (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CUE_ID id, FMOD_MUSICPROMPT **prompt);
-FMOD_RESULT  FMOD_MusicSystem_GetParameterValue (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_PARAM_ID id, float *parameter);
-FMOD_RESULT  FMOD_MusicSystem_SetParameterValue (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_PARAM_ID id, float parameter);
+FMOD_RESULT FMOD_MusicSystem_Reset             (FMOD_MUSICSYSTEM *musicsystem);
+FMOD_RESULT FMOD_MusicSystem_SetVolume         (FMOD_MUSICSYSTEM *musicsystem, float volume);
+FMOD_RESULT FMOD_MusicSystem_GetVolume         (FMOD_MUSICSYSTEM *musicsystem, float *volume);
+FMOD_RESULT FMOD_MusicSystem_SetReverbProperties(FMOD_MUSICSYSTEM *musicsystem, const FMOD_REVERB_CHANNELPROPERTIES *props);
+FMOD_RESULT FMOD_MusicSystem_GetReverbProperties(FMOD_MUSICSYSTEM *musicsystem, FMOD_REVERB_CHANNELPROPERTIES *props);
+FMOD_RESULT FMOD_MusicSystem_SetPaused         (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL paused);
+FMOD_RESULT FMOD_MusicSystem_GetPaused         (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_MusicSystem_SetMute           (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL mute);
+FMOD_RESULT FMOD_MusicSystem_GetMute           (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL *mute);
+FMOD_RESULT FMOD_MusicSystem_GetInfo           (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_INFO *info);
+FMOD_RESULT FMOD_MusicSystem_PromptCue         (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CUE_ID id);
+FMOD_RESULT FMOD_MusicSystem_PrepareCue        (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CUE_ID id, FMOD_MUSICPROMPT **prompt);
+FMOD_RESULT FMOD_MusicSystem_GetParameterValue (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_PARAM_ID id, float *parameter);
+FMOD_RESULT FMOD_MusicSystem_SetParameterValue (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_PARAM_ID id, float parameter);
 
-FMOD_RESULT  FMOD_MusicSystem_GetCues           (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it, const char *filter);
-FMOD_RESULT  FMOD_MusicSystem_GetNextCue        (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it);
-FMOD_RESULT  FMOD_MusicSystem_GetParameters     (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it, const char *filter);
-FMOD_RESULT  FMOD_MusicSystem_GetNextParameter  (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it);
+FMOD_RESULT FMOD_MusicSystem_GetCues           (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it, const char *filter);
+FMOD_RESULT FMOD_MusicSystem_GetNextCue        (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it);
+FMOD_RESULT FMOD_MusicSystem_GetParameters     (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it, const char *filter);
+FMOD_RESULT FMOD_MusicSystem_GetNextParameter  (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it);
 
-FMOD_RESULT  FMOD_MusicSystem_LoadSoundData     (FMOD_MUSICSYSTEM *musicsystem, FMOD_EVENT_RESOURCE resource, FMOD_EVENT_MODE mode);
-FMOD_RESULT  FMOD_MusicSystem_FreeSoundData     (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL waituntilready);
+FMOD_RESULT FMOD_MusicSystem_LoadSoundData     (FMOD_MUSICSYSTEM *musicsystem, FMOD_EVENT_RESOURCE resource, FMOD_EVENT_MODE mode);
+FMOD_RESULT FMOD_MusicSystem_FreeSoundData     (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL waituntilready);
 
-FMOD_RESULT  FMOD_MusicSystem_SetCallback       (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CALLBACK callback, void *userdata);
+FMOD_RESULT FMOD_MusicSystem_SetCallback       (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CALLBACK callback, void *userdata);
 
-FMOD_RESULT  FMOD_MusicSystem_GetMemoryInfo     (FMOD_MUSICSYSTEM *musicsystem, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_MusicSystem_GetMemoryInfo     (FMOD_MUSICSYSTEM *musicsystem, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
-FMOD_RESULT  FMOD_MusicPrompt_Release           (FMOD_MUSICPROMPT *musicprompt);
-FMOD_RESULT  FMOD_MusicPrompt_Begin             (FMOD_MUSICPROMPT *musicprompt);
-FMOD_RESULT  FMOD_MusicPrompt_End               (FMOD_MUSICPROMPT *musicprompt);
-FMOD_RESULT  FMOD_MusicPrompt_IsActive          (FMOD_MUSICPROMPT *musicprompt, FMOD_BOOL *active);
+FMOD_RESULT FMOD_MusicPrompt_Release           (FMOD_MUSICPROMPT *musicprompt);
+FMOD_RESULT FMOD_MusicPrompt_Begin             (FMOD_MUSICPROMPT *musicprompt);
+FMOD_RESULT FMOD_MusicPrompt_End               (FMOD_MUSICPROMPT *musicprompt);
+FMOD_RESULT FMOD_MusicPrompt_IsActive          (FMOD_MUSICPROMPT *musicprompt, FMOD_BOOL *active);
 
-FMOD_RESULT  FMOD_MusicPrompt_GetMemoryInfo     (FMOD_MUSICPROMPT *musicprompt, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_MusicPrompt_GetMemoryInfo     (FMOD_MUSICPROMPT *musicprompt, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 
 
@@ -2589,10 +2620,10 @@ FMOD_RESULT  FMOD_MusicPrompt_GetMemoryInfo     (FMOD_MUSICPROMPT *musicprompt, 
 
 
 
-FMOD_RESULT  FMOD_NetEventSystem_Init       (FMOD_EVENTSYSTEM *eventsystem, unsigned short port);
-FMOD_RESULT  FMOD_NetEventSystem_Update     ();
-FMOD_RESULT  FMOD_NetEventSystem_Shutdown   ();
-FMOD_RESULT  FMOD_NetEventSystem_GetVersion (unsigned int *version);
+FMOD_RESULT FMOD_NetEventSystem_Init       (FMOD_EVENTSYSTEM *eventsystem, unsigned short port);
+FMOD_RESULT FMOD_NetEventSystem_Update     ();
+FMOD_RESULT FMOD_NetEventSystem_Shutdown   ();
+FMOD_RESULT FMOD_NetEventSystem_GetVersion (unsigned int *version);
 
 
 
@@ -2758,18 +2789,18 @@ static const char *FMOD_ErrorString(FMOD_RESULT errcode)
 
 typedef struct FMOD_OUTPUT_STATE FMOD_OUTPUT_STATE;
 
- 
-typedef FMOD_RESULT ( *FMOD_OUTPUT_GETNUMDRIVERSCALLBACK)(FMOD_OUTPUT_STATE *output_state, int *numdrivers);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_GETDRIVERNAMECALLBACK)(FMOD_OUTPUT_STATE *output_state, int id, char *name, int namelen);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_GETDRIVERCAPSCALLBACK)(FMOD_OUTPUT_STATE *output_state, int id, FMOD_CAPS *caps);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_INITCALLBACK)         (FMOD_OUTPUT_STATE *output_state, int selecteddriver, FMOD_INITFLAGS flags, int *outputrate, int outputchannels, FMOD_SOUND_FORMAT *outputformat, int dspbufferlength, int dspnumbuffers, void *extradriverdata);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_CLOSECALLBACK)        (FMOD_OUTPUT_STATE *output_state);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_UPDATECALLBACK)       (FMOD_OUTPUT_STATE *output_state);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_GETHANDLECALLBACK)    (FMOD_OUTPUT_STATE *output_state, void **handle);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_GETPOSITIONCALLBACK)  (FMOD_OUTPUT_STATE *output_state, unsigned int *pcm);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_LOCKCALLBACK)         (FMOD_OUTPUT_STATE *output_state, unsigned int offset, unsigned int length, void **ptr1, void **ptr2, unsigned int *len1, unsigned int *len2);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_UNLOCKCALLBACK)       (FMOD_OUTPUT_STATE *output_state, void *ptr1, void *ptr2, unsigned int len1, unsigned int len2);
-typedef FMOD_RESULT ( *FMOD_OUTPUT_READFROMMIXER)        (FMOD_OUTPUT_STATE *output_state, void *buffer, unsigned int length);
+
+typedef FMOD_RESULT (*FMOD_OUTPUT_GETNUMDRIVERSCALLBACK)(FMOD_OUTPUT_STATE *output_state, int *numdrivers);
+typedef FMOD_RESULT (*FMOD_OUTPUT_GETDRIVERNAMECALLBACK)(FMOD_OUTPUT_STATE *output_state, int id, char *name, int namelen);
+typedef FMOD_RESULT (*FMOD_OUTPUT_GETDRIVERCAPSCALLBACK)(FMOD_OUTPUT_STATE *output_state, int id, FMOD_CAPS *caps);
+typedef FMOD_RESULT (*FMOD_OUTPUT_INITCALLBACK)         (FMOD_OUTPUT_STATE *output_state, int selecteddriver, FMOD_INITFLAGS flags, int *outputrate, int outputchannels, FMOD_SOUND_FORMAT *outputformat, int dspbufferlength, int dspnumbuffers, void *extradriverdata);
+typedef FMOD_RESULT (*FMOD_OUTPUT_CLOSECALLBACK)        (FMOD_OUTPUT_STATE *output_state);
+typedef FMOD_RESULT (*FMOD_OUTPUT_UPDATECALLBACK)       (FMOD_OUTPUT_STATE *output_state);
+typedef FMOD_RESULT (*FMOD_OUTPUT_GETHANDLECALLBACK)    (FMOD_OUTPUT_STATE *output_state, void **handle);
+typedef FMOD_RESULT (*FMOD_OUTPUT_GETPOSITIONCALLBACK)  (FMOD_OUTPUT_STATE *output_state, unsigned int *pcm);
+typedef FMOD_RESULT (*FMOD_OUTPUT_LOCKCALLBACK)         (FMOD_OUTPUT_STATE *output_state, unsigned int offset, unsigned int length, void **ptr1, void **ptr2, unsigned int *len1, unsigned int *len2);
+typedef FMOD_RESULT (*FMOD_OUTPUT_UNLOCKCALLBACK)       (FMOD_OUTPUT_STATE *output_state, void *ptr1, void *ptr2, unsigned int len1, unsigned int len2);
+typedef FMOD_RESULT (*FMOD_OUTPUT_READFROMMIXER)        (FMOD_OUTPUT_STATE *output_state, void *buffer, unsigned int length);
 
 
 
@@ -2777,7 +2808,7 @@ typedef struct FMOD_OUTPUT_DESCRIPTION
 {
     const char                        *name;                  
     unsigned int                       version;               
-    int                                polling;                
+    int                                polling;               
     FMOD_OUTPUT_GETNUMDRIVERSCALLBACK  getnumdrivers;         
     FMOD_OUTPUT_GETDRIVERNAMECALLBACK  getdrivername;         
     FMOD_OUTPUT_GETDRIVERCAPSCALLBACK  getdrivercaps;         

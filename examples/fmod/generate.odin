@@ -32,12 +32,21 @@ main :: proc() {
     // we remove them here.
     options.parserOptions.ignoredTokens = []string{"XRAPI_PTR", "XRAPI_CALL", "XRAPI_ATTR", "XR_MAY_ALIAS"};
     */
-    
+
     bindgen.generate(
         packageName = "fmod",
         foreignLibrary = "fmodex_vc",
-        outputFile = "./examples/fmod/generated/fmod.odin",
-        headerFiles = []string{"./examples/fmod/headers/fmod_odin_preprocessed.h"},
+        //outputFile = "./examples/fmod/generated/fmod.odin",
+        outputFile = "./shared/fmod/fmod.odin",
+        //outputFile = "../Mimir/shared/fmod/fmod.odin",
+        //headerFiles = []string{"./examples/fmod/headers/fmod_odin_preprocessed.h"},
+        headerFiles = []string{
+			"./examples/fmod/headers/fmod.h",
+			"./examples/fmod/headers/fmod_event.h",
+			"./examples/fmod/headers/fmod_event_net.h",
+			"./examples/fmod/headers/fmod_errors.h",
+			"./examples/fmod/headers/fmod_output.h",
+		},
         options = options,
     );
 }

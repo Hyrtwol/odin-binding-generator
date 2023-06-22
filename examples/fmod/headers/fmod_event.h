@@ -52,7 +52,7 @@ typedef FMOD_MUSIC_ID               FMOD_MUSIC_PARAM_ID;
     [NAME]
     FMOD_EVENT_INITFLAGS
 
-    [DESCRIPTION]   
+    [DESCRIPTION]
     Initialization flags.  Use them with EventSystem::init in the eventflags parameter to change various behaviour.
 
     [REMARKS]
@@ -86,10 +86,10 @@ typedef FMOD_MUSIC_ID               FMOD_MUSIC_PARAM_ID;
 /*
 [DEFINE]
 [
-    [NAME] 
+    [NAME]
     FMOD_EVENT_MODE
 
-    [DESCRIPTION]   
+    [DESCRIPTION]
     Event data loading bitfields. Bitwise OR them together for controlling how event data is loaded.
 
     [REMARKS]
@@ -114,10 +114,10 @@ typedef FMOD_MUSIC_ID               FMOD_MUSIC_PARAM_ID;
 #define FMOD_EVENT_USERDSP               0x00000008  /* For EventGroup::getEvent / EventGroup::getEventByIndex.  Tells FMOD that you plan to add your own DSP effects to this event's ChannelGroup at runtime. Omitting this flag will yield a small memory gain. */
 
 #define FMOD_EVENT_NONBLOCKING_THREAD0   (FMOD_EVENT_NONBLOCKING)               /* FMOD_EVENT_NONBLOCKING, execute on thread 0.  See remarks. (default) */
-#define FMOD_EVENT_NONBLOCKING_THREAD1   (FMOD_EVENT_NONBLOCKING | 0x00010000)  /* FMOD_EVENT_NONBLOCKING, execute on thread 1.  See remarks. */
-#define FMOD_EVENT_NONBLOCKING_THREAD2   (FMOD_EVENT_NONBLOCKING | 0x00020000)  /* FMOD_EVENT_NONBLOCKING, execute on thread 2.  See remarks. */
-#define FMOD_EVENT_NONBLOCKING_THREAD3   (FMOD_EVENT_NONBLOCKING | 0x00040000)  /* FMOD_EVENT_NONBLOCKING, execute on thread 3.  See remarks. */
-#define FMOD_EVENT_NONBLOCKING_THREAD4   (FMOD_EVENT_NONBLOCKING | 0x00080000)  /* FMOD_EVENT_NONBLOCKING, execute on thread 4.  See remarks. */
+// #define FMOD_EVENT_NONBLOCKING_THREAD1   (FMOD_EVENT_NONBLOCKING | 0x00010000)  /* FMOD_EVENT_NONBLOCKING, execute on thread 1.  See remarks. */
+// #define FMOD_EVENT_NONBLOCKING_THREAD2   (FMOD_EVENT_NONBLOCKING | 0x00020000)  /* FMOD_EVENT_NONBLOCKING, execute on thread 2.  See remarks. */
+// #define FMOD_EVENT_NONBLOCKING_THREAD3   (FMOD_EVENT_NONBLOCKING | 0x00040000)  /* FMOD_EVENT_NONBLOCKING, execute on thread 3.  See remarks. */
+// #define FMOD_EVENT_NONBLOCKING_THREAD4   (FMOD_EVENT_NONBLOCKING | 0x00080000)  /* FMOD_EVENT_NONBLOCKING, execute on thread 4.  See remarks. */
 #define FMOD_EVENT_NONBLOCKING_THREAD_MAX 5
 /* [DEFINE_END] */
 
@@ -125,13 +125,13 @@ typedef FMOD_MUSIC_ID               FMOD_MUSIC_PARAM_ID;
 /*
 [DEFINE]
 [
-    [NAME] 
+    [NAME]
     FMOD_EVENT_STATE
 
-    [DESCRIPTION]   
+    [DESCRIPTION]
     These values describe what state an event is in.
 
-    [REMARKS]    
+    [REMARKS]
     The flags below can be combined to set multiple states at once.  Use bitwise AND operations to test for these.
     An example of a combined flag set would be FMOD_EVENT_STATE_READY | FMOD_EVENT_STATE_PLAYING.
 
@@ -159,8 +159,8 @@ typedef FMOD_MUSIC_ID               FMOD_MUSIC_PARAM_ID;
 [
 	[DESCRIPTION]
     Property indices for Event::getPropertyByIndex.
-    
-	[REMARKS]        
+
+	[REMARKS]
 
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
@@ -233,7 +233,7 @@ typedef enum
 [
 	[DESCRIPTION]
     Event property types.
-    
+
 	[REMARKS]
 
     [PLATFORMS]
@@ -257,8 +257,8 @@ typedef enum
 [
 	[DESCRIPTION]
     Pitch units for Event::setPitch and EventCategory::setPitch.
-    
-	[REMARKS]        
+
+	[REMARKS]
 
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
@@ -282,7 +282,7 @@ typedef enum
 [
 	[DESCRIPTION]
     Flags to pass to EventGroup::loadEventData to determine what to load at the time of calling.
-    
+
 	[REMARKS]
 
     [PLATFORMS]
@@ -303,7 +303,7 @@ typedef enum
 /*
 [ENUM]
 [
-    [DESCRIPTION]   
+    [DESCRIPTION]
     These callback types are used with FMOD_EVENT_CALLBACK.
 
     [REMARKS]
@@ -330,9 +330,9 @@ typedef enum
     param2 = (int) index of wave being started inside sound definition (ie for multi wave sound definitions)<br>
     <p>
     An FMOD_EVENT_CALLBACKTYPE_SOUNDDEF_START callback is generated each time a sound definition is played in an event.
-    This happens every time a sound definition starts due to the event parameter entering the region specified in the 
+    This happens every time a sound definition starts due to the event parameter entering the region specified in the
     layer created by the sound designer.
-    This also happens when sounds are randomly respawned using the random respawn feature in the sound definition 
+    This also happens when sounds are randomly respawned using the random respawn feature in the sound definition
     properties in FMOD designer.
     <p>&nbsp;<p>
 
@@ -341,8 +341,8 @@ typedef enum
     param1 = (char *) name of sound definition being stopped<br>
     param2 = (int) index of wave being stopped inside sound definition (ie for multi wave sound definitions)<br>
     <p>
-    An FMOD_EVENT_CALLBACKTYPE_SOUNDDEF_END callback is generated when a one-shot sound definition inside an event ends, 
-    or when a looping sound definition stops due to the event parameter leaving the region specified in the layer created 
+    An FMOD_EVENT_CALLBACKTYPE_SOUNDDEF_END callback is generated when a one-shot sound definition inside an event ends,
+    or when a looping sound definition stops due to the event parameter leaving the region specified in the layer created
     by the sound designer.
     <p>&nbsp;<p>
 
@@ -351,8 +351,8 @@ typedef enum
     param1 = 0<br>
     param2 = 0<br>
     <p>
-    An FMOD_EVENT_CALLBACKTYPE_STOLEN callback is generated when a getEventXXX call needs to steal an event instance that is in use because 
-    the event's "Max playbacks" has been exceeded. This callback is called before the event is stolen and before the event 
+    An FMOD_EVENT_CALLBACKTYPE_STOLEN callback is generated when a getEventXXX call needs to steal an event instance that is in use because
+    the event's "Max playbacks" has been exceeded. This callback is called before the event is stolen and before the event
     is stopped (if it is playing). An FMOD_EVENT_CALLBACKTYPE_EVENTFINISHED callback will be generated when the stolen event is stopped i.e. <b>after</b>
     the FMOD_EVENT_CALLBACKTYPE_STOLEN. If the callback function returns FMOD_ERR_EVENT_FAILED, the event will <b>not</b>
     be stolen, and the returned value will be passed back as the return value of the getEventXXX call that triggered the steal attempt.
@@ -372,7 +372,7 @@ typedef enum
     param1 = (FMOD_EVENT_PROPERTY) which property was modified<br>
     param2 = (float) the new property value<br>
     <p>
-    An FMOD_EVENT_CALLBACKTYPE_NET_MODIFIED callback is generated when someone has connected to your running application with 
+    An FMOD_EVENT_CALLBACKTYPE_NET_MODIFIED callback is generated when someone has connected to your running application with
     FMOD Designer and changed a property within this event, for example volume or pitch.
     <p>&nbsp;<p>
 
@@ -436,12 +436,12 @@ typedef enum
     An FMOD_EVENT_CALLBACKTYPE_MAXSTREAMS callback is generated whenever an event is retrieved and causes the 'max streams' limit for a wavebank to be reached/exceeded.<br>
     Side effect is that stream playback will be delayed until a slot is free.<br>
     Make sure the event has the callback set on its 'info only' event handle (FMOD_EVENT_INFOONLY) because the event instance in question may not be fully created at the time the callback is issued.
-    <p>&nbsp;<p>    
+    <p>&nbsp;<p>
 
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     Event::setCallback
     FMOD_EVENT_CALLBACK
     FMOD_EVENT_SOUNDDEFINFO
@@ -478,7 +478,7 @@ typedef enum
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     EventSystem::getInfo
     FMOD_EVENT_SYSTEMINFO
 ]
@@ -513,7 +513,7 @@ typedef struct FMOD_EVENT_WAVEBANKINFO
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     EventSystem::getInfo
     EventProject::getInfo
     FMOD_EVENT_WAVEBANKINFO
@@ -521,9 +521,9 @@ typedef struct FMOD_EVENT_WAVEBANKINFO
 */
 typedef struct FMOD_EVENT_SYSTEMINFO
 {
-#ifdef __cplusplus
-    FMOD_EVENT_SYSTEMINFO() : numevents(0), numinstances(0), maxwavebanks(0), wavebankinfo(0), numplayingevents(0), playingevents(0) { numloadsqueued[0] = numloadsqueued[1] = numloadsqueued[2] = numloadsqueued[3] = numloadsqueued[4] = 0; }
-#endif
+// #ifdef __cplusplus
+//     FMOD_EVENT_SYSTEMINFO() : numevents(0), numinstances(0), maxwavebanks(0), wavebankinfo(0), numplayingevents(0), playingevents(0) { numloadsqueued[0] = numloadsqueued[1] = numloadsqueued[2] = numloadsqueued[3] = numloadsqueued[4] = 0; }
+// #endif
 
     int                      numevents;          /* [out] Total number of events in all event groups in this event system. */
     int                      numinstances;       /* [out] Total number of event instances in all event groups in this event system. */
@@ -560,9 +560,9 @@ typedef struct FMOD_EVENT_SYSTEMINFO
 */
 typedef struct FMOD_EVENT_PROJECTINFO
 {
-#ifdef __cplusplus
-    FMOD_EVENT_PROJECTINFO() : index(0), numevents(0), numinstances(0), maxwavebanks(0), wavebankinfo(0), numplayingevents(0), playingevents(0) {}
-#endif
+// #ifdef __cplusplus
+//     FMOD_EVENT_PROJECTINFO() : index(0), numevents(0), numinstances(0), maxwavebanks(0), wavebankinfo(0), numplayingevents(0), playingevents(0) {}
+// #endif
 
     int                      index;            /* [out] Index of the project. */
     char                     name[256];        /* [out] Name of the project. */
@@ -589,16 +589,16 @@ typedef struct FMOD_EVENT_PROJECTINFO
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     Event::getInfo
     FMOD_GUID
 ]
 */
 typedef struct FMOD_EVENT_INFO
 {
-#ifdef __cplusplus
-    FMOD_EVENT_INFO() : memoryused(0), positionms(0), lengthms(0), channelsplaying(0), instancesactive(0), maxwavebanks(0), wavebankinfo(0), projectid(0), systemid(0), audibility(0), numinstances(0), instances(0), guid(0) {}
-#endif
+// #ifdef __cplusplus
+//     FMOD_EVENT_INFO() : memoryused(0), positionms(0), lengthms(0), channelsplaying(0), instancesactive(0), maxwavebanks(0), wavebankinfo(0), projectid(0), systemid(0), audibility(0), numinstances(0), instances(0), guid(0) {}
+// #endif
 
     int                      memoryused;        /* This member has been deprecated. */
     int                      positionms;        /* [out] Time passed in playback of this event instance in milliseconds. */
@@ -620,7 +620,7 @@ typedef struct FMOD_EVENT_INFO
 /*
 [ENUM]
 [
-    [DESCRIPTION]   
+    [DESCRIPTION]
     Sound definition entry types for FMOD_EVENT_SOUNDDEFINFO.
 
     [REMARKS]
@@ -628,7 +628,7 @@ typedef struct FMOD_EVENT_INFO
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     FMOD_EVENT_SOUNDDEFINFO
     FMOD_EVENT_CALLBACK
     FMOD_EVENT_CALLBACKTYPE
@@ -650,14 +650,14 @@ typedef enum
     Structure containing information about a sound definition.
 
     [REMARKS]
-    This structure is passed as the param1 argument of all 
+    This structure is passed as the param1 argument of all
     FMOD_EVENT_CALLBACKTYPE_SOUNDDEF_SELECTINDEX callbacks if
     FMOD_EVENT_INIT_DETAILED_SOUNDDEF_INFO was passed to EventSystem::init.
 
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     FMOD_EVENT_CALLBACK
     FMOD_EVENT_CALLBACKTYPE
     EventSystem::init
@@ -667,9 +667,9 @@ typedef enum
 */
 typedef struct FMOD_EVENT_SOUNDDEFINFO
 {
-#ifdef __cplusplus
-    FMOD_EVENT_SOUNDDEFINFO() : name(0), numentries(0), entrynames(0), entrytypes(0) {}
-#endif
+// #ifdef __cplusplus
+//     FMOD_EVENT_SOUNDDEFINFO() : name(0), numentries(0), entrynames(0), entrytypes(0) {}
+// #endif
 
     char                    *name;              /* The name of the sound definition. */
     int                      numentries;        /* The number of entries in the sound definition. */
@@ -695,15 +695,15 @@ typedef struct FMOD_EVENT_SOUNDDEFINFO
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     EventSystem::load
 ]
 */
 typedef struct FMOD_EVENT_LOADINFO
 {
-#ifdef __cplusplus
-    FMOD_EVENT_LOADINFO() : size(0), encryptionkey(0), sounddefentrylimit(0), loadfrommemory_length(0), override_category_vals(0), sizeof_instancepool_simple(0) {}
-#endif
+// #ifdef __cplusplus
+//     FMOD_EVENT_LOADINFO() : size(0), encryptionkey(0), sounddefentrylimit(0), loadfrommemory_length(0), override_category_vals(0), sizeof_instancepool_simple(0) {}
+// #endif
 
     unsigned int  size;                         /* [in] Size of this structure.  This is used so the structure can be expanded in the future and still work on older versions of FMOD Ex. */
     char         *encryptionkey;                /* [in] Optional. Specify 0 to ignore. Key, or 'password' to decrypt a bank.  A sound designer may have encrypted the audio data to protect their sound data from 'rippers'. */
@@ -715,13 +715,13 @@ typedef struct FMOD_EVENT_LOADINFO
 } FMOD_EVENT_LOADINFO;
 
 
-typedef FMOD_RESULT (F_CALLBACK *FMOD_EVENT_CALLBACK) (FMOD_EVENT *event, FMOD_EVENT_CALLBACKTYPE type, void *param1, void *param2, void *userdata);
+typedef FMOD_RESULT (*FMOD_EVENT_CALLBACK) (FMOD_EVENT *event, FMOD_EVENT_CALLBACKTYPE type, void *param1, void *param2, void *userdata);
 
 
 /*
 [ENUM]
 [
-    [DESCRIPTION]   
+    [DESCRIPTION]
     These callback types are used with FMOD_EVENTQUEUE_CALLBACK.
 
     [REMARKS]
@@ -730,7 +730,7 @@ typedef FMOD_RESULT (F_CALLBACK *FMOD_EVENT_CALLBACK) (FMOD_EVENT *event, FMOD_E
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     EventQueue::setCallback
     FMOD_EVENTQUEUE_CALLBACK
     EventSystem::update
@@ -746,7 +746,7 @@ typedef enum
 } FMOD_EVENTQUEUE_CALLBACKTYPE;
 
 
-typedef FMOD_RESULT (F_CALLBACK *FMOD_EVENTQUEUE_CALLBACK)(FMOD_EVENTQUEUE_CALLBACKTYPE type, FMOD_EVENTQUEUE *queue, FMOD_EVENTQUEUEENTRY *entry, void *callbackuserdata);
+typedef FMOD_RESULT (*FMOD_EVENTQUEUE_CALLBACK)(FMOD_EVENTQUEUE_CALLBACKTYPE type, FMOD_EVENTQUEUE *queue, FMOD_EVENTQUEUEENTRY *entry, void *callbackuserdata);
 
 
 /*
@@ -760,7 +760,7 @@ typedef FMOD_RESULT (F_CALLBACK *FMOD_EVENTQUEUE_CALLBACK)(FMOD_EVENTQUEUE_CALLB
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     MusicSystem::getInfo
 ]
 */
@@ -782,7 +782,7 @@ typedef struct FMOD_MUSIC_INFO
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     FMOD_MUSIC_ITERATOR
 ]
 */
@@ -805,7 +805,7 @@ typedef struct FMOD_MUSIC_ENTITY
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     FMOD_MUSIC_ENTITY
     MusicSystem::getCues
     MusicSystem::getParameters
@@ -830,7 +830,7 @@ typedef struct FMOD_MUSIC_ITERATOR
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     FMOD_MUSIC_CALLBACK
     FMOD_MUSIC_CALLBACKTYPE
 ]
@@ -855,7 +855,7 @@ typedef struct FMOD_MUSIC_SAMPLE_INFO
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     FMOD_MUSIC_CALLBACK
     FMOD_MUSIC_CALLBACKTYPE
 ]
@@ -870,7 +870,7 @@ typedef struct FMOD_MUSIC_SEGMENT_INFO
 /*
 [ENUM]
 [
-    [DESCRIPTION]   
+    [DESCRIPTION]
     These callback types are used with FMOD_MUSIC_CALLBACK.
 
     [REMARKS]
@@ -879,7 +879,7 @@ typedef struct FMOD_MUSIC_SEGMENT_INFO
     [PLATFORMS]
     Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
-    [SEE_ALSO]      
+    [SEE_ALSO]
     MusicSystem::setCallback
     FMOD_MUSIC_CALLBACK
     EventSystem::update
@@ -898,7 +898,7 @@ typedef enum
 } FMOD_MUSIC_CALLBACKTYPE;
 
 
-typedef FMOD_RESULT (F_CALLBACK *FMOD_MUSIC_CALLBACK) (FMOD_MUSIC_CALLBACKTYPE type, void *param1, void *param2, void *userdata);
+typedef FMOD_RESULT (*FMOD_MUSIC_CALLBACK) (FMOD_MUSIC_CALLBACKTYPE type, void *param1, void *param2, void *userdata);
 
 
 /* ========================================================================================== */
@@ -906,7 +906,7 @@ typedef FMOD_RESULT (F_CALLBACK *FMOD_MUSIC_CALLBACK) (FMOD_MUSIC_CALLBACKTYPE t
 /* ========================================================================================== */
 
 #ifdef __cplusplus
-extern "C" 
+extern "C"
 {
 #endif
 
@@ -914,7 +914,7 @@ extern "C"
     FMOD EventSystem factory functions.  Use this to create an FMOD EventSystem Instance.  Below you will see FMOD_EventSystem_Init/Release to get started.
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_Create(FMOD_EVENTSYSTEM **eventsystem);
+FMOD_RESULT FMOD_EventSystem_Create(FMOD_EVENTSYSTEM **eventsystem);
 
 /*$ preserve end $*/
 
@@ -926,327 +926,327 @@ FMOD_RESULT F_API FMOD_EventSystem_Create(FMOD_EVENTSYSTEM **eventsystem);
      Initialization / system functions.
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_Init              (FMOD_EVENTSYSTEM *eventsystem, int maxchannels, FMOD_INITFLAGS flags, void *extradriverdata, FMOD_EVENT_INITFLAGS eventflags);
-FMOD_RESULT F_API FMOD_EventSystem_Release           (FMOD_EVENTSYSTEM *eventsystem);
-FMOD_RESULT F_API FMOD_EventSystem_Update            (FMOD_EVENTSYSTEM *eventsystem);
-FMOD_RESULT F_API FMOD_EventSystem_SetMediaPath      (FMOD_EVENTSYSTEM *eventsystem, const char *path);
-FMOD_RESULT F_API FMOD_EventSystem_SetPluginPath     (FMOD_EVENTSYSTEM *eventsystem, const char *path);
-FMOD_RESULT F_API FMOD_EventSystem_GetVersion        (FMOD_EVENTSYSTEM *eventsystem, unsigned int *version);
-FMOD_RESULT F_API FMOD_EventSystem_GetInfo           (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENT_SYSTEMINFO *info);
-FMOD_RESULT F_API FMOD_EventSystem_GetSystemObject   (FMOD_EVENTSYSTEM *eventsystem, FMOD_SYSTEM **system);
-FMOD_RESULT F_API FMOD_EventSystem_GetMusicSystem    (FMOD_EVENTSYSTEM *eventsystem, FMOD_MUSICSYSTEM **musicsystem);
-FMOD_RESULT F_API FMOD_EventSystem_SetLanguage       (FMOD_EVENTSYSTEM *eventsystem, const char *language);
-FMOD_RESULT F_API FMOD_EventSystem_GetLanguage       (FMOD_EVENTSYSTEM *eventsystem, char *language);
-FMOD_RESULT F_API FMOD_EventSystem_RegisterDSP       (FMOD_EVENTSYSTEM *eventsystem, FMOD_DSP_DESCRIPTION *description, unsigned int *handle);
+FMOD_RESULT FMOD_EventSystem_Init              (FMOD_EVENTSYSTEM *eventsystem, int maxchannels, FMOD_INITFLAGS flags, void *extradriverdata, FMOD_EVENT_INITFLAGS eventflags);
+FMOD_RESULT FMOD_EventSystem_Release           (FMOD_EVENTSYSTEM *eventsystem);
+FMOD_RESULT FMOD_EventSystem_Update            (FMOD_EVENTSYSTEM *eventsystem);
+FMOD_RESULT FMOD_EventSystem_SetMediaPath      (FMOD_EVENTSYSTEM *eventsystem, const char *path);
+FMOD_RESULT FMOD_EventSystem_SetPluginPath     (FMOD_EVENTSYSTEM *eventsystem, const char *path);
+FMOD_RESULT FMOD_EventSystem_GetVersion        (FMOD_EVENTSYSTEM *eventsystem, unsigned int *version);
+FMOD_RESULT FMOD_EventSystem_GetInfo           (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENT_SYSTEMINFO *info);
+FMOD_RESULT FMOD_EventSystem_GetSystemObject   (FMOD_EVENTSYSTEM *eventsystem, FMOD_SYSTEM **system);
+FMOD_RESULT FMOD_EventSystem_GetMusicSystem    (FMOD_EVENTSYSTEM *eventsystem, FMOD_MUSICSYSTEM **musicsystem);
+FMOD_RESULT FMOD_EventSystem_SetLanguage       (FMOD_EVENTSYSTEM *eventsystem, const char *language);
+FMOD_RESULT FMOD_EventSystem_GetLanguage       (FMOD_EVENTSYSTEM *eventsystem, char *language);
+FMOD_RESULT FMOD_EventSystem_RegisterDSP       (FMOD_EVENTSYSTEM *eventsystem, FMOD_DSP_DESCRIPTION *description, unsigned int *handle);
 
 /*
-     FEV load/unload.                                 
+     FEV load/unload.
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_Load              (FMOD_EVENTSYSTEM *eventsystem, const char *name_or_data, FMOD_EVENT_LOADINFO *loadinfo, FMOD_EVENTPROJECT **project);
-FMOD_RESULT F_API FMOD_EventSystem_Unload            (FMOD_EVENTSYSTEM *eventsystem);
+FMOD_RESULT FMOD_EventSystem_Load              (FMOD_EVENTSYSTEM *eventsystem, const char *name_or_data, FMOD_EVENT_LOADINFO *loadinfo, FMOD_EVENTPROJECT **project);
+FMOD_RESULT FMOD_EventSystem_Unload            (FMOD_EVENTSYSTEM *eventsystem);
 
 /*
-     Event,EventGroup,EventCategory Retrieval.        
+     Event,EventGroup,EventCategory Retrieval.
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_GetProject        (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENTPROJECT **project);
-FMOD_RESULT F_API FMOD_EventSystem_GetProjectByIndex (FMOD_EVENTSYSTEM *eventsystem, int index, FMOD_EVENTPROJECT **project);
-FMOD_RESULT F_API FMOD_EventSystem_GetNumProjects    (FMOD_EVENTSYSTEM *eventsystem, int *numprojects);
-FMOD_RESULT F_API FMOD_EventSystem_GetCategory       (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT F_API FMOD_EventSystem_GetCategoryByIndex(FMOD_EVENTSYSTEM *eventsystem, int index, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT F_API FMOD_EventSystem_GetMusicCategory  (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT F_API FMOD_EventSystem_GetNumCategories  (FMOD_EVENTSYSTEM *eventsystem, int *numcategories);
-FMOD_RESULT F_API FMOD_EventSystem_GetGroup          (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT F_API FMOD_EventSystem_GetEvent          (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventSystem_GetEventBySystemID(FMOD_EVENTSYSTEM *eventsystem, unsigned int systemid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventSystem_GetEventByGUID    (FMOD_EVENTSYSTEM *eventsystem, const FMOD_GUID *guid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventSystem_GetEventByGUIDString(FMOD_EVENTSYSTEM *eventsystem, const char *guid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventSystem_GetNumEvents      (FMOD_EVENTSYSTEM *eventsystem, int *numevents);
+FMOD_RESULT FMOD_EventSystem_GetProject        (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENTPROJECT **project);
+FMOD_RESULT FMOD_EventSystem_GetProjectByIndex (FMOD_EVENTSYSTEM *eventsystem, int index, FMOD_EVENTPROJECT **project);
+FMOD_RESULT FMOD_EventSystem_GetNumProjects    (FMOD_EVENTSYSTEM *eventsystem, int *numprojects);
+FMOD_RESULT FMOD_EventSystem_GetCategory       (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventSystem_GetCategoryByIndex(FMOD_EVENTSYSTEM *eventsystem, int index, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventSystem_GetMusicCategory  (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventSystem_GetNumCategories  (FMOD_EVENTSYSTEM *eventsystem, int *numcategories);
+FMOD_RESULT FMOD_EventSystem_GetGroup          (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventSystem_GetEvent          (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventSystem_GetEventBySystemID(FMOD_EVENTSYSTEM *eventsystem, unsigned int systemid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventSystem_GetEventByGUID    (FMOD_EVENTSYSTEM *eventsystem, const FMOD_GUID *guid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventSystem_GetEventByGUIDString(FMOD_EVENTSYSTEM *eventsystem, const char *guid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventSystem_GetNumEvents      (FMOD_EVENTSYSTEM *eventsystem, int *numevents);
 
 /*
      Reverb interfaces.
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_SetReverbProperties(FMOD_EVENTSYSTEM *eventsystem, const FMOD_REVERB_PROPERTIES *props);
-FMOD_RESULT F_API FMOD_EventSystem_GetReverbProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventSystem_SetReverbProperties(FMOD_EVENTSYSTEM *eventsystem, const FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventSystem_GetReverbProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
 
-FMOD_RESULT F_API FMOD_EventSystem_GetReverbPreset   (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_REVERB_PROPERTIES *props, int *index);
-FMOD_RESULT F_API FMOD_EventSystem_GetReverbPresetByIndex(FMOD_EVENTSYSTEM *eventsystem, const int index, FMOD_REVERB_PROPERTIES *props, char **name);
-FMOD_RESULT F_API FMOD_EventSystem_GetNumReverbPresets(FMOD_EVENTSYSTEM *eventsystem, int *numpresets);
+FMOD_RESULT FMOD_EventSystem_GetReverbPreset   (FMOD_EVENTSYSTEM *eventsystem, const char *name, FMOD_REVERB_PROPERTIES *props, int *index);
+FMOD_RESULT FMOD_EventSystem_GetReverbPresetByIndex(FMOD_EVENTSYSTEM *eventsystem, const int index, FMOD_REVERB_PROPERTIES *props, char **name);
+FMOD_RESULT FMOD_EventSystem_GetNumReverbPresets(FMOD_EVENTSYSTEM *eventsystem, int *numpresets);
 
-FMOD_RESULT F_API FMOD_EventSystem_CreateReverb      (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTREVERB **reverb);
-FMOD_RESULT F_API FMOD_EventSystem_SetReverbAmbientProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
-FMOD_RESULT F_API FMOD_EventSystem_GetReverbAmbientProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventSystem_CreateReverb      (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTREVERB **reverb);
+FMOD_RESULT FMOD_EventSystem_SetReverbAmbientProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventSystem_GetReverbAmbientProperties(FMOD_EVENTSYSTEM *eventsystem, FMOD_REVERB_PROPERTIES *props);
 
 /*
      Event queue interfaces.
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_CreateEventQueue  (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTQUEUE **queue);
-FMOD_RESULT F_API FMOD_EventSystem_CreateEventQueueEntry(FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENT *event, FMOD_EVENTQUEUEENTRY **entry);
+FMOD_RESULT FMOD_EventSystem_CreateEventQueue  (FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENTQUEUE **queue);
+FMOD_RESULT FMOD_EventSystem_CreateEventQueueEntry(FMOD_EVENTSYSTEM *eventsystem, FMOD_EVENT *event, FMOD_EVENTQUEUEENTRY **entry);
 
 /*
      3D Listener interface.
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_Set3DNumListeners (FMOD_EVENTSYSTEM *eventsystem, int numlisteners);
-FMOD_RESULT F_API FMOD_EventSystem_Get3DNumListeners (FMOD_EVENTSYSTEM *eventsystem, int *numlisteners);
-FMOD_RESULT F_API FMOD_EventSystem_Set3DListenerAttributes(FMOD_EVENTSYSTEM *eventsystem, int listener, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel, const FMOD_VECTOR *forward, const FMOD_VECTOR *up);
-FMOD_RESULT F_API FMOD_EventSystem_Get3DListenerAttributes(FMOD_EVENTSYSTEM *eventsystem, int listener, FMOD_VECTOR *pos, FMOD_VECTOR *vel, FMOD_VECTOR *forward, FMOD_VECTOR *up);
+FMOD_RESULT FMOD_EventSystem_Set3DNumListeners (FMOD_EVENTSYSTEM *eventsystem, int numlisteners);
+FMOD_RESULT FMOD_EventSystem_Get3DNumListeners (FMOD_EVENTSYSTEM *eventsystem, int *numlisteners);
+FMOD_RESULT FMOD_EventSystem_Set3DListenerAttributes(FMOD_EVENTSYSTEM *eventsystem, int listener, const FMOD_VECTOR *pos, const FMOD_VECTOR *vel, const FMOD_VECTOR *forward, const FMOD_VECTOR *up);
+FMOD_RESULT FMOD_EventSystem_Get3DListenerAttributes(FMOD_EVENTSYSTEM *eventsystem, int listener, FMOD_VECTOR *pos, FMOD_VECTOR *vel, FMOD_VECTOR *forward, FMOD_VECTOR *up);
 
 /*
      Get/set user data
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_SetUserData       (FMOD_EVENTSYSTEM *eventsystem, void *userdata);
-FMOD_RESULT F_API FMOD_EventSystem_GetUserData       (FMOD_EVENTSYSTEM *eventsystem, void **userdata);
+FMOD_RESULT FMOD_EventSystem_SetUserData       (FMOD_EVENTSYSTEM *eventsystem, void *userdata);
+FMOD_RESULT FMOD_EventSystem_GetUserData       (FMOD_EVENTSYSTEM *eventsystem, void **userdata);
 
 /*
      Pre-loading FSB files (from disk or from memory, use FMOD_OPENMEMORY_POINT to point to pre-loaded memory).
 */
 
-FMOD_RESULT F_API FMOD_EventSystem_PreloadFSB        (FMOD_EVENTSYSTEM *eventsystem, const char *filename, int streaminstance, FMOD_SOUND *sound, FMOD_BOOL unloadprevious);
-FMOD_RESULT F_API FMOD_EventSystem_UnloadFSB         (FMOD_EVENTSYSTEM *eventsystem, const char *filename, int streaminstance);
+FMOD_RESULT FMOD_EventSystem_PreloadFSB        (FMOD_EVENTSYSTEM *eventsystem, const char *filename, int streaminstance, FMOD_SOUND *sound, FMOD_BOOL unloadprevious);
+FMOD_RESULT FMOD_EventSystem_UnloadFSB         (FMOD_EVENTSYSTEM *eventsystem, const char *filename, int streaminstance);
 
-FMOD_RESULT F_API FMOD_EventSystem_GetMemoryInfo     (FMOD_EVENTSYSTEM *eventsystem, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventSystem_GetMemoryInfo     (FMOD_EVENTSYSTEM *eventsystem, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'EventProject' API
 */
 
-FMOD_RESULT F_API FMOD_EventProject_Release          (FMOD_EVENTPROJECT *eventproject);
-FMOD_RESULT F_API FMOD_EventProject_GetInfo          (FMOD_EVENTPROJECT *eventproject, FMOD_EVENT_PROJECTINFO *info);
-FMOD_RESULT F_API FMOD_EventProject_GetGroup         (FMOD_EVENTPROJECT *eventproject, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT F_API FMOD_EventProject_GetGroupByIndex  (FMOD_EVENTPROJECT *eventproject, int index, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT F_API FMOD_EventProject_GetNumGroups     (FMOD_EVENTPROJECT *eventproject, int *numgroups);
-FMOD_RESULT F_API FMOD_EventProject_GetEvent         (FMOD_EVENTPROJECT *eventproject, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventProject_GetEventByProjectID(FMOD_EVENTPROJECT *eventproject, unsigned int projectid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventProject_GetNumEvents     (FMOD_EVENTPROJECT *eventproject, int *numevents);
-FMOD_RESULT F_API FMOD_EventProject_LoadSampleData   (FMOD_EVENTPROJECT *eventproject, int *eventid_array, int sizeof_eventid_array, char **groupname_array, int sizeof_groupname_array, FMOD_EVENT_MODE eventmode);
-FMOD_RESULT F_API FMOD_EventProject_StopAllEvents    (FMOD_EVENTPROJECT *eventproject, FMOD_BOOL immediate);
-FMOD_RESULT F_API FMOD_EventProject_CancelAllLoads   (FMOD_EVENTPROJECT *eventproject);
-FMOD_RESULT F_API FMOD_EventProject_SetUserData      (FMOD_EVENTPROJECT *eventproject, void *userdata);
-FMOD_RESULT F_API FMOD_EventProject_GetUserData      (FMOD_EVENTPROJECT *eventproject, void **userdata);
+FMOD_RESULT FMOD_EventProject_Release          (FMOD_EVENTPROJECT *eventproject);
+FMOD_RESULT FMOD_EventProject_GetInfo          (FMOD_EVENTPROJECT *eventproject, FMOD_EVENT_PROJECTINFO *info);
+FMOD_RESULT FMOD_EventProject_GetGroup         (FMOD_EVENTPROJECT *eventproject, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventProject_GetGroupByIndex  (FMOD_EVENTPROJECT *eventproject, int index, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventProject_GetNumGroups     (FMOD_EVENTPROJECT *eventproject, int *numgroups);
+FMOD_RESULT FMOD_EventProject_GetEvent         (FMOD_EVENTPROJECT *eventproject, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventProject_GetEventByProjectID(FMOD_EVENTPROJECT *eventproject, unsigned int projectid, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventProject_GetNumEvents     (FMOD_EVENTPROJECT *eventproject, int *numevents);
+FMOD_RESULT FMOD_EventProject_LoadSampleData   (FMOD_EVENTPROJECT *eventproject, int *eventid_array, int sizeof_eventid_array, char **groupname_array, int sizeof_groupname_array, FMOD_EVENT_MODE eventmode);
+FMOD_RESULT FMOD_EventProject_StopAllEvents    (FMOD_EVENTPROJECT *eventproject, FMOD_BOOL immediate);
+FMOD_RESULT FMOD_EventProject_CancelAllLoads   (FMOD_EVENTPROJECT *eventproject);
+FMOD_RESULT FMOD_EventProject_SetUserData      (FMOD_EVENTPROJECT *eventproject, void *userdata);
+FMOD_RESULT FMOD_EventProject_GetUserData      (FMOD_EVENTPROJECT *eventproject, void **userdata);
 
-FMOD_RESULT F_API FMOD_EventProject_GetMemoryInfo    (FMOD_EVENTPROJECT *eventproject, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventProject_GetMemoryInfo    (FMOD_EVENTPROJECT *eventproject, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'EventGroup' API
 */
 
-FMOD_RESULT F_API FMOD_EventGroup_GetInfo            (FMOD_EVENTGROUP *eventgroup, int *index, char **name);
-FMOD_RESULT F_API FMOD_EventGroup_LoadEventData      (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT_RESOURCE resource, FMOD_EVENT_MODE mode);
-FMOD_RESULT F_API FMOD_EventGroup_FreeEventData      (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT *event, FMOD_BOOL waituntilready);
-FMOD_RESULT F_API FMOD_EventGroup_GetGroup           (FMOD_EVENTGROUP *eventgroup, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT F_API FMOD_EventGroup_GetGroupByIndex    (FMOD_EVENTGROUP *eventgroup, int index, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
-FMOD_RESULT F_API FMOD_EventGroup_GetParentGroup     (FMOD_EVENTGROUP *eventgroup, FMOD_EVENTGROUP **group);
-FMOD_RESULT F_API FMOD_EventGroup_GetParentProject   (FMOD_EVENTGROUP *eventgroup, FMOD_EVENTPROJECT **project);
-FMOD_RESULT F_API FMOD_EventGroup_GetNumGroups       (FMOD_EVENTGROUP *eventgroup, int *numgroups);
-FMOD_RESULT F_API FMOD_EventGroup_GetEvent           (FMOD_EVENTGROUP *eventgroup, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventGroup_GetEventByIndex    (FMOD_EVENTGROUP *eventgroup, int index, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventGroup_GetNumEvents       (FMOD_EVENTGROUP *eventgroup, int *numevents);
-FMOD_RESULT F_API FMOD_EventGroup_GetProperty        (FMOD_EVENTGROUP *eventgroup, const char *propertyname, void *value);
-FMOD_RESULT F_API FMOD_EventGroup_GetPropertyByIndex (FMOD_EVENTGROUP *eventgroup, int propertyindex, void *value);
-FMOD_RESULT F_API FMOD_EventGroup_GetNumProperties   (FMOD_EVENTGROUP *eventgroup, int *numproperties);
-FMOD_RESULT F_API FMOD_EventGroup_GetState           (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT_STATE *state);
-FMOD_RESULT F_API FMOD_EventGroup_SetUserData        (FMOD_EVENTGROUP *eventgroup, void *userdata);
-FMOD_RESULT F_API FMOD_EventGroup_GetUserData        (FMOD_EVENTGROUP *eventgroup, void **userdata);
+FMOD_RESULT FMOD_EventGroup_GetInfo            (FMOD_EVENTGROUP *eventgroup, int *index, char **name);
+FMOD_RESULT FMOD_EventGroup_LoadEventData      (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT_RESOURCE resource, FMOD_EVENT_MODE mode);
+FMOD_RESULT FMOD_EventGroup_FreeEventData      (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT *event, FMOD_BOOL waituntilready);
+FMOD_RESULT FMOD_EventGroup_GetGroup           (FMOD_EVENTGROUP *eventgroup, const char *name, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventGroup_GetGroupByIndex    (FMOD_EVENTGROUP *eventgroup, int index, FMOD_BOOL cacheevents, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventGroup_GetParentGroup     (FMOD_EVENTGROUP *eventgroup, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_EventGroup_GetParentProject   (FMOD_EVENTGROUP *eventgroup, FMOD_EVENTPROJECT **project);
+FMOD_RESULT FMOD_EventGroup_GetNumGroups       (FMOD_EVENTGROUP *eventgroup, int *numgroups);
+FMOD_RESULT FMOD_EventGroup_GetEvent           (FMOD_EVENTGROUP *eventgroup, const char *name, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventGroup_GetEventByIndex    (FMOD_EVENTGROUP *eventgroup, int index, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventGroup_GetNumEvents       (FMOD_EVENTGROUP *eventgroup, int *numevents);
+FMOD_RESULT FMOD_EventGroup_GetProperty        (FMOD_EVENTGROUP *eventgroup, const char *propertyname, void *value);
+FMOD_RESULT FMOD_EventGroup_GetPropertyByIndex (FMOD_EVENTGROUP *eventgroup, int propertyindex, void *value);
+FMOD_RESULT FMOD_EventGroup_GetNumProperties   (FMOD_EVENTGROUP *eventgroup, int *numproperties);
+FMOD_RESULT FMOD_EventGroup_GetState           (FMOD_EVENTGROUP *eventgroup, FMOD_EVENT_STATE *state);
+FMOD_RESULT FMOD_EventGroup_SetUserData        (FMOD_EVENTGROUP *eventgroup, void *userdata);
+FMOD_RESULT FMOD_EventGroup_GetUserData        (FMOD_EVENTGROUP *eventgroup, void **userdata);
 
-FMOD_RESULT F_API FMOD_EventGroup_GetMemoryInfo      (FMOD_EVENTGROUP *eventgroup, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventGroup_GetMemoryInfo      (FMOD_EVENTGROUP *eventgroup, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'EventCategory' API
 */
 
-FMOD_RESULT F_API FMOD_EventCategory_GetInfo         (FMOD_EVENTCATEGORY *eventcategory, int *index, char **name);
-FMOD_RESULT F_API FMOD_EventCategory_GetCategory     (FMOD_EVENTCATEGORY *eventcategory, const char *name, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT F_API FMOD_EventCategory_GetCategoryByIndex(FMOD_EVENTCATEGORY *eventcategory, int index, FMOD_EVENTCATEGORY **category);
-FMOD_RESULT F_API FMOD_EventCategory_GetNumCategories(FMOD_EVENTCATEGORY *eventcategory, int *numcategories);
-FMOD_RESULT F_API FMOD_EventCategory_GetEventByIndex (FMOD_EVENTCATEGORY *eventcategory, int index, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
-FMOD_RESULT F_API FMOD_EventCategory_GetNumEvents    (FMOD_EVENTCATEGORY *eventcategory, int *numevents);
-FMOD_RESULT F_API FMOD_EventCategory_GetParentCategory(FMOD_EVENTCATEGORY *eventcategory, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventCategory_GetInfo         (FMOD_EVENTCATEGORY *eventcategory, int *index, char **name);
+FMOD_RESULT FMOD_EventCategory_GetCategory     (FMOD_EVENTCATEGORY *eventcategory, const char *name, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventCategory_GetCategoryByIndex(FMOD_EVENTCATEGORY *eventcategory, int index, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_EventCategory_GetNumCategories(FMOD_EVENTCATEGORY *eventcategory, int *numcategories);
+FMOD_RESULT FMOD_EventCategory_GetEventByIndex (FMOD_EVENTCATEGORY *eventcategory, int index, FMOD_EVENT_MODE mode, FMOD_EVENT **event);
+FMOD_RESULT FMOD_EventCategory_GetNumEvents    (FMOD_EVENTCATEGORY *eventcategory, int *numevents);
+FMOD_RESULT FMOD_EventCategory_GetParentCategory(FMOD_EVENTCATEGORY *eventcategory, FMOD_EVENTCATEGORY **category);
 
-FMOD_RESULT F_API FMOD_EventCategory_StopAllEvents   (FMOD_EVENTCATEGORY *eventcategory);
-FMOD_RESULT F_API FMOD_EventCategory_SetVolume       (FMOD_EVENTCATEGORY *eventcategory, float volume);
-FMOD_RESULT F_API FMOD_EventCategory_GetVolume       (FMOD_EVENTCATEGORY *eventcategory, float *volume);
-FMOD_RESULT F_API FMOD_EventCategory_SetPitch        (FMOD_EVENTCATEGORY *eventcategory, float pitch, FMOD_EVENT_PITCHUNITS units);
-FMOD_RESULT F_API FMOD_EventCategory_GetPitch        (FMOD_EVENTCATEGORY *eventcategory, float *pitch, FMOD_EVENT_PITCHUNITS units);
-FMOD_RESULT F_API FMOD_EventCategory_SetPaused       (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL paused);
-FMOD_RESULT F_API FMOD_EventCategory_GetPaused       (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL *paused);
-FMOD_RESULT F_API FMOD_EventCategory_SetMute         (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL mute);
-FMOD_RESULT F_API FMOD_EventCategory_GetMute         (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL *mute);
-FMOD_RESULT F_API FMOD_EventCategory_GetChannelGroup (FMOD_EVENTCATEGORY *eventcategory, FMOD_CHANNELGROUP **channelgroup);
-FMOD_RESULT F_API FMOD_EventCategory_SetUserData     (FMOD_EVENTCATEGORY *eventcategory, void *userdata);
-FMOD_RESULT F_API FMOD_EventCategory_GetUserData     (FMOD_EVENTCATEGORY *eventcategory, void **userdata);
+FMOD_RESULT FMOD_EventCategory_StopAllEvents   (FMOD_EVENTCATEGORY *eventcategory);
+FMOD_RESULT FMOD_EventCategory_SetVolume       (FMOD_EVENTCATEGORY *eventcategory, float volume);
+FMOD_RESULT FMOD_EventCategory_GetVolume       (FMOD_EVENTCATEGORY *eventcategory, float *volume);
+FMOD_RESULT FMOD_EventCategory_SetPitch        (FMOD_EVENTCATEGORY *eventcategory, float pitch, FMOD_EVENT_PITCHUNITS units);
+FMOD_RESULT FMOD_EventCategory_GetPitch        (FMOD_EVENTCATEGORY *eventcategory, float *pitch, FMOD_EVENT_PITCHUNITS units);
+FMOD_RESULT FMOD_EventCategory_SetPaused       (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL paused);
+FMOD_RESULT FMOD_EventCategory_GetPaused       (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_EventCategory_SetMute         (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL mute);
+FMOD_RESULT FMOD_EventCategory_GetMute         (FMOD_EVENTCATEGORY *eventcategory, FMOD_BOOL *mute);
+FMOD_RESULT FMOD_EventCategory_GetChannelGroup (FMOD_EVENTCATEGORY *eventcategory, FMOD_CHANNELGROUP **channelgroup);
+FMOD_RESULT FMOD_EventCategory_SetUserData     (FMOD_EVENTCATEGORY *eventcategory, void *userdata);
+FMOD_RESULT FMOD_EventCategory_GetUserData     (FMOD_EVENTCATEGORY *eventcategory, void **userdata);
 
-FMOD_RESULT F_API FMOD_EventCategory_GetMemoryInfo   (FMOD_EVENTCATEGORY *eventcategory, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventCategory_GetMemoryInfo   (FMOD_EVENTCATEGORY *eventcategory, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'Event' API
 */
 
-FMOD_RESULT F_API FMOD_Event_Release                 (FMOD_EVENT *event, FMOD_BOOL freeeventdata, FMOD_BOOL waituntilready);
+FMOD_RESULT FMOD_Event_Release                 (FMOD_EVENT *event, FMOD_BOOL freeeventdata, FMOD_BOOL waituntilready);
 
-FMOD_RESULT F_API FMOD_Event_Start                   (FMOD_EVENT *event);
-FMOD_RESULT F_API FMOD_Event_Stop                    (FMOD_EVENT *event, FMOD_BOOL immediate);
+FMOD_RESULT FMOD_Event_Start                   (FMOD_EVENT *event);
+FMOD_RESULT FMOD_Event_Stop                    (FMOD_EVENT *event, FMOD_BOOL immediate);
 
-FMOD_RESULT F_API FMOD_Event_GetInfo                 (FMOD_EVENT *event, int *index, char **name, FMOD_EVENT_INFO *info);
-FMOD_RESULT F_API FMOD_Event_GetState                (FMOD_EVENT *event, FMOD_EVENT_STATE *state);
-FMOD_RESULT F_API FMOD_Event_GetParentGroup          (FMOD_EVENT *event, FMOD_EVENTGROUP **group);
-FMOD_RESULT F_API FMOD_Event_GetChannelGroup         (FMOD_EVENT *event, FMOD_CHANNELGROUP **channelgroup);
-FMOD_RESULT F_API FMOD_Event_SetCallback             (FMOD_EVENT *event, FMOD_EVENT_CALLBACK callback, void *userdata);
+FMOD_RESULT FMOD_Event_GetInfo                 (FMOD_EVENT *event, int *index, char **name, FMOD_EVENT_INFO *info);
+FMOD_RESULT FMOD_Event_GetState                (FMOD_EVENT *event, FMOD_EVENT_STATE *state);
+FMOD_RESULT FMOD_Event_GetParentGroup          (FMOD_EVENT *event, FMOD_EVENTGROUP **group);
+FMOD_RESULT FMOD_Event_GetChannelGroup         (FMOD_EVENT *event, FMOD_CHANNELGROUP **channelgroup);
+FMOD_RESULT FMOD_Event_SetCallback             (FMOD_EVENT *event, FMOD_EVENT_CALLBACK callback, void *userdata);
 
-FMOD_RESULT F_API FMOD_Event_GetParameter            (FMOD_EVENT *event, const char *name, FMOD_EVENTPARAMETER **parameter);
-FMOD_RESULT F_API FMOD_Event_GetParameterByIndex     (FMOD_EVENT *event, int index, FMOD_EVENTPARAMETER **parameter);
-FMOD_RESULT F_API FMOD_Event_GetNumParameters        (FMOD_EVENT *event, int *numparameters);
-FMOD_RESULT F_API FMOD_Event_GetProperty             (FMOD_EVENT *event, const char *propertyname, void *value, FMOD_BOOL this_instance);
-FMOD_RESULT F_API FMOD_Event_GetPropertyByIndex      (FMOD_EVENT *event, int propertyindex, void *value, FMOD_BOOL this_instance);
-FMOD_RESULT F_API FMOD_Event_SetProperty             (FMOD_EVENT *event, const char *propertyname, void *value, FMOD_BOOL this_instance);
-FMOD_RESULT F_API FMOD_Event_SetPropertyByIndex      (FMOD_EVENT *event, int propertyindex, void *value, FMOD_BOOL this_instance);
-FMOD_RESULT F_API FMOD_Event_GetNumProperties        (FMOD_EVENT *event, int *numproperties);
-FMOD_RESULT F_API FMOD_Event_GetPropertyInfo         (FMOD_EVENT *event, int *propertyindex, char **propertyname, FMOD_EVENTPROPERTY_TYPE *type);
-FMOD_RESULT F_API FMOD_Event_GetCategory             (FMOD_EVENT *event, FMOD_EVENTCATEGORY **category);
+FMOD_RESULT FMOD_Event_GetParameter            (FMOD_EVENT *event, const char *name, FMOD_EVENTPARAMETER **parameter);
+FMOD_RESULT FMOD_Event_GetParameterByIndex     (FMOD_EVENT *event, int index, FMOD_EVENTPARAMETER **parameter);
+FMOD_RESULT FMOD_Event_GetNumParameters        (FMOD_EVENT *event, int *numparameters);
+FMOD_RESULT FMOD_Event_GetProperty             (FMOD_EVENT *event, const char *propertyname, void *value, FMOD_BOOL this_instance);
+FMOD_RESULT FMOD_Event_GetPropertyByIndex      (FMOD_EVENT *event, int propertyindex, void *value, FMOD_BOOL this_instance);
+FMOD_RESULT FMOD_Event_SetProperty             (FMOD_EVENT *event, const char *propertyname, void *value, FMOD_BOOL this_instance);
+FMOD_RESULT FMOD_Event_SetPropertyByIndex      (FMOD_EVENT *event, int propertyindex, void *value, FMOD_BOOL this_instance);
+FMOD_RESULT FMOD_Event_GetNumProperties        (FMOD_EVENT *event, int *numproperties);
+FMOD_RESULT FMOD_Event_GetPropertyInfo         (FMOD_EVENT *event, int *propertyindex, char **propertyname, FMOD_EVENTPROPERTY_TYPE *type);
+FMOD_RESULT FMOD_Event_GetCategory             (FMOD_EVENT *event, FMOD_EVENTCATEGORY **category);
 
-FMOD_RESULT F_API FMOD_Event_SetVolume               (FMOD_EVENT *event, float volume);
-FMOD_RESULT F_API FMOD_Event_GetVolume               (FMOD_EVENT *event, float *volume);
-FMOD_RESULT F_API FMOD_Event_SetPitch                (FMOD_EVENT *event, float pitch, FMOD_EVENT_PITCHUNITS units);
-FMOD_RESULT F_API FMOD_Event_GetPitch                (FMOD_EVENT *event, float *pitch, FMOD_EVENT_PITCHUNITS units);
-FMOD_RESULT F_API FMOD_Event_SetPaused               (FMOD_EVENT *event, FMOD_BOOL paused);
-FMOD_RESULT F_API FMOD_Event_GetPaused               (FMOD_EVENT *event, FMOD_BOOL *paused);
-FMOD_RESULT F_API FMOD_Event_SetMute                 (FMOD_EVENT *event, FMOD_BOOL mute);
-FMOD_RESULT F_API FMOD_Event_GetMute                 (FMOD_EVENT *event, FMOD_BOOL *mute);
-FMOD_RESULT F_API FMOD_Event_Set3DAttributes         (FMOD_EVENT *event, const FMOD_VECTOR *position, const FMOD_VECTOR *velocity, const FMOD_VECTOR *orientation);
-FMOD_RESULT F_API FMOD_Event_Get3DAttributes         (FMOD_EVENT *event, FMOD_VECTOR *position, FMOD_VECTOR *velocity, FMOD_VECTOR *orientation);
-FMOD_RESULT F_API FMOD_Event_Set3DOcclusion          (FMOD_EVENT *event, float directocclusion, float reverbocclusion);
-FMOD_RESULT F_API FMOD_Event_Get3DOcclusion          (FMOD_EVENT *event, float *directocclusion, float *reverbocclusion);
-FMOD_RESULT F_API FMOD_Event_SetReverbProperties     (FMOD_EVENT *event, const FMOD_REVERB_CHANNELPROPERTIES *props);
-FMOD_RESULT F_API FMOD_Event_GetReverbProperties     (FMOD_EVENT *event, FMOD_REVERB_CHANNELPROPERTIES *props);
-FMOD_RESULT F_API FMOD_Event_SetUserData             (FMOD_EVENT *event, void *userdata);
-FMOD_RESULT F_API FMOD_Event_GetUserData             (FMOD_EVENT *event, void **userdata);
+FMOD_RESULT FMOD_Event_SetVolume               (FMOD_EVENT *event, float volume);
+FMOD_RESULT FMOD_Event_GetVolume               (FMOD_EVENT *event, float *volume);
+FMOD_RESULT FMOD_Event_SetPitch                (FMOD_EVENT *event, float pitch, FMOD_EVENT_PITCHUNITS units);
+FMOD_RESULT FMOD_Event_GetPitch                (FMOD_EVENT *event, float *pitch, FMOD_EVENT_PITCHUNITS units);
+FMOD_RESULT FMOD_Event_SetPaused               (FMOD_EVENT *event, FMOD_BOOL paused);
+FMOD_RESULT FMOD_Event_GetPaused               (FMOD_EVENT *event, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_Event_SetMute                 (FMOD_EVENT *event, FMOD_BOOL mute);
+FMOD_RESULT FMOD_Event_GetMute                 (FMOD_EVENT *event, FMOD_BOOL *mute);
+FMOD_RESULT FMOD_Event_Set3DAttributes         (FMOD_EVENT *event, const FMOD_VECTOR *position, const FMOD_VECTOR *velocity, const FMOD_VECTOR *orientation);
+FMOD_RESULT FMOD_Event_Get3DAttributes         (FMOD_EVENT *event, FMOD_VECTOR *position, FMOD_VECTOR *velocity, FMOD_VECTOR *orientation);
+FMOD_RESULT FMOD_Event_Set3DOcclusion          (FMOD_EVENT *event, float directocclusion, float reverbocclusion);
+FMOD_RESULT FMOD_Event_Get3DOcclusion          (FMOD_EVENT *event, float *directocclusion, float *reverbocclusion);
+FMOD_RESULT FMOD_Event_SetReverbProperties     (FMOD_EVENT *event, const FMOD_REVERB_CHANNELPROPERTIES *props);
+FMOD_RESULT FMOD_Event_GetReverbProperties     (FMOD_EVENT *event, FMOD_REVERB_CHANNELPROPERTIES *props);
+FMOD_RESULT FMOD_Event_SetUserData             (FMOD_EVENT *event, void *userdata);
+FMOD_RESULT FMOD_Event_GetUserData             (FMOD_EVENT *event, void **userdata);
 
-FMOD_RESULT F_API FMOD_Event_GetMemoryInfo           (FMOD_EVENT *event, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_Event_GetMemoryInfo           (FMOD_EVENT *event, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'EventParameter' API
 */
 
-FMOD_RESULT F_API FMOD_EventParameter_GetInfo        (FMOD_EVENTPARAMETER *eventparameter, int *index, char **name);
-FMOD_RESULT F_API FMOD_EventParameter_GetRange       (FMOD_EVENTPARAMETER *eventparameter, float *rangemin, float *rangemax);
-FMOD_RESULT F_API FMOD_EventParameter_SetValue       (FMOD_EVENTPARAMETER *eventparameter, float value);
-FMOD_RESULT F_API FMOD_EventParameter_GetValue       (FMOD_EVENTPARAMETER *eventparameter, float *value);
-FMOD_RESULT F_API FMOD_EventParameter_SetVelocity    (FMOD_EVENTPARAMETER *eventparameter, float value);
-FMOD_RESULT F_API FMOD_EventParameter_GetVelocity    (FMOD_EVENTPARAMETER *eventparameter, float *value);
-FMOD_RESULT F_API FMOD_EventParameter_SetSeekSpeed   (FMOD_EVENTPARAMETER *eventparameter, float value);
-FMOD_RESULT F_API FMOD_EventParameter_GetSeekSpeed   (FMOD_EVENTPARAMETER *eventparameter, float *value);
-FMOD_RESULT F_API FMOD_EventParameter_SetUserData    (FMOD_EVENTPARAMETER *eventparameter, void *userdata);
-FMOD_RESULT F_API FMOD_EventParameter_GetUserData    (FMOD_EVENTPARAMETER *eventparameter, void **userdata);
-FMOD_RESULT F_API FMOD_EventParameter_KeyOff         (FMOD_EVENTPARAMETER *eventparameter);
-FMOD_RESULT F_API FMOD_EventParameter_DisableAutomation(FMOD_EVENTPARAMETER *eventparameter, FMOD_BOOL disable);
+FMOD_RESULT FMOD_EventParameter_GetInfo        (FMOD_EVENTPARAMETER *eventparameter, int *index, char **name);
+FMOD_RESULT FMOD_EventParameter_GetRange       (FMOD_EVENTPARAMETER *eventparameter, float *rangemin, float *rangemax);
+FMOD_RESULT FMOD_EventParameter_SetValue       (FMOD_EVENTPARAMETER *eventparameter, float value);
+FMOD_RESULT FMOD_EventParameter_GetValue       (FMOD_EVENTPARAMETER *eventparameter, float *value);
+FMOD_RESULT FMOD_EventParameter_SetVelocity    (FMOD_EVENTPARAMETER *eventparameter, float value);
+FMOD_RESULT FMOD_EventParameter_GetVelocity    (FMOD_EVENTPARAMETER *eventparameter, float *value);
+FMOD_RESULT FMOD_EventParameter_SetSeekSpeed   (FMOD_EVENTPARAMETER *eventparameter, float value);
+FMOD_RESULT FMOD_EventParameter_GetSeekSpeed   (FMOD_EVENTPARAMETER *eventparameter, float *value);
+FMOD_RESULT FMOD_EventParameter_SetUserData    (FMOD_EVENTPARAMETER *eventparameter, void *userdata);
+FMOD_RESULT FMOD_EventParameter_GetUserData    (FMOD_EVENTPARAMETER *eventparameter, void **userdata);
+FMOD_RESULT FMOD_EventParameter_KeyOff         (FMOD_EVENTPARAMETER *eventparameter);
+FMOD_RESULT FMOD_EventParameter_DisableAutomation(FMOD_EVENTPARAMETER *eventparameter, FMOD_BOOL disable);
 
-FMOD_RESULT F_API FMOD_EventParameter_GetMemoryInfo  (FMOD_EVENTPARAMETER *eventparameter, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventParameter_GetMemoryInfo  (FMOD_EVENTPARAMETER *eventparameter, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'EventReverb' API
 */
 
-FMOD_RESULT F_API FMOD_EventReverb_Release           (FMOD_EVENTREVERB *eventreverb);
-FMOD_RESULT F_API FMOD_EventReverb_Set3DAttributes   (FMOD_EVENTREVERB *eventreverb, const FMOD_VECTOR *position, float mindistance, float maxdistance);
-FMOD_RESULT F_API FMOD_EventReverb_Get3DAttributes   (FMOD_EVENTREVERB *eventreverb, FMOD_VECTOR *position, float *mindistance, float *maxdistance);
-FMOD_RESULT F_API FMOD_EventReverb_SetProperties     (FMOD_EVENTREVERB *eventreverb, const FMOD_REVERB_PROPERTIES *props);
-FMOD_RESULT F_API FMOD_EventReverb_GetProperties     (FMOD_EVENTREVERB *eventreverb, FMOD_REVERB_PROPERTIES *props);
-FMOD_RESULT F_API FMOD_EventReverb_SetActive         (FMOD_EVENTREVERB *eventreverb, FMOD_BOOL active);
-FMOD_RESULT F_API FMOD_EventReverb_GetActive         (FMOD_EVENTREVERB *eventreverb, FMOD_BOOL *active);
-FMOD_RESULT F_API FMOD_EventReverb_SetUserData       (FMOD_EVENTREVERB *eventreverb, void *userdata);
-FMOD_RESULT F_API FMOD_EventReverb_GetUserData       (FMOD_EVENTREVERB *eventreverb, void **userdata);
+FMOD_RESULT FMOD_EventReverb_Release           (FMOD_EVENTREVERB *eventreverb);
+FMOD_RESULT FMOD_EventReverb_Set3DAttributes   (FMOD_EVENTREVERB *eventreverb, const FMOD_VECTOR *position, float mindistance, float maxdistance);
+FMOD_RESULT FMOD_EventReverb_Get3DAttributes   (FMOD_EVENTREVERB *eventreverb, FMOD_VECTOR *position, float *mindistance, float *maxdistance);
+FMOD_RESULT FMOD_EventReverb_SetProperties     (FMOD_EVENTREVERB *eventreverb, const FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventReverb_GetProperties     (FMOD_EVENTREVERB *eventreverb, FMOD_REVERB_PROPERTIES *props);
+FMOD_RESULT FMOD_EventReverb_SetActive         (FMOD_EVENTREVERB *eventreverb, FMOD_BOOL active);
+FMOD_RESULT FMOD_EventReverb_GetActive         (FMOD_EVENTREVERB *eventreverb, FMOD_BOOL *active);
+FMOD_RESULT FMOD_EventReverb_SetUserData       (FMOD_EVENTREVERB *eventreverb, void *userdata);
+FMOD_RESULT FMOD_EventReverb_GetUserData       (FMOD_EVENTREVERB *eventreverb, void **userdata);
 
-FMOD_RESULT F_API FMOD_EventReverb_GetMemoryInfo     (FMOD_EVENTREVERB *eventreverb, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventReverb_GetMemoryInfo     (FMOD_EVENTREVERB *eventreverb, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'EventQueue' API
 */
 
-FMOD_RESULT F_API FMOD_EventQueue_Release            (FMOD_EVENTQUEUE *eventqueue);
-FMOD_RESULT F_API FMOD_EventQueue_Add                (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY *entry, FMOD_BOOL allow_duplicates);
-FMOD_RESULT F_API FMOD_EventQueue_Remove             (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY *entry);
-FMOD_RESULT F_API FMOD_EventQueue_RemoveHead         (FMOD_EVENTQUEUE *eventqueue);
-FMOD_RESULT F_API FMOD_EventQueue_Clear              (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL stopallevents);
-FMOD_RESULT F_API FMOD_EventQueue_FindFirstEntry     (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY **entry);
-FMOD_RESULT F_API FMOD_EventQueue_FindNextEntry      (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY **entry);
-FMOD_RESULT F_API FMOD_EventQueue_SetPaused          (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL paused);
-FMOD_RESULT F_API FMOD_EventQueue_GetPaused          (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL *paused);
-FMOD_RESULT F_API FMOD_EventQueue_IncludeDuckingCategory(FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTCATEGORY *category, float ducked_volume, float unducked_volume, unsigned int duck_time, unsigned int unduck_time);
-FMOD_RESULT F_API FMOD_EventQueue_ExcludeDuckingCategory(FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTCATEGORY *category);
-FMOD_RESULT F_API FMOD_EventQueue_SetCallback        (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUE_CALLBACK callback, void *callbackuserdata);
-FMOD_RESULT F_API FMOD_EventQueue_SetUserData        (FMOD_EVENTQUEUE *eventqueue, void *userdata);
-FMOD_RESULT F_API FMOD_EventQueue_GetUserData        (FMOD_EVENTQUEUE *eventqueue, void **userdata);
-FMOD_RESULT F_API FMOD_EventQueue_Dump               (FMOD_EVENTQUEUE *eventqueue);
+FMOD_RESULT FMOD_EventQueue_Release            (FMOD_EVENTQUEUE *eventqueue);
+FMOD_RESULT FMOD_EventQueue_Add                (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY *entry, FMOD_BOOL allow_duplicates);
+FMOD_RESULT FMOD_EventQueue_Remove             (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY *entry);
+FMOD_RESULT FMOD_EventQueue_RemoveHead         (FMOD_EVENTQUEUE *eventqueue);
+FMOD_RESULT FMOD_EventQueue_Clear              (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL stopallevents);
+FMOD_RESULT FMOD_EventQueue_FindFirstEntry     (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY **entry);
+FMOD_RESULT FMOD_EventQueue_FindNextEntry      (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUEENTRY **entry);
+FMOD_RESULT FMOD_EventQueue_SetPaused          (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL paused);
+FMOD_RESULT FMOD_EventQueue_GetPaused          (FMOD_EVENTQUEUE *eventqueue, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_EventQueue_IncludeDuckingCategory(FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTCATEGORY *category, float ducked_volume, float unducked_volume, unsigned int duck_time, unsigned int unduck_time);
+FMOD_RESULT FMOD_EventQueue_ExcludeDuckingCategory(FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTCATEGORY *category);
+FMOD_RESULT FMOD_EventQueue_SetCallback        (FMOD_EVENTQUEUE *eventqueue, FMOD_EVENTQUEUE_CALLBACK callback, void *callbackuserdata);
+FMOD_RESULT FMOD_EventQueue_SetUserData        (FMOD_EVENTQUEUE *eventqueue, void *userdata);
+FMOD_RESULT FMOD_EventQueue_GetUserData        (FMOD_EVENTQUEUE *eventqueue, void **userdata);
+FMOD_RESULT FMOD_EventQueue_Dump               (FMOD_EVENTQUEUE *eventqueue);
 
-FMOD_RESULT F_API FMOD_EventQueue_GetMemoryInfo      (FMOD_EVENTQUEUE *eventqueue, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventQueue_GetMemoryInfo      (FMOD_EVENTQUEUE *eventqueue, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'EventQueueEntry' API
 */
 
-FMOD_RESULT F_API FMOD_EventQueueEntry_Release       (FMOD_EVENTQUEUEENTRY *eventqueueentry);
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetInfoOnlyEvent(FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_EVENT **infoonlyevent);
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetRealEvent  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_EVENT **realevent);
-FMOD_RESULT F_API FMOD_EventQueueEntry_SetPriority   (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned char priority);
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetPriority   (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned char *priority);
-FMOD_RESULT F_API FMOD_EventQueueEntry_SetExpiryTime (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int expirytime);
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetExpiryTime (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int *expirytime);
-FMOD_RESULT F_API FMOD_EventQueueEntry_SetDelayTime  (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int delay);
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetDelayTime  (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int *delay);
-FMOD_RESULT F_API FMOD_EventQueueEntry_SetInterrupt  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_BOOL interrupt);
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetInterrupt  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_BOOL *interrupt);
-FMOD_RESULT F_API FMOD_EventQueueEntry_SetCrossfadeTime(FMOD_EVENTQUEUEENTRY *eventqueueentry, int crossfade);
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetCrossfadeTime(FMOD_EVENTQUEUEENTRY *eventqueueentry, int *crossfade);
-FMOD_RESULT F_API FMOD_EventQueueEntry_SetUserData   (FMOD_EVENTQUEUEENTRY *eventqueueentry, void *userdata);
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetUserData   (FMOD_EVENTQUEUEENTRY *eventqueueentry, void **userdata);
+FMOD_RESULT FMOD_EventQueueEntry_Release       (FMOD_EVENTQUEUEENTRY *eventqueueentry);
+FMOD_RESULT FMOD_EventQueueEntry_GetInfoOnlyEvent(FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_EVENT **infoonlyevent);
+FMOD_RESULT FMOD_EventQueueEntry_GetRealEvent  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_EVENT **realevent);
+FMOD_RESULT FMOD_EventQueueEntry_SetPriority   (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned char priority);
+FMOD_RESULT FMOD_EventQueueEntry_GetPriority   (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned char *priority);
+FMOD_RESULT FMOD_EventQueueEntry_SetExpiryTime (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int expirytime);
+FMOD_RESULT FMOD_EventQueueEntry_GetExpiryTime (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int *expirytime);
+FMOD_RESULT FMOD_EventQueueEntry_SetDelayTime  (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int delay);
+FMOD_RESULT FMOD_EventQueueEntry_GetDelayTime  (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int *delay);
+FMOD_RESULT FMOD_EventQueueEntry_SetInterrupt  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_BOOL interrupt);
+FMOD_RESULT FMOD_EventQueueEntry_GetInterrupt  (FMOD_EVENTQUEUEENTRY *eventqueueentry, FMOD_BOOL *interrupt);
+FMOD_RESULT FMOD_EventQueueEntry_SetCrossfadeTime(FMOD_EVENTQUEUEENTRY *eventqueueentry, int crossfade);
+FMOD_RESULT FMOD_EventQueueEntry_GetCrossfadeTime(FMOD_EVENTQUEUEENTRY *eventqueueentry, int *crossfade);
+FMOD_RESULT FMOD_EventQueueEntry_SetUserData   (FMOD_EVENTQUEUEENTRY *eventqueueentry, void *userdata);
+FMOD_RESULT FMOD_EventQueueEntry_GetUserData   (FMOD_EVENTQUEUEENTRY *eventqueueentry, void **userdata);
 
-FMOD_RESULT F_API FMOD_EventQueueEntry_GetMemoryInfo (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_EventQueueEntry_GetMemoryInfo (FMOD_EVENTQUEUEENTRY *eventqueueentry, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'MusicSystem' API
 */
 
-FMOD_RESULT F_API FMOD_MusicSystem_Reset             (FMOD_MUSICSYSTEM *musicsystem);
-FMOD_RESULT F_API FMOD_MusicSystem_SetVolume         (FMOD_MUSICSYSTEM *musicsystem, float volume);
-FMOD_RESULT F_API FMOD_MusicSystem_GetVolume         (FMOD_MUSICSYSTEM *musicsystem, float *volume);
-FMOD_RESULT F_API FMOD_MusicSystem_SetReverbProperties(FMOD_MUSICSYSTEM *musicsystem, const FMOD_REVERB_CHANNELPROPERTIES *props);
-FMOD_RESULT F_API FMOD_MusicSystem_GetReverbProperties(FMOD_MUSICSYSTEM *musicsystem, FMOD_REVERB_CHANNELPROPERTIES *props);
-FMOD_RESULT F_API FMOD_MusicSystem_SetPaused         (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL paused);
-FMOD_RESULT F_API FMOD_MusicSystem_GetPaused         (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL *paused);
-FMOD_RESULT F_API FMOD_MusicSystem_SetMute           (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL mute);
-FMOD_RESULT F_API FMOD_MusicSystem_GetMute           (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL *mute);
-FMOD_RESULT F_API FMOD_MusicSystem_GetInfo           (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_INFO *info);
-FMOD_RESULT F_API FMOD_MusicSystem_PromptCue         (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CUE_ID id);
-FMOD_RESULT F_API FMOD_MusicSystem_PrepareCue        (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CUE_ID id, FMOD_MUSICPROMPT **prompt);
-FMOD_RESULT F_API FMOD_MusicSystem_GetParameterValue (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_PARAM_ID id, float *parameter);
-FMOD_RESULT F_API FMOD_MusicSystem_SetParameterValue (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_PARAM_ID id, float parameter);
+FMOD_RESULT FMOD_MusicSystem_Reset             (FMOD_MUSICSYSTEM *musicsystem);
+FMOD_RESULT FMOD_MusicSystem_SetVolume         (FMOD_MUSICSYSTEM *musicsystem, float volume);
+FMOD_RESULT FMOD_MusicSystem_GetVolume         (FMOD_MUSICSYSTEM *musicsystem, float *volume);
+FMOD_RESULT FMOD_MusicSystem_SetReverbProperties(FMOD_MUSICSYSTEM *musicsystem, const FMOD_REVERB_CHANNELPROPERTIES *props);
+FMOD_RESULT FMOD_MusicSystem_GetReverbProperties(FMOD_MUSICSYSTEM *musicsystem, FMOD_REVERB_CHANNELPROPERTIES *props);
+FMOD_RESULT FMOD_MusicSystem_SetPaused         (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL paused);
+FMOD_RESULT FMOD_MusicSystem_GetPaused         (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL *paused);
+FMOD_RESULT FMOD_MusicSystem_SetMute           (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL mute);
+FMOD_RESULT FMOD_MusicSystem_GetMute           (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL *mute);
+FMOD_RESULT FMOD_MusicSystem_GetInfo           (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_INFO *info);
+FMOD_RESULT FMOD_MusicSystem_PromptCue         (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CUE_ID id);
+FMOD_RESULT FMOD_MusicSystem_PrepareCue        (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CUE_ID id, FMOD_MUSICPROMPT **prompt);
+FMOD_RESULT FMOD_MusicSystem_GetParameterValue (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_PARAM_ID id, float *parameter);
+FMOD_RESULT FMOD_MusicSystem_SetParameterValue (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_PARAM_ID id, float parameter);
 
-FMOD_RESULT F_API FMOD_MusicSystem_GetCues           (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it, const char *filter);
-FMOD_RESULT F_API FMOD_MusicSystem_GetNextCue        (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it);
-FMOD_RESULT F_API FMOD_MusicSystem_GetParameters     (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it, const char *filter);
-FMOD_RESULT F_API FMOD_MusicSystem_GetNextParameter  (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it);
+FMOD_RESULT FMOD_MusicSystem_GetCues           (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it, const char *filter);
+FMOD_RESULT FMOD_MusicSystem_GetNextCue        (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it);
+FMOD_RESULT FMOD_MusicSystem_GetParameters     (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it, const char *filter);
+FMOD_RESULT FMOD_MusicSystem_GetNextParameter  (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_ITERATOR *it);
 
-FMOD_RESULT F_API FMOD_MusicSystem_LoadSoundData     (FMOD_MUSICSYSTEM *musicsystem, FMOD_EVENT_RESOURCE resource, FMOD_EVENT_MODE mode);
-FMOD_RESULT F_API FMOD_MusicSystem_FreeSoundData     (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL waituntilready);
+FMOD_RESULT FMOD_MusicSystem_LoadSoundData     (FMOD_MUSICSYSTEM *musicsystem, FMOD_EVENT_RESOURCE resource, FMOD_EVENT_MODE mode);
+FMOD_RESULT FMOD_MusicSystem_FreeSoundData     (FMOD_MUSICSYSTEM *musicsystem, FMOD_BOOL waituntilready);
 
-FMOD_RESULT F_API FMOD_MusicSystem_SetCallback       (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CALLBACK callback, void *userdata);
+FMOD_RESULT FMOD_MusicSystem_SetCallback       (FMOD_MUSICSYSTEM *musicsystem, FMOD_MUSIC_CALLBACK callback, void *userdata);
 
-FMOD_RESULT F_API FMOD_MusicSystem_GetMemoryInfo     (FMOD_MUSICSYSTEM *musicsystem, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_MusicSystem_GetMemoryInfo     (FMOD_MUSICSYSTEM *musicsystem, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 
 /*
     'MusicPrompt' API
 */
 
-FMOD_RESULT F_API FMOD_MusicPrompt_Release           (FMOD_MUSICPROMPT *musicprompt);
-FMOD_RESULT F_API FMOD_MusicPrompt_Begin             (FMOD_MUSICPROMPT *musicprompt);
-FMOD_RESULT F_API FMOD_MusicPrompt_End               (FMOD_MUSICPROMPT *musicprompt);
-FMOD_RESULT F_API FMOD_MusicPrompt_IsActive          (FMOD_MUSICPROMPT *musicprompt, FMOD_BOOL *active);
+FMOD_RESULT FMOD_MusicPrompt_Release           (FMOD_MUSICPROMPT *musicprompt);
+FMOD_RESULT FMOD_MusicPrompt_Begin             (FMOD_MUSICPROMPT *musicprompt);
+FMOD_RESULT FMOD_MusicPrompt_End               (FMOD_MUSICPROMPT *musicprompt);
+FMOD_RESULT FMOD_MusicPrompt_IsActive          (FMOD_MUSICPROMPT *musicprompt, FMOD_BOOL *active);
 
-FMOD_RESULT F_API FMOD_MusicPrompt_GetMemoryInfo     (FMOD_MUSICPROMPT *musicprompt, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
+FMOD_RESULT FMOD_MusicPrompt_GetMemoryInfo     (FMOD_MUSICPROMPT *musicprompt, unsigned int memorybits, unsigned int event_memorybits, unsigned int *memoryused, FMOD_MEMORY_USAGE_DETAILS *memoryused_details);
 /*$ preserve start $*/
 
 #ifdef __cplusplus
